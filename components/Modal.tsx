@@ -93,7 +93,7 @@ export default function Modal({ open, title, subtitle, onClose, locale = "fa", a
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
       >
-        <header className={`flex flex-col gap-1 border-b border-white/10 bg-transparent px-6 py-4 ${isFa ? "text-right" : "text-left"}`}>
+        <header className={`modal-header ${isFa ? "text-right" : "text-left"}`}>
           <div className="flex items-center justify-between gap-6">
             <div className={`flex-1 ${isFa ? "text-right" : "text-left"}`}>
               {title ? (
@@ -113,7 +113,7 @@ export default function Modal({ open, title, subtitle, onClose, locale = "fa", a
           </div>
         </header>
         <div className="modal-body">{children}</div>
-        <footer className={`border-t border-white/10 px-6 py-4 ${isFa ? "text-left" : "text-right"}`}>
+        <footer className={`modal-footer ${isFa ? "text-left" : "text-right"}`}>
           {actions ?? (
             <button className="btn" onClick={onClose}>
               {isFa ? "بستن" : "Close"}

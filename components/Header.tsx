@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, MouseEvent } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -38,7 +39,7 @@ export default function Header({ locale = "fa" }: HeaderProps) {
   const homePath = prefix === "" ? "/" : prefix;
   const switcher = isFa ? { href: "/en", label: "EN" } : { href: "/", label: "FA" };
   const brandTitle = isFa ? "شبکه هوشمند ابتکار ویستا" : "Vista Smart Network";
-  const brandSubtitle = isFa ? "AI, GeoAI & CivicTech" : "AI, GeoAI & CivicTech";
+  const brandSubtitle = isFa ? "AI، GeoAI و CivicTech در استان سمنان" : "AI, GeoAI & CivicTech in Semnan";
 
   const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     const isHome = pathname === homePath || pathname === `${homePath}/`;
@@ -71,9 +72,14 @@ export default function Header({ locale = "fa" }: HeaderProps) {
       }`}
     >
       <div className="container flex items-center justify-between py-4">
-        <Link href={isFa ? "/" : "/en"} className={`flex flex-col ${isFa ? "items-end text-right" : "items-start text-left"}`}>
-          <span className="text-base font-semibold text-white">{brandTitle}</span>
-          <span className="text-xs text-white/60">{brandSubtitle}</span>
+        <Link href={isFa ? "/" : "/en"} className={`flex items-center gap-3 ${isFa ? "flex-row-reverse text-right" : "flex-row text-left"}`}>
+          <div className="relative h-10 w-[110px]">
+            <Image src="/images/brand/vista-logo.svg" alt={brandTitle} fill className="object-contain" />
+          </div>
+          <div className={`flex flex-col ${isFa ? "items-end" : "items-start"}`}>
+            <span className="text-base font-semibold text-white">{brandTitle}</span>
+            <span className="text-[11px] text-white/60">{brandSubtitle}</span>
+          </div>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-white/80 sm:flex">
           {navItems.map((item) => (

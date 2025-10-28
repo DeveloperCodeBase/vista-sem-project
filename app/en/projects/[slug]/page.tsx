@@ -14,13 +14,18 @@ export default function ProjectPageEn({ params }: { params: { slug: string } }) 
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return notFound();
 
-  const { titleEn, categoryEn, gallery } = project;
+  const { titleEn, categoryEn, summaryEn, gallery } = project;
+  const slides = gallery.map((item) => ({
+    src: item.src,
+    alt: item.alt.en,
+    caption: item.caption.en
+  }));
 
   return (
     <>
       <Header locale="en" />
-      <main className="container space-y-8 py-10 text-left">
-        <nav className="text-sm text-white/60">
+      <main className="project-page container space-y-10 py-12 text-left">
+        <nav className="project-page__breadcrumb project-page__breadcrumb--ltr">
           <Link href="/en">Home</Link> <span className="mx-2">/</span>
           <Link href="/en#projects">Projects</Link> <span className="mx-2">/</span>
           <span className="text-white">{titleEn}</span>
@@ -35,24 +40,26 @@ export default function ProjectPageEn({ params }: { params: { slug: string } }) 
           isPartOf: { "@type": "Collection", name: "Projects" }
         })}</script>
 
-        <h1 className="text-3xl font-black">{titleEn}</h1>
-        <Carousel
-          items={gallery.map((src, index) => ({
-            src,
-            alt: `${titleEn} — slide ${index + 1}`
-          }))}
-          locale="en"
-        />
+        <header className="project-page__hero project-page__hero--ltr">
+          <div className="project-page__meta project-page__meta--ltr">
+            <span className="project-page__badge">{categoryEn}</span>
+            <h1 className="project-page__title">{titleEn}</h1>
+            <p className="project-page__summary">{summaryEn}</p>
+          </div>
+          <div className="project-page__gallery">
+            <Carousel items={slides} locale="en" />
+          </div>
+        </header>
 
-        <section className="card p-6">
-          <ProjectExecutiveSummary project={project} locale="en" />
+        <section className="project-page__summary-card">
+          <ProjectExecutiveSummary project={project} locale="en" variant="page" />
         </section>
 
-        <div className="flex items-center gap-3">
+        <div className="project-page__cta project-page__cta--ltr">
           <a className="btn" href="/en#contact">
             Book a consultation
           </a>
-          <Link className="btn bg-white/10 hover:bg-white/20" href="/en#projects">
+          <Link className="btn-ghost" href="/en#projects">
             Back to projects
           </Link>
         </div>

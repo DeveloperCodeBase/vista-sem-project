@@ -17,6 +17,7 @@ export default function ProjectCard({ p, locale = "fa" }: ProjectCardProps) {
   const title = isFa ? p.title : p.titleEn;
   const summary = isFa ? p.summary : p.summaryEn;
   const category = isFa ? p.category : p.categoryEn;
+  const coverAlt = isFa ? p.gallery[0]?.alt.fa ?? title : p.gallery[0]?.alt.en ?? title;
 
   const detailHref = locale === "fa" ? `/projects/${p.slug}` : `/en/projects/${p.slug}`;
 
@@ -25,7 +26,7 @@ export default function ProjectCard({ p, locale = "fa" }: ProjectCardProps) {
       <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={p.cover}
-          alt={title}
+          alt={coverAlt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 45vw, 90vw"
           className="object-cover transition duration-700 group-hover:scale-105"

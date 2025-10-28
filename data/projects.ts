@@ -1,4 +1,15 @@
 // data/projects.ts
+type LocalizedCopy = {
+  fa: string;
+  en: string;
+};
+
+export type ProjectGalleryItem = {
+  src: string;
+  alt: LocalizedCopy;
+  caption: LocalizedCopy;
+};
+
 export type Project = {
   id: number;
   slug: string;
@@ -9,7 +20,7 @@ export type Project = {
   category: string;
   categoryEn: string;
   cover: string;
-  gallery: string[];
+  gallery: ProjectGalleryItem[];
   content: string; // HTML (rendered via dangerouslySetInnerHTML)
   contentEn: string; // HTML (rendered via dangerouslySetInnerHTML)
 };
@@ -26,10 +37,50 @@ export const projects: Project[] = [
     categoryEn: "Water intelligence",
     cover: "/images/projects/vista-leak-digital-twin/cover.svg",
     gallery: [
-      "/images/projects/vista-leak-digital-twin/cover.svg",
-      "/images/projects/vista-leak-digital-twin/dashboard.svg",
-      "/images/projects/vista-leak-digital-twin/field.svg",
-      "/images/projects/vista-leak-digital-twin/insights.svg"
+      {
+        src: "/images/projects/vista-leak-digital-twin/cover.svg",
+        alt: {
+          fa: "تصویر هنری شبکه توزیع آب با خطوط فیروزه‌ای و نقطه داغ نشتی",
+          en: "Stylised water distribution grid with cyan leak highlights"
+        },
+        caption: {
+          fa: "نمای سینمایی از شهر شبانه که مسیرهای نشتی و مسیر ایزوله‌سازی را با گلوهای نورانی نشان می‌دهد.",
+          en: "Cinematic night view of the city highlighting leak paths and valve isolation corridors."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/dashboard.svg",
+        alt: {
+          fa: "داشبورد دوقلوی دیجیتال با نقشه حرارتی احتمال نشتی",
+          en: "Digital twin dashboard with a leak probability heatmap"
+        },
+        caption: {
+          fa: "داشبورد مدیریتی VistaLeak با نقشه حرارتی، شاخص‌های KPI و مسیرهای رفع حادثه برای تیم‌های سمنان.",
+          en: "VistaLeak command dashboard showing heatmaps, KPIs and guided mitigation paths for Semnan crews."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/field.svg",
+        alt: {
+          fa: "تکنسین میدانی در کنار جعبه ولو و سنسورهای فشار",
+          en: "Field technician beside a valve pit instrumented with pressure sensors"
+        },
+        caption: {
+          fa: "تیم عملیات با حسگر فشار و آکوستیک در محل ولو شبکه برای تأیید نشتی پیشنهاد شده.",
+          en: "Operations crew validating the suggested leak point using pressure and acoustic instrumentation."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/insights.svg",
+        alt: {
+          fa: "نمای نزدیک از نمودار شاخص‌های عملکرد و اعلان هوشمند",
+          en: "Close-up of performance indicators and smart alert cards"
+        },
+        caption: {
+          fa: "پنل تحلیلی با شاخص‌های کاهش تلفات، اعزام هوشمند و گزارش‌های پس از اقدام برای مدیران.",
+          en: "Analytical panel summarising NRW reduction, smart dispatching and executive after-action reports."
+        }
+      }
     ],
     content: `
 <h2>۱) سامانهٔ یکپارچه کشف نشتی و دوقلوی دیجیتال شبکه آب (VistaLeak)</h2>
@@ -121,10 +172,50 @@ export const projects: Project[] = [
     categoryEn: "Water capital planning",
     cover: "/images/projects/vista-leak-score/cover.svg",
     gallery: [
-      "/images/projects/vista-leak-score/cover.svg",
-      "/images/projects/vista-leak-score/risk-map.svg",
-      "/images/projects/vista-leak-score/field.svg",
-      "/images/projects/vista-leak-score/capital.svg"
+      {
+        src: "/images/projects/vista-leak-score/cover.svg",
+        alt: {
+          fa: "نقشه شهری با لایه حرارتی ریسک خطوط لوله",
+          en: "City map with a thermal risk overlay for buried mains"
+        },
+        caption: {
+          fa: "کریدورهای پرریسک برای تعویض لوله با گرادیان رنگی و مسیرهای دسترسی به سبک VistaLeak-Score.",
+          en: "High-risk corridors for pipe renewal rendered with VistaLeak-Score’s gradient risk surface."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/risk-map.svg",
+        alt: {
+          fa: "داشبورد نقشه ریسک با فیلتر بودجه",
+          en: "Risk ranking dashboard with budget scenario filters"
+        },
+        caption: {
+          fa: "نقشه اولویت‌بندی، سناریوهای بودجه و شاخص‌های CAPEX برای تصمیم‌سازی هیئت‌مدیره.",
+          en: "Priority map, capital scenarios and KPI widgets that guide board-level investment decisions."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/field.svg",
+        alt: {
+          fa: "تیم اجرایی در حال برش آسفالت و تعویض لوله",
+          en: "Renewal crew cutting asphalt while preparing a targeted pipe replacement"
+        },
+        caption: {
+          fa: "اجرای تعویض هدفمند در معابر بحرانی با برنامه‌ریزی مرحله‌ای و کنترل ترافیک.",
+          en: "Targeted renewal at a critical corridor with phased construction and managed traffic impacts."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/capital.svg",
+        alt: {
+          fa: "نمودار سرمایه‌گذاری و جدول BOQ",
+          en: "Capital allocation chart and BOQ summary"
+        },
+        caption: {
+          fa: "داشبورد تصمیم‌یار با جدول BOQ و مقایسه سناریوهای سرمایه‌ای برای کاهش CAPEX.",
+          en: "Decision assistant showing the BOQ breakdown and comparative capital plans to shrink CAPEX."
+        }
+      }
     ],
     content: `
 <h2>۲) تعویض هدفمند لوله‌های فرسوده (VistaLeak-Score)</h2>
@@ -246,10 +337,50 @@ export const projects: Project[] = [
     categoryEn: "Groundwater stewardship",
     cover: "/images/projects/illegal-groundwater-detection/cover.svg",
     gallery: [
-      "/images/projects/illegal-groundwater-detection/cover.svg",
-      "/images/projects/illegal-groundwater-detection/nightlight.svg",
-      "/images/projects/illegal-groundwater-detection/vegetation.svg",
-      "/images/projects/illegal-groundwater-detection/inspection.svg"
+      {
+        src: "/images/projects/illegal-groundwater-detection/cover.svg",
+        alt: {
+          fa: "نقشه شبانه دشت کشاورزی با نقاط نور مشکوک",
+          en: "Night map of agricultural plains with suspicious light clusters"
+        },
+        caption: {
+          fa: "نقاط داغ برداشت غیرمجاز در دشت‌های سمنان با ادغام نور شب، زمین مرجع و لایه‌های نظارتی.",
+          en: "Semnan plain hotspots rendered from fused night lights, cadastral parcels and monitoring layers."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/nightlight.svg",
+        alt: {
+          fa: "تحلیل نور شب و نمودارهای زمانی مصرف",
+          en: "Night light analytics with temporal pump usage charts"
+        },
+        caption: {
+          fa: "آنالیز نور شب VIIRS در کنار سری‌زمان برق چاه برای آشکارسازی الگوهای پمپاژ غیرمجاز.",
+          en: "VIIRS night light anomalies blended with pump electricity profiles to expose unauthorised drawdowns."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/vegetation.svg",
+        alt: {
+          fa: "نقشه NDVI با هایلایت قطعات دارای ریسک",
+          en: "NDVI surface highlighting parcels with atypical vigour"
+        },
+        caption: {
+          fa: "پروفایل‌های NDVI و NDMI که پایداری پوشش گیاهی خارج از تقویم رسمی کشت را نشان می‌دهند.",
+          en: "NDVI/NDMI profiles surfacing crop vigour that deviates from the authorised planting calendar."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/inspection.svg",
+        alt: {
+          fa: "بازرسی میدانی با پهپاد و خودرو در مزرعه",
+          en: "Field inspection with drone support at a flagged farm"
+        },
+        caption: {
+          fa: "تیم بازرسی مشترک منابع آب و جهاد کشاورزی در حال مستندسازی تخلف با پهپاد و فرم‌های دیجیتال.",
+          en: "Joint water and agriculture inspectors documenting infringements using drones and digital forms."
+        }
+      }
     ],
     content: `
 <h2>۳) کشف برداشت غیرمجاز آب زیرزمینی (VIIRS + Sentinel-2 + برق چاه)</h2>
@@ -353,9 +484,39 @@ export const projects: Project[] = [
     categoryEn: "Smart agriculture",
     cover: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
     gallery: [
-      "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
-      "/images/projects/smart-irrigation-pistachio-damghan/dashboard.svg",
-      "/images/projects/smart-irrigation-pistachio-damghan/field.svg"
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
+        alt: {
+          fa: "باغ پسته با خطوط آبیاری هوشمند و سنسور",
+          en: "Pistachio orchard with smart irrigation lines and sensors"
+        },
+        caption: {
+          fa: "باغات پسته دامغان با سامانه آبیاری هوشمند و لایه‌های داده تبخیرـتعرق و سنسورهای خاک.",
+          en: "Damghan pistachio groves instrumented with smart irrigation informed by ET and soil sensor data."
+        }
+      },
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/dashboard.svg",
+        alt: {
+          fa: "داشبورد توصیه آبیاری با نمودار ET و NDVI",
+          en: "Irrigation advisory dashboard with ET and NDVI charts"
+        },
+        caption: {
+          fa: "داشبورد توصیه آبیاری قطعه‌به‌قطعه با ترکیب NDVI، سنسور رطوبت و پیش‌بینی هواشناسی محلی.",
+          en: "Block-level irrigation recommendations fusing NDVI, soil moisture probes and local forecasts."
+        }
+      },
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/field.svg",
+        alt: {
+          fa: "کارشناس در حال بررسی سنسور رطوبت در باغ",
+          en: "Agronomist reviewing soil moisture probes in the orchard"
+        },
+        caption: {
+          fa: "کارشناس کشاورزی ویستا با تبلت و سنسورهای رطوبت برای پایش سلامت خاک و زمان‌بندی آبیاری.",
+          en: "Vista agronomist validating soil health and irrigation schedules with handheld probes."
+        }
+      }
     ],
     content: `
 <h2>۴) آبیاری هوشمند باغات پسته دامغان</h2>
@@ -437,9 +598,39 @@ export const projects: Project[] = [
     categoryEn: "Renewable energy",
     cover: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
     gallery: [
-      "/images/projects/solar-forecast-soiling-optimization/cover.svg",
-      "/images/projects/solar-forecast-soiling-optimization/forecast.svg",
-      "/images/projects/solar-forecast-soiling-optimization/maintenance.svg"
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
+        alt: {
+          fa: "مزرعه خورشیدی با الگوریتم‌های پیش‌بینی روی آسمان",
+          en: "Solar farm with forecasting overlays in the sky"
+        },
+        caption: {
+          fa: "مزرعه خورشیدی در حاشیه کویر با پیش‌بینی تابش و شاخص‌های آلودگی گردوغبار برای زمان‌بندی شست‌وشو.",
+          en: "Desert-edge solar farm contextualised with irradiance and dust forecasts to time cleaning cycles."
+        }
+      },
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/forecast.svg",
+        alt: {
+          fa: "داشبورد پیش‌بینی تابش و تولید انرژی",
+          en: "Solar irradiance and production forecast dashboard"
+        },
+        caption: {
+          fa: "داشبورد پیش‌بینی تابش، ابرناکی و تولید انرژی با سناریوهای برنامه‌ریزی و هشدار Soiling.",
+          en: "Forecast interface showing irradiance, cloud cover and production scenarios with soiling alerts."
+        }
+      },
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/maintenance.svg",
+        alt: {
+          fa: "تیم عملیات در حال شست‌وشوی پنل خورشیدی",
+          en: "Operations crew cleaning solar modules"
+        },
+        caption: {
+          fa: "تیم نگهداشت با برنامه‌ریزی هوشمند شست‌وشو و مدیریت مصرف آب در نیروگاه خورشیدی.",
+          en: "Maintenance team executing optimised wash cycles while managing water use efficiently."
+        }
+      }
     ],
     content: `
 <h2>۵) پیش‌بینی تولید خورشیدی و شست‌وشوی بهینه</h2>
@@ -522,9 +713,39 @@ export const projects: Project[] = [
     categoryEn: "Environmental intelligence",
     cover: "/images/projects/wildfire-early-warning-abr/cover.svg",
     gallery: [
-      "/images/projects/wildfire-early-warning-abr/cover.svg",
-      "/images/projects/wildfire-early-warning-abr/tower.svg",
-      "/images/projects/wildfire-early-warning-abr/map.svg"
+      {
+        src: "/images/projects/wildfire-early-warning-abr/cover.svg",
+        alt: {
+          fa: "جنگل ابر با برج دیده‌بانی و پهپاد",
+          en: "Abr forest with watchtower and drone patrol"
+        },
+        caption: {
+          fa: "چشم‌انداز جنگل ابر با برج دیده‌بانی حرارتی و پهپاد تأیید حریق برای کاهش زمان واکنش.",
+          en: "Abr forest landscape showing thermal watchtowers and drone confirmation to compress response times."
+        }
+      },
+      {
+        src: "/images/projects/wildfire-early-warning-abr/tower.svg",
+        alt: {
+          fa: "نمای نزدیک برج PTZ حرارتی با رابط کاربری",
+          en: "Close-up of a thermal PTZ tower with user interface"
+        },
+        caption: {
+          fa: "برج دیدبانی با دوربین PTZ حرارتی، هشداری بر روی رابط کاربری و کنترل مسیر پهپاد.",
+          en: "Thermal PTZ tower view with alert banner and drone routing control."
+        }
+      },
+      {
+        src: "/images/projects/wildfire-early-warning-abr/map.svg",
+        alt: {
+          fa: "نقشه نقاط داغ و مسیر تیم اطفا",
+          en: "Hotspot situational map with response routes"
+        },
+        caption: {
+          fa: "نقشه عملیاتی با نقاط داغ VIIRS، مسیرهای تیم اطفا و برآورد ریسک برای مدیریت بحران.",
+          en: "Operational map overlaying VIIRS hotspots, crew routes and risk tiers for incident command."
+        }
+      }
     ],
     content: `
 <h2>۶) هشدار سریع حریق جنگل ابر</h2>
@@ -605,9 +826,39 @@ export const projects: Project[] = [
     categoryEn: "Geospatial analytics",
     cover: "/images/projects/insar-subsidence-monitoring/cover.svg",
     gallery: [
-      "/images/projects/insar-subsidence-monitoring/cover.svg",
-      "/images/projects/insar-subsidence-monitoring/map.svg",
-      "/images/projects/insar-subsidence-monitoring/profile.svg"
+      {
+        src: "/images/projects/insar-subsidence-monitoring/cover.svg",
+        alt: {
+          fa: "نمای شهری با لایه نرخ فرونشست میلی‌متری",
+          en: "Urban landscape with millimetric subsidence layer"
+        },
+        caption: {
+          fa: "نقشه نرخ فرونشست میلی‌متری برای زیرساخت‌های حیاتی سمنان با روش‌های PS/SBAS.",
+          en: "Millimetric subsidence rates mapped for Semnan’s critical infrastructure via PS/SBAS processing."
+        }
+      },
+      {
+        src: "/images/projects/insar-subsidence-monitoring/map.svg",
+        alt: {
+          fa: "داشبورد GIS با نقاط داغ نشست زمین",
+          en: "GIS dashboard showing land subsidence hotspots"
+        },
+        caption: {
+          fa: "داشبورد تحلیلی با نقاط داغ نشست، نمودار روند و فیلتر زیرساخت برای اولویت‌بندی بازدید.",
+          en: "Analytical GIS view combining hotspot clusters, trend charts and infrastructure filters for inspections."
+        }
+      },
+      {
+        src: "/images/projects/insar-subsidence-monitoring/profile.svg",
+        alt: {
+          fa: "پروفایل نشست یک مسیر راه‌آهن",
+          en: "Subsidence profile for a railway corridor"
+        },
+        caption: {
+          fa: "پروفایل نشست طولی برای مسیر راه‌آهن و جدول تصمیم نگهداشت جهت کاهش ریسک.",
+          en: "Longitudinal subsidence profile paired with maintenance actions for rail safety."
+        }
+      }
     ],
     content: `
 <h2>۷) پایش فرونشست (InSAR)</h2>
@@ -687,9 +938,39 @@ export const projects: Project[] = [
     categoryEn: "Environmental resilience",
     cover: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
     gallery: [
-      "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
-      "/images/projects/dust-aqi-nowcast-hvac/dashboard.svg",
-      "/images/projects/dust-aqi-nowcast-hvac/hvac.svg"
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+        alt: {
+          fa: "خط افق شهری در مه غبارآلود با اعلان کیفیت هوا",
+          en: "Dusty city skyline with air quality alert display"
+        },
+        caption: {
+          fa: "سامانه هشدار گردوغبار ویستا با اعلان هوشمند کیفیت هوا در مراکز آموزشی و اداری استان سمنان.",
+          en: "Vista’s dust alerting platform broadcasting adaptive air quality guidance across Semnan facilities."
+        }
+      },
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/dashboard.svg",
+        alt: {
+          fa: "داشبورد Nowcast با نقشه و کارت سلامت",
+          en: "Nowcast dashboard with heatmap and health cards"
+        },
+        caption: {
+          fa: "داشبورد Nowcasting با نقشه نقاط داغ، توصیه سلامت گروه‌های حساس و همگام‌سازی خودکار با مدارس.",
+          en: "Nowcasting dashboard layering hotspots with targeted health guidance and school coordination."
+        }
+      },
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/hvac.svg",
+        alt: {
+          fa: "یونیت‌های HVAC هوشمند روی بام",
+          en: "Smart HVAC rooftop units"
+        },
+        caption: {
+          fa: "یونیت‌های HVAC هوشمند با کنترل خودکار ورودی هوا و بهینه‌سازی مصرف انرژی بر اساس پیش‌بینی گردوغبار.",
+          en: "Smart HVAC units adjusting intake strategy and energy use based on dust forecasts."
+        }
+      }
     ],
     content: `
 <h2>۸) سامانهٔ هشدار گردوغبار و کیفیت هوا (Nowcasting PM + HVAC API)</h2>
@@ -803,9 +1084,39 @@ export const projects: Project[] = [
     categoryEn: "Aerial inspection",
     cover: "/images/projects/uas-predictive-maintenance/cover.svg",
     gallery: [
-      "/images/projects/uas-predictive-maintenance/cover.svg",
-      "/images/projects/uas-predictive-maintenance/inspection.svg",
-      "/images/projects/uas-predictive-maintenance/thermal.svg"
+      {
+        src: "/images/projects/uas-predictive-maintenance/cover.svg",
+        alt: {
+          fa: "پهپاد صنعتی در تاسیسات آب و انرژی",
+          en: "Industrial drone surveying water and energy assets"
+        },
+        caption: {
+          fa: "پهپاد با دوربین RGB/IR برای بازرسی ایمن تاسیسات آب و انرژی استان سمنان.",
+          en: "RGB/IR drone enabling safe inspections across Semnan’s critical water and energy sites."
+        }
+      },
+      {
+        src: "/images/projects/uas-predictive-maintenance/inspection.svg",
+        alt: {
+          fa: "گزارش بازرسی خودکار با آنومالی مشخص شده",
+          en: "Automated inspection report highlighting anomalies"
+        },
+        caption: {
+          fa: "گزارش بازرسی خودکار با کشف ترک، خوردگی و اتصال شل و ارسال خودکار به سامانه CMMS.",
+          en: "Automated inspection findings marking corrosion, leaks and loose fittings with CMMS tickets."
+        }
+      },
+      {
+        src: "/images/projects/uas-predictive-maintenance/thermal.svg",
+        alt: {
+          fa: "تصویر حرارتی از تجهیزات با هات‌اسپات",
+          en: "Thermal imagery of equipment with hotspots"
+        },
+        caption: {
+          fa: "تحلیل حرارتی ماژولار برای شناسایی نقاط داغ پنهان و برنامه‌ریزی تعمیر پیش‌گیرانه.",
+          en: "Modular thermal analytics uncovering hidden hotspots to schedule preventive maintenance."
+        }
+      }
     ],
     content: `
 <h2>۹) بازرسی پهپادی و نگهداشت پیش‌گویانهٔ صنعتی (UAS + CV/IR + CMMS)</h2>
@@ -922,9 +1233,39 @@ export const projects: Project[] = [
     categoryEn: "Transport infrastructure",
     cover: "/images/projects/pavement-railway-iri-boq/cover.svg",
     gallery: [
-      "/images/projects/pavement-railway-iri-boq/cover.svg",
-      "/images/projects/pavement-railway-iri-boq/dashboard.svg",
-      "/images/projects/pavement-railway-iri-boq/survey.svg"
+      {
+        src: "/images/projects/pavement-railway-iri-boq/cover.svg",
+        alt: {
+          fa: "جاده بین‌شهری با نتایج پایش هوشمند",
+          en: "Intercity road with intelligent monitoring overlays"
+        },
+        caption: {
+          fa: "پایش هوشمند روسازی با شاخص IRI و تحلیل خرابی برای کریدورهای پر تردد استان.",
+          en: "Intelligent pavement monitoring for Semnan corridors combining IRI metrics and distress analytics."
+        }
+      },
+      {
+        src: "/images/projects/pavement-railway-iri-boq/dashboard.svg",
+        alt: {
+          fa: "داشبورد IRI و خرابی با سناریوهای BOQ",
+          en: "IRI and distress dashboard with BOQ scenarios"
+        },
+        caption: {
+          fa: "داشبورد برنامه‌ریزی مرمت با نقشه کریدورها، شاخص IRI و سناریوهای بودجه‌ای BOQ.",
+          en: "Rehabilitation planning dashboard with corridor map, IRI metrics and BOQ budget scenarios."
+        }
+      },
+      {
+        src: "/images/projects/pavement-railway-iri-boq/survey.svg",
+        alt: {
+          fa: "خودرو برداشت تصویری و لیدار از روسازی",
+          en: "Imaging and LiDAR survey vehicle for pavement"
+        },
+        caption: {
+          fa: "خودرو برداشت تصویری/لیدار برای ثبت داده‌های هندسی و بافت روسازی جهت تحلیل دقیق.",
+          en: "Imaging and LiDAR survey capturing surface geometry and texture for precise diagnostics."
+        }
+      }
     ],
     content: `
 <h2>۱۰) پایش هوشمند روسازی راه/ریل (Imaging + IRI & Distress + BOQ)</h2>
@@ -1027,9 +1368,39 @@ export const projects: Project[] = [
     categoryEn: "Digital health",
     cover: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
     gallery: [
-      "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
-      "/images/projects/retinopathy-clinical-nlp-fa/workflow.svg",
-      "/images/projects/retinopathy-clinical-nlp-fa/report.svg"
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+        alt: {
+          fa: "تصویر فوندوس با نقشه حرارتی تشخیص",
+          en: "Fundus imagery with diagnostic heatmap"
+        },
+        caption: {
+          fa: "غربالگری رتینوپاتی دیابتی با مدل‌های بینایی ماشین و نقشه حرارتی تشخیص ضایعات.",
+          en: "Diabetic retinopathy screening using computer vision models and lesion heatmaps."
+        }
+      },
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/workflow.svg",
+        alt: {
+          fa: "گردش‌کار بالینی از دریافت تا تریاژ",
+          en: "Clinical workflow from intake to triage"
+        },
+        caption: {
+          fa: "گردش‌کار بالینی ترکیبی از پردازش تصویر، خلاصه‌ساز فارسی و اتصال به HIS/PACS.",
+          en: "Clinical pipeline merging image QC, Persian summarisation and HIS/PACS integration."
+        }
+      },
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/report.svg",
+        alt: {
+          fa: "گزارش SOAP فارسی با شاخص‌های کلیدی",
+          en: "Persian SOAP report with key indicators"
+        },
+        caption: {
+          fa: "گزارش خودکار SOAP فارسی با شاخص‌های کلیدی و وضعیت ارجاع فوری برای متخصصان.",
+          en: "Automated Persian SOAP note summarising key indicators and referral urgency."
+        }
+      }
     ],
     content: `
 <h2>۱۱) غربالگری رتینوپاتی و خلاصه‌ساز پزشکی فارسی (CV + Clinical NLP + HIS)</h2>
@@ -1140,9 +1511,39 @@ export const projects: Project[] = [
     categoryEn: "Civic services",
     cover: "/images/projects/civic-rag-137/cover.svg",
     gallery: [
-      "/images/projects/civic-rag-137/cover.svg",
-      "/images/projects/civic-rag-137/workflow.svg",
-      "/images/projects/civic-rag-137/insights.svg"
+      {
+        src: "/images/projects/civic-rag-137/cover.svg",
+        alt: {
+          fa: "مرکز تماس هوشمند با دیوار KPI",
+          en: "Smart contact centre with KPI wall"
+        },
+        caption: {
+          fa: "سامانه Civic-RAG برای تحلیل تماس‌های ۱۳۷ با دیوار KPI و پاسخگوی مجهز به هوش مصنوعی.",
+          en: "Civic-RAG elevating the 137 call centre with AI-guided responses and live KPIs."
+        }
+      },
+      {
+        src: "/images/projects/civic-rag-137/workflow.svg",
+        alt: {
+          fa: "گردش‌کار ارجاع و پاسخ هوشمند",
+          en: "Intelligent routing and response workflow"
+        },
+        caption: {
+          fa: "گردش‌کار ارجاع هوشمند با پردازش زبان طبیعی فارسی، طبقه‌بندی موضوع و اتصال به واحدهای شهرداری.",
+          en: "Intelligent routing pipeline using Persian NLP, topic clustering and municipal ticketing."
+        }
+      },
+      {
+        src: "/images/projects/civic-rag-137/insights.svg",
+        alt: {
+          fa: "نقشه نقاط داغ شکایات شهری",
+          en: "Urban complaints hotspot map"
+        },
+        caption: {
+          fa: "تحلیل مکانی تماس‌های شهروندان با نقشه نقاط داغ و شاخص‌های SLA برای مدیریت استانی.",
+          en: "Geo-analytics of citizen reports with hotspot mapping and SLA insights for provincial leaders."
+        }
+      }
     ],
     content: `
 <h2>۱۲) Civic-RAG و تحلیل سامانه ۱۳۷ (On-Prem)</h2>
@@ -1255,9 +1656,39 @@ export const projects: Project[] = [
     categoryEn: "Cybersecurity",
     cover: "/images/projects/lite-soc-ot-security/cover.svg",
     gallery: [
-      "/images/projects/lite-soc-ot-security/cover.svg",
-      "/images/projects/lite-soc-ot-security/operations.svg",
-      "/images/projects/lite-soc-ot-security/ot.svg"
+      {
+        src: "/images/projects/lite-soc-ot-security/cover.svg",
+        alt: {
+          fa: "اتاق عملیات SOC سبک‌وزن",
+          en: "Lightweight SOC operations room"
+        },
+        caption: {
+          fa: "اتاق عملیات SOC سبک با تیم مانیتورینگ، دیوار تصویر و تحلیل هشدار برای دستگاه‌های استانی.",
+          en: "Lightweight SOC operations suite monitoring provincial infrastructure with live dashboards."
+        }
+      },
+      {
+        src: "/images/projects/lite-soc-ot-security/operations.svg",
+        alt: {
+          fa: "پانل همبستگی رخداد و پلی‌بوک",
+          en: "Incident correlation panel and playbook"
+        },
+        caption: {
+          fa: "پانل همبستگی رخداد، UEBA و پلی‌بوک واکنش سریع برای کاهش MTTD/MTTR.",
+          en: "Correlation and UEBA console with guided playbooks to compress MTTD/MTTR."
+        }
+      },
+      {
+        src: "/images/projects/lite-soc-ot-security/ot.svg",
+        alt: {
+          fa: "پایش شبکه OT با نقشه دارایی",
+          en: "OT network monitoring with asset map"
+        },
+        caption: {
+          fa: "نقشه دارایی شبکه‌های OT و پایش Passive پروتکل‌های صنعتی برای جلوگیری از حملات.",
+          en: "OT asset map with passive protocol monitoring to guard industrial operations."
+        }
+      }
     ],
     content: `
 <h2>۱۳) SOC سبک‌وزن + امنیت OT</h2>

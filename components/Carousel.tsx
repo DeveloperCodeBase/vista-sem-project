@@ -68,21 +68,33 @@ export default function Carousel({ items, locale = "fa" }: CarouselProps) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative overflow-hidden rounded-3xl border border-white/10">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#050a1d]">
         <div
           className="flex transition-transform duration-700"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          {items.map((item) => (
-            <div key={item.src} className="relative h-[320px] min-w-full sm:h-[380px]">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(min-width: 1024px) 60vw, 90vw"
-                className="object-cover"
-              />
-            </div>
+          {items.map((item, slideIndex) => (
+            <figure key={item.src} className="relative min-w-full">
+              <div className="relative aspect-[16/9] w-full">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 1280px) 60vw, 90vw"
+                  className="object-cover"
+                  priority={slideIndex === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#01040c]/85 via-transparent to-transparent" />
+              </div>
+              {item.caption ? (
+                <figcaption className={`absolute inset-x-0 bottom-0 space-y-2 px-6 pb-6 pt-10 text-sm leading-7 text-white ${isFa ? "text-right" : "text-left"}`}>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs uppercase tracking-widest text-white/70">
+                    {isFa ? "اسلاید" : "Slide"} {slideIndex + 1}
+                  </span>
+                  <p>{item.caption}</p>
+                </figcaption>
+              ) : null}
+            </figure>
           ))}
         </div>
         {items.length > 1 ? (
@@ -106,21 +118,18 @@ export default function Carousel({ items, locale = "fa" }: CarouselProps) {
           </div>
         ) : null}
       </div>
-      <div className={`mt-4 space-y-3 rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-white/75 ${isFa ? "text-right" : "text-left"}`} aria-live="polite">
-        <div className="flex items-center justify-between text-xs text-white/50">
-          <span>{isFa ? "نمایش" : "Slide"}</span>
-          <span>
-            {index + 1}/{items.length}
-          </span>
-        </div>
-        {items[index]?.caption ? <p className="leading-7">{items[index].caption}</p> : null}
+      <div className={`mt-4 flex flex-wrap items-center justify-between rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-medium uppercase tracking-widest text-white/50 ${isFa ? "flex-row" : "flex-row-reverse"}`}>
+        <span>{isFa ? "گالری پروژه" : "Project gallery"}</span>
+        <span>
+          {index + 1}/{items.length}
+        </span>
       </div>
       {items.length > 1 ? (
         <div className={`mt-3 flex items-center gap-2 ${isFa ? "justify-end" : "justify-start"}`}>
           {items.map((item, i) => (
             <button
               key={item.src}
-              className={`h-2 w-6 rounded-full transition ${i === index ? "bg-cyan-300" : "bg-white/20"}`}
+              className={`h-2.5 w-7 rounded-full transition ${i === index ? "bg-cyan-300" : "bg-white/20"}`}
               onClick={() => goTo(i)}
               aria-label={`${isFa ? "نمایش" : "Slide"} ${i + 1}`}
               aria-pressed={i === index}

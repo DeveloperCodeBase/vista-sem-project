@@ -14,13 +14,18 @@ export default function ProjectPage({ params }:{ params:{ slug:string }}){
   const project = projects.find((item) => item.slug === params.slug);
   if(!project) return notFound();
 
-  const { title, category, gallery } = project;
+  const { title, category, gallery, summary } = project;
+  const slides = gallery.map((item) => ({
+    src: item.src,
+    alt: item.alt.fa,
+    caption: item.caption.fa
+  }));
 
   return (
     <>
       <Header />
-      <main className="container py-10 space-y-8">
-        <nav className="text-white/60 text-sm">
+      <main className="project-page container space-y-10 py-12">
+        <nav className="project-page__breadcrumb">
           <Link href="/">خانه</Link> <span className="mx-2">/</span>
           <Link href="/#projects">پروژه‌ها</Link> <span className="mx-2">/</span>
           <span className="text-white">{title}</span>
@@ -34,23 +39,24 @@ export default function ProjectPage({ params }:{ params:{ slug:string }}){
           "isPartOf":{"@type":"Collection","name":"Projects"}
         })}</script>
 
+        <header className="project-page__hero">
+          <div className="project-page__meta">
+            <span className="project-page__badge">{category}</span>
+            <h1 className="project-page__title">{title}</h1>
+            <p className="project-page__summary">{summary}</p>
+          </div>
+          <div className="project-page__gallery">
+            <Carousel items={slides} locale="fa" />
+          </div>
+        </header>
 
-        <h1 className="text-3xl font-black">{title}</h1>
-        <Carousel
-          items={gallery.map((src, index) => ({
-            src,
-            alt: `${title} — نمای ${index + 1}`
-          }))}
-          locale="fa"
-        />
-
-        <section className="card p-6">
-          <ProjectExecutiveSummary project={project} locale="fa" />
+        <section className="project-page__summary-card">
+          <ProjectExecutiveSummary project={project} locale="fa" variant="page" />
         </section>
 
-        <div className="flex items-center gap-3">
+        <div className="project-page__cta">
           <a className="btn" href="/#contact">درخواست همکاری</a>
-          <Link className="btn bg-white/10 hover:bg-white/20" href="/#projects">بازگشت به پروژه‌ها</Link>
+          <Link className="btn-ghost" href="/#projects">بازگشت به پروژه‌ها</Link>
         </div>
       </main>
       <Footer />
