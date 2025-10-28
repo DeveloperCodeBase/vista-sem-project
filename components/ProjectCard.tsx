@@ -13,8 +13,10 @@ type ProjectCardProps = {
 
 export default function ProjectCard({ p, locale = "fa" }: ProjectCardProps) {
   const [open, setOpen] = useState(false);
-  const content = p.locales[locale];
   const isFa = locale === "fa";
+  const title = isFa ? p.title : p.titleEn;
+  const summary = isFa ? p.summary : p.summaryEn;
+  const category = isFa ? p.category : p.categoryEn;
 
   const detailHref = locale === "fa" ? `/projects/${p.slug}` : `/en/projects/${p.slug}`;
 
@@ -23,20 +25,20 @@ export default function ProjectCard({ p, locale = "fa" }: ProjectCardProps) {
       <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={p.cover}
-          alt={content.title}
+          alt={title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 45vw, 90vw"
           className="object-cover transition duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/90 via-[#020617]/40 to-transparent" />
         <span className={`absolute ${isFa ? "right-4" : "left-4"} top-4 rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs text-white/80`}>
-          {content.category}
+          {category}
         </span>
       </div>
       <div className={`flex flex-1 flex-col gap-4 p-6 ${isFa ? "text-right" : "text-left"}`}>
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white">{content.title}</h3>
-          <p className="text-sm leading-7 text-white/75 line-clamp-3">{content.summary}</p>
+          <h3 className="text-xl font-bold text-white">{title}</h3>
+          <p className="text-sm leading-7 text-white/75 line-clamp-3">{summary}</p>
         </div>
         <div className={`mt-auto flex flex-wrap items-center gap-3 ${isFa ? "justify-end" : "justify-start"}`}>
           <button className="btn" onClick={() => setOpen(true)}>
@@ -49,8 +51,8 @@ export default function ProjectCard({ p, locale = "fa" }: ProjectCardProps) {
       </div>
       <Modal
         open={open}
-        title={content.title}
-        subtitle={content.summary}
+        title={title}
+        subtitle={summary}
         onClose={() => setOpen(false)}
         locale={locale}
         actions={

@@ -59,34 +59,53 @@ type CompanyCarouselProps = {
 
 export default function CompanyCarousel({ locale = "fa" }: CompanyCarouselProps) {
   const [index, setIndex] = React.useState(0);
+  const [isPaused, setPaused] = React.useState(false);
   const isFa = locale === "fa";
-
-  React.useEffect(() => {
-    const timer = setInterval(() => setIndex((prev) => (prev + 1) % slides.length), 7000);
-    return () => clearInterval(timer);
+  const prefersReducedMotion = React.useMemo(() => {
+    if (typeof window === "undefined") return true;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }, []);
 
-  const go = (delta: number) => setIndex((prev) => (prev + delta + slides.length) % slides.length);
+  React.useEffect(() => {
+    if (isPaused || prefersReducedMotion) return;
+    const timer = window.setInterval(() => setIndex((prev) => (prev + 1) % slides.length), 7000);
+    return () => window.clearInterval(timer);
+  }, [isPaused, prefersReducedMotion]);
+
+  const go = (delta: number) => {
+    const total = slides.length;
+    const next = ((index + delta) % total + total) % total;
+    setIndex(next);
+  };
 
   return (
     <section className="py-20">
       <div className={`container grid gap-10 lg:grid-cols-[1.05fr_0.95fr] ${isFa ? "text-right" : "text-left"}`}>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#070c1f]">
-          {slides.map((slide, i) => (
-            <div key={slide.image} className={`absolute inset-0 transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== index}>
-              <Image src={slide.image} alt={slide.alt[locale]} fill sizes="(min-width: 1024px) 50vw, 90vw" className="object-cover" />
-            </div>
-          ))}
-          <div className="relative h-[360px] w-full bg-gradient-to-br from-[#050b1e]/90 to-[#07102c]/70">
-            <div className={`absolute inset-0 flex items-end justify-between p-4 text-white/80 ${isFa ? "flex-row" : "flex-row-reverse"}`}>
-              <button onClick={() => go(-1)} className="carousel-btn" aria-label={isFa ? "قبلی" : "Previous"}>
-                {isFa ? "قبلی" : "Prev"}
-              </button>
-              <button onClick={() => go(1)} className="carousel-btn" aria-label={isFa ? "بعدی" : "Next"}>
-                {isFa ? "بعدی" : "Next"}
-              </button>
+        <div
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#070c1f]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="relative h-[360px] w-full">
+            <div
+              className="flex transition-transform duration-700"
+              style={{ transform: `translateX(-${index * 100}%)` }}
+            >
+              {slides.map((slide) => (
+                <div key={slide.image} className="relative h-[360px] min-w-full">
+                  <Image src={slide.image} alt={slide.alt[locale]} fill sizes="(min-width: 1024px) 50vw, 90vw" className="object-cover" />
+                </div>
+              ))}
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-[#020617]/40 to-transparent" />
+          </div>
+          <div className={`pointer-events-none absolute inset-0 flex items-end justify-between p-4 text-white/80 ${isFa ? "flex-row" : "flex-row-reverse"}`}>
+            <button onClick={() => go(-1)} className="carousel-btn pointer-events-auto" aria-label={isFa ? "قبلی" : "Previous"}>
+              {isFa ? "قبلی" : "Prev"}
+            </button>
+            <button onClick={() => go(1)} className="carousel-btn pointer-events-auto" aria-label={isFa ? "بعدی" : "Next"}>
+              {isFa ? "بعدی" : "Next"}
+            </button>
           </div>
         </div>
 

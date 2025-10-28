@@ -1,5 +1,6 @@
 "use client";
-import { useEffect } from "react";
+import { createPortal } from "react-dom";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 type ModalProps = {
@@ -12,25 +13,86 @@ type ModalProps = {
   children: ReactNode;
 };
 
-export default function Modal({ open, title, subtitle, onClose, locale = "fa", actions, children }: ModalProps) {
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+const FOCUSABLE = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-  if (!open) return null;
+export default function Modal({ open, title, subtitle, onClose, locale = "fa", actions, children }: ModalProps) {
+  const [mounted, setMounted] = useState(false);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const lastFocused = useRef<Element | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (!open) {
+      document.body.style.overflow = "";
+      return;
+    }
+    lastFocused.current = document.activeElement;
+    document.body.style.overflow = "hidden";
+    const node = dialogRef.current;
+    if (node) {
+      const focusable = Array.from(node.querySelectorAll<HTMLElement>(FOCUSABLE));
+      const target = focusable[0] ?? node;
+      window.requestAnimationFrame(() => target.focus());
+    }
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+      if (event.key === "Tab" && node) {
+        const focusable = Array.from(node.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((el) => !el.hasAttribute("disabled"));
+        if (focusable.length === 0) {
+          event.preventDefault();
+          node.focus();
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+      if (lastFocused.current instanceof HTMLElement) {
+        lastFocused.current.focus({ preventScroll: true });
+      }
+    };
+  }, [open, onClose]);
+
+  if (!mounted || !open) {
+    return null;
+  }
 
   const isFa = locale === "fa";
 
-  return (
-    <div className="modal-overlay open" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={onClose}>
-      <div className={`modal ${isFa ? "rtl" : "ltr"}`} onClick={(e) => e.stopPropagation()}>
+  const modal = (
+    <div
+      className="modal-overlay open"
+      role="presentation"
+      onClick={onClose}
+    >
+      <div
+        ref={dialogRef}
+        className={`modal ${isFa ? "rtl" : "ltr"}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? "modal-title" : undefined}
+        aria-describedby={subtitle ? "modal-subtitle" : undefined}
+        tabIndex={-1}
+        onClick={(event) => event.stopPropagation()}
+      >
         <header className={`flex flex-col gap-1 border-b border-white/10 bg-transparent px-6 py-4 ${isFa ? "text-right" : "text-left"}`}>
           <div className="flex items-center justify-between gap-6">
             <div className={`flex-1 ${isFa ? "text-right" : "text-left"}`}>
@@ -39,7 +101,11 @@ export default function Modal({ open, title, subtitle, onClose, locale = "fa", a
                   {title}
                 </strong>
               ) : null}
-              {subtitle ? <p className="text-sm text-white/60">{subtitle}</p> : null}
+              {subtitle ? (
+                <p id="modal-subtitle" className="text-sm text-white/60">
+                  {subtitle}
+                </p>
+              ) : null}
             </div>
             <button className="modal-close" onClick={onClose} aria-label={isFa ? "بستن" : "Close"}>
               ✕
@@ -57,4 +123,6 @@ export default function Modal({ open, title, subtitle, onClose, locale = "fa", a
       </div>
     </div>
   );
+
+  return createPortal(modal, document.body);
 }

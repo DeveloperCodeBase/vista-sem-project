@@ -11,10 +11,10 @@ export async function generateStaticParams(){
 }
 
 export default function ProjectPage({ params }:{ params:{ slug:string }}){
-  const p = projects.find(x=> x.slug === params.slug);
-  if(!p) return notFound();
+  const project = projects.find((item) => item.slug === params.slug);
+  if(!project) return notFound();
 
-  const content = p.locales.fa;
+  const { title, category, gallery } = project;
 
   return (
     <>
@@ -23,30 +23,29 @@ export default function ProjectPage({ params }:{ params:{ slug:string }}){
         <nav className="text-white/60 text-sm">
           <Link href="/">خانه</Link> <span className="mx-2">/</span>
           <Link href="/#projects">پروژه‌ها</Link> <span className="mx-2">/</span>
-          <span className="text-white">{content.title}</span>
+          <span className="text-white">{title}</span>
         </nav>
         <script suppressHydrationWarning type="application/ld+json">{JSON.stringify({
           "@context":"https://schema.org",
           "@type":"CreativeWork",
-          "name": content.title,
-          "about": content.category,
+          "name": title,
+          "about": category,
           "inLanguage":"fa",
           "isPartOf":{"@type":"Collection","name":"Projects"}
         })}</script>
 
 
-        <h1 className="text-3xl font-black">{content.title}</h1>
+        <h1 className="text-3xl font-black">{title}</h1>
         <Carousel
-          items={p.gallery.map((item) => ({
-            src: item.src,
-            alt: item.alt.fa,
-            caption: item.caption.fa
+          items={gallery.map((src, index) => ({
+            src,
+            alt: `${title} — نمای ${index + 1}`
           }))}
           locale="fa"
         />
 
         <section className="card p-6">
-          <ProjectExecutiveSummary project={p} locale="fa" />
+          <ProjectExecutiveSummary project={project} locale="fa" />
         </section>
 
         <div className="flex items-center gap-3">

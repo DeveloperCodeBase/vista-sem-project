@@ -14,7 +14,7 @@ export default function ProjectPageEn({ params }: { params: { slug: string } }) 
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return notFound();
 
-  const content = project.locales.en;
+  const { titleEn, categoryEn, gallery } = project;
 
   return (
     <>
@@ -23,24 +23,23 @@ export default function ProjectPageEn({ params }: { params: { slug: string } }) 
         <nav className="text-sm text-white/60">
           <Link href="/en">Home</Link> <span className="mx-2">/</span>
           <Link href="/en#projects">Projects</Link> <span className="mx-2">/</span>
-          <span className="text-white">{content.title}</span>
+          <span className="text-white">{titleEn}</span>
         </nav>
 
         <script suppressHydrationWarning type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWork",
-          name: content.title,
-          about: content.category,
+          name: titleEn,
+          about: categoryEn,
           inLanguage: "en",
           isPartOf: { "@type": "Collection", name: "Projects" }
         })}</script>
 
-        <h1 className="text-3xl font-black">{content.title}</h1>
+        <h1 className="text-3xl font-black">{titleEn}</h1>
         <Carousel
-          items={project.gallery.map((item) => ({
-            src: item.src,
-            alt: item.alt.en,
-            caption: item.caption.en
+          items={gallery.map((src, index) => ({
+            src,
+            alt: `${titleEn} — slide ${index + 1}`
           }))}
           locale="en"
         />

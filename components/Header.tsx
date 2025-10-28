@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 type HeaderProps = {
   locale?: "fa" | "en";
@@ -22,6 +23,8 @@ export default function Header({ locale = "fa" }: HeaderProps) {
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,9 +35,34 @@ export default function Header({ locale = "fa" }: HeaderProps) {
 
   const isFa = locale === "fa";
   const prefix = isFa ? "" : "/en";
+  const homePath = prefix === "" ? "/" : prefix;
   const switcher = isFa ? { href: "/en", label: "EN" } : { href: "/", label: "FA" };
   const brandTitle = isFa ? "شبکه هوشمند ابتکار ویستا" : "Vista Smart Network";
   const brandSubtitle = isFa ? "AI, GeoAI & CivicTech" : "AI, GeoAI & CivicTech";
+
+  const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const isHome = pathname === homePath || pathname === `${homePath}/`;
+    if (!href.startsWith("#")) {
+      const target = `${prefix}${href}`;
+      if (!isHome) {
+        event.preventDefault();
+        router.push(target, { scroll: true });
+      }
+      return;
+    }
+
+    if (isHome) {
+      event.preventDefault();
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      event.preventDefault();
+      router.push(`${homePath}${href}`, { scroll: true });
+    }
+  };
 
   return (
     <header
@@ -49,7 +77,12 @@ export default function Header({ locale = "fa" }: HeaderProps) {
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-white/80 sm:flex">
           {navItems.map((item) => (
-            <Link key={item.href} href={`${prefix}${item.href}`} className="hover:text-white">
+            <Link
+              key={item.href}
+              href={`${prefix}${item.href}`}
+              className="hover:text-white"
+              onClick={(event) => handleAnchorClick(event, item.href)}
+            >
               {item.label}
             </Link>
           ))}
@@ -73,7 +106,14 @@ export default function Header({ locale = "fa" }: HeaderProps) {
           </div>
           <nav className={`flex flex-col gap-4 text-white/90 ${isFa ? "text-right" : "text-left"}`}>
             {navItems.map((item) => (
-              <Link key={item.href} href={`${prefix}${item.href}`} onClick={() => setOpen(false)}>
+              <Link
+                key={item.href}
+                href={`${prefix}${item.href}`}
+                onClick={(event) => {
+                  handleAnchorClick(event, item.href);
+                  setOpen(false);
+                }}
+              >
                 {item.label}
               </Link>
             ))}
