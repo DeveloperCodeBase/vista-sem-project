@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face{
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSans.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html{ direction: rtl; }
+body{
+  @apply font-iran bg-[#090d1a] text-white antialiased;
+}
+
+.container{ @apply max-w-7xl mx-auto px-4; }
+
+.section-title{
+  @apply text-3xl font-black text-white;
+}
+
+/* Hero */
+.hero{
+  background: radial-gradient(1400px 800px at 50% -20%, rgba(14,165,233,.25), transparent 60%),
+              radial-gradient(1000px 600px at 10% 10%, rgba(99,102,241,.2), transparent 60%);
+}
+
+.glass-panel{
+  @apply rounded-3xl bg-white/5 border border-white/10 shadow-[0_28px_80px_rgba(3,7,18,0.6)];
+}
+.mini-stat{
+  @apply flex flex-col items-end gap-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3;
+}
+.mini-stat__value{ @apply text-lg font-bold text-white; }
+.mini-stat__label{ @apply text-xs text-white/70 leading-6; }
+
+.input{
+  @apply rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right text-white placeholder:text-white/40 focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/50;
+}
+
+.carousel-btn{
+  @apply rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm text-white transition hover:border-cyan-200 hover:text-cyan-100;
+}
+
+.card{
+  @apply rounded-2xl bg-white/5 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.25)];
+  backdrop-filter: blur(8px);
+}
+.btn{
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 bg-brand hover:bg-brand-dark transition;
+}
+.btn-ghost{
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 bg-white/10 hover:bg-white/20 transition;
+}
+.badge{
+  @apply inline-flex items-center text-xs px-2 py-1 rounded-lg bg-white/10 border border-white/10;
+}
+
+.prose-rtl{ @apply prose prose-invert max-w-none; direction: rtl; }
+.prose-rtl :where(p,li){ @apply leading-8; }
+.prose-rtl :where(h2,h3,h4){ @apply font-bold; }
+
+/* Modal */
+.modal-overlay{ @apply fixed inset-0 bg-black/60 z-50 hidden; }
+.modal-overlay.open{ @apply block; }
+.modal{ @apply mx-auto my-6 w-[min(1000px,95vw)] max-h-[88vh] rounded-2xl overflow-hidden bg-[#0e1326] border border-white/10; }
+.modal header, .modal footer{ @apply sticky top-0 bg-[#0e1326] p-4 border-b border-white/10; }
+.modal footer{ @apply bottom-0 border-t; }
+.modal .body{ @apply p-5 overflow-y-auto max-h-[70vh] leading-8; }
+.modal-close{ @apply text-white/70 hover:text-white; }
+
+/* Carousel */
+.carousel{ @apply relative w-full overflow-hidden rounded-2xl border border-white/10; }
+.carousel-track{ @apply flex transition-transform duration-500; }
+.carousel img{ @apply block w-full h-[360px] object-cover; }
+.carousel .nav{ @apply absolute top-1/2 -translate-y-1/2 flex items-center gap-2 px-3; }
+.carousel .nav.right{ @apply right-0; }
+.carousel .nav.left{ @apply left-0; }
+.carousel button{ @apply bg-black/40 hover:bg-black/60 text-white px-3 py-1 rounded-full; }
+
+.grid-cards{ @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3; }
+
+/* Mobile menu */
+.mnav{ @apply fixed inset-0 z-50 hidden; }
+.mnav.open{ @apply block; }
+.mnav .backdrop{ @apply absolute inset-0 bg-black/60; }
+.mnav .sheet{ @apply absolute top-0 right-0 w-[80vw] max-w-[360px] h-full bg-[#0b1020] p-6 border-l border-white/10; }
+
+
+/* Light theme */
+.theme-light body{ background:#f6f7fb; color:#0b1020; }
+.theme-light .card{ background:rgba(255,255,255,.9); border-color:#e6e8ef; }
+.theme-light .btn-ghost{ background:#00000010; }
+.theme-light .badge{ background:#00000010; border-color:#00000010; }
+.theme-light .prose-rtl{ color:#111; }
+.theme-light header{ background:#ffffffb0 !important; color:#111; }
+.theme-light .modal{ background:#fff; color:#111; }
+.theme-light .modal header, .theme-light .modal footer{ background:#fff; border-color:#e6e8ef; }

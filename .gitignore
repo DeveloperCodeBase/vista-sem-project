@@ -1,0 +1,24 @@
+﻿# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+build/
+.next/cache/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Env
+.env*
+!.env.example
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Misc
+# اگر می‌خواهی code.zip را پوشش ندهد، این خط را حذف کن یا از Git LFS استفاده کن
+*.zip
