@@ -1,0 +1,24 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-retina" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#140023" />
+      <stop offset="100%" stop-color="#3a1270" />
+    </linearGradient>
+    <radialGradient id="iris" cx="0.5" cy="0.4" r="0.5">
+      <stop offset="0%" stop-color="#ff7ad8" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ff7ad8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg-retina)" />
+  <circle cx="600" cy="320" r="260" fill="url(#iris)" />
+  <circle cx="600" cy="320" r="120" fill="none" stroke="#ffafe6" stroke-width="4" opacity="0.7" />
+  <circle cx="600" cy="320" r="60" fill="#ffd3f0" opacity="0.25" />
+  <g fill="#ffffff" font-family="'IRANSans','Segoe UI',sans-serif">
+    <text x="260" y="240" font-size="40" font-weight="700">Retinopathy Screening</text>
+    <text x="260" y="288" font-size="24" fill="#ffd6f2">Farsi clinical NLP</text>
+  </g>
+  <g fill="#ffafe6">
+    <circle cx="520" cy="260" r="10" />
+    <circle cx="680" cy="260" r="10" />
+  </g>
+</svg>

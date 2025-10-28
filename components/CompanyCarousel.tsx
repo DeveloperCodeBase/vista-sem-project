@@ -97,8 +97,8 @@ export default function CompanyCarousel({ locale = "fa" }: CompanyCarouselProps)
           <h2 className="section-title">{isFa ? "شرکت شبکه هوشمند ابتکار ویستا" : "Vista Smart Network"}</h2>
           <p className="text-lg leading-8 text-white/70">
             {isFa
-              ? "با تجربه عملیاتی در پروژه‌های آب، انرژی و شهری، ویستا راهکارهای داده‌محور با استقرار داخلی، امنیت کامل و پشتیبانی مداوم ارائه می‌دهد."
-              : "With hands-on programmes across water, energy and civic innovation, Vista delivers secure on-prem AI solutions with long-term support."}
+              ? "ویستا به‌عنوان شرکت هوش مصنوعی استان سمنان، از پارک علم و فناوری مستقر شده و تمامی پروژه‌ها را با استقرار داخلی، امنیت کامل و پشتیبانی متمرکز مدیریت می‌کند."
+              : "Vista operates from Semnan Science & Technology Park, delivering on-prem AI programmes exclusively across the province with dedicated support and governance."}
           </p>
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
             <h3 className="mb-2 text-xl font-bold text-white">{slides[index].title[locale]}</h3>

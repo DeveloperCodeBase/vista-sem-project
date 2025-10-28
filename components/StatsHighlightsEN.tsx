@@ -1,9 +1,9 @@
 export default function StatsHighlightsEN() {
   const stats = [
-    { value: "14 platforms", label: "Live operational programmes" },
-    { value: "21 provinces", label: "Footprint across Iran" },
-    { value: "32B IRR", label: "Documented annual savings" },
-    { value: "ISO 27001", label: "Security governance" }
+    { value: "13 programmes", label: "Active tracks in Semnan" },
+    { value: "1 province", label: "Dedicated regional focus" },
+    { value: "24/7", label: "Operational support" },
+    { value: "Science park", label: "Semnan innovation hub" }
   ];
 
   return (

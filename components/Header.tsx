@@ -21,17 +21,7 @@ export default function Header({ locale = "fa" }: HeaderProps) {
         ];
 
   const [open, setOpen] = useState(false);
-  const [light, setLight] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const cls = document.documentElement.classList;
-    if (light) {
-      cls.add("theme-light");
-    } else {
-      cls.remove("theme-light");
-    }
-  }, [light]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -66,9 +56,6 @@ export default function Header({ locale = "fa" }: HeaderProps) {
           <Link href={switcher.href} className="text-white/60 hover:text-white">
             {switcher.label}
           </Link>
-          <button className="btn-ghost" onClick={() => setLight((v) => !v)}>
-            {isFa ? (light ? "تاریک" : "روشن") : light ? "Dark" : "Light"}
-          </button>
         </nav>
         <button className="sm:hidden btn-ghost" onClick={() => setOpen(true)}>
           ☰
@@ -93,9 +80,6 @@ export default function Header({ locale = "fa" }: HeaderProps) {
             <Link href={switcher.href} onClick={() => setOpen(false)}>
               {switcher.label}
             </Link>
-            <button className="btn" onClick={() => setLight((v) => !v)}>
-              {isFa ? (light ? "تاریک" : "روشن") : light ? "Dark" : "Light"}
-            </button>
           </nav>
         </div>
       </div>

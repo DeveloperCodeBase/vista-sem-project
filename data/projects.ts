@@ -10,37 +10,6 @@ export type ProjectGalleryItem = {
   };
 };
 
-export type ProjectExecutiveSummary = {
-  strapline: string;
-  intro: string;
-  problem: string;
-  mission: string;
-  highlights: {
-    title: string;
-    bullets: string[];
-  }[];
-  timeline: {
-    phase: string;
-    duration: string;
-    activities: string[];
-  }[];
-  roi: {
-    value: string;
-    label: string;
-    description: string;
-  }[];
-  deliverables: string[];
-  risks: {
-    risk: string;
-    mitigation: string;
-  }[];
-  aiImagery: {
-    title: string;
-    prompt: string;
-    asset: string;
-  }[];
-};
-
 export type ProjectLocaleContent = {
   title: string;
   summary: string;
@@ -49,7 +18,7 @@ export type ProjectLocaleContent = {
     label: string;
     value: string;
   }[];
-  executive: ProjectExecutiveSummary;
+  executiveHtml: string;
 };
 
 export type Project = {
@@ -70,261 +39,83 @@ const projects: Project[] = [
     cover: "/images/projects/vista-leak-digital-twin/cover.svg",
     gallery: [
       {
-        src: "/images/projects/vista-leak-digital-twin/dashboard.svg",
+        src: "/images/projects/vista-leak-digital-twin/cover.svg",
         alt: {
-          fa: "داشبورد دوقلوی دیجیتال شبکه آب با هیت‌مپ احتمال نشتی",
-          en: "Digital twin dashboard of a water network with leak probability heatmap"
+          fa: "نقشه دیجیتال شبکه آب با نواحی نشتی",
+          en: "Digital map of the water network with leak clusters"
         },
         caption: {
-          fa: "نقشه بلادرنگ DMA با نشتی‌های اولویت‌دار و KPI های عملکرد",
-          en: "Real-time DMA map with priority leaks and operational KPIs"
-        }
-      },
-      {
-        src: "/images/projects/vista-leak-digital-twin/field.svg",
-        alt: {
-          fa: "تیم میدانی در حال استقرار حسگر فشار هوشمند",
-          en: "Field engineers deploying an intelligent pressure sensor"
-        },
-        caption: {
-          fa: "پکیج حسگر آکوستیک و فشار متصل به شبکه LoRaWAN",
-          en: "Acoustic and pressure sensing kit connected to the LoRaWAN network"
-        }
-      },
-      {
-        src: "/images/projects/vista-leak-digital-twin/insights.svg",
-        alt: {
-          fa: "گزارش مدیریتی کاهش NRW و صرفه‌جویی انرژی",
-          en: "Executive report summarising NRW reduction and energy savings"
-        },
-        caption: {
-          fa: "گزارش هوش تجاری با محاسبه بازگشت سرمایه و کاهش اعزام میدانی",
-          en: "BI report showing ROI calculations and reduced field dispatches"
+          fa: "تحلیل نشتی در شبکه آب شهری سمنان",
+          en: "Leak analytics for the Semnan municipal water grid"
         }
       }
     ],
     locales: {
       fa: {
-        title: "سامانهٔ کشف نشتی و دوقلوی دیجیتال VistaLeak",
+        title: "دوقلوی دیجیتال و کشف نشتی VistaLeak",
         summary:
-          "کاهش تلفات آب، کاهش اعزام‌های بی‌نتیجه و ساخت دوقلوی دیجیتال برای تصمیم‌گیری هوشمند در شبکه‌های شهری.",
+          "پلتفرم نظارت شبکه آب که داده حسگر، مدل هیدرولیک و گزارش بهره‌بردار را ترکیب می‌کند تا نشتی‌ها پیش از تبدیل به بحران شناسایی شوند.",
         category: "آب و زیرساخت",
         badges: [
-          { label: "پروژه در حال بهره‌برداری", value: "۱۲+" },
-          { label: "استان‌های پوشش داده‌شده", value: "۶ استان" },
-          { label: "نرخ کاهش NRW", value: "۱۰ تا ۲۵٪" }
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "پایش شبکه آب" }
         ],
-        executive: {
-          strapline: "کشف نشتی‌های نامرئی با فیوژن حسگر، مدل هیدرولیک و تحلیل پیش‌بینانه.",
-          intro:
-            "VistaLeak سامانه‌ای عملیاتی است که داده‌های حسگرهای فشار و آکوستیک را با مدل هیدرولیکی EPANET ترکیب می‌کند تا نشتی‌های پنهان را قبل از تبدیل شدن به بحران شناسایی کند.",
-          problem:
-            "فرسودگی لوله‌های مدفون، فشار نوسانی و نبود دید یکپارچه باعث افزایش تلفات واقعی آب (NRW) و هزینه‌های میدانی شده است.",
-          mission:
-            "ایجاد دید بلادرنگ از رفتار شبکه و ارائه مسیر اقدام برای تیم‌های بهره‌بردار در استان سمنان و شهرهای هدف.",
-          highlights: [
-            {
-              title: "قابلیت‌های کلیدی",
-              bullets: [
-                "دوقلوی دیجیتال با کالیبراسیون خودکار و هیبرید دیتا-درایو",
-                "تحلیل آنومالی ترکیبی (فشار، دبی، آکوستیک) با هوش مصنوعی",
-                "گزارش مدیریتی با KPI و محاسبه صرفه‌جویی انرژی"
-              ]
-            },
-            {
-              title: "پشتیبانی عملیاتی",
-              bullets: [
-                "پایش ۲۴/۷ با اعلان چندسطحی برای مدیریت، عملیات و ناظر",
-                "تعیین ولوهای پیشنهادی برای ایزولاسیون و حداقل‌سازی قطعی",
-                "آموزش و انتقال دانش برای تیم بهره‌بردار"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "تحلیل و طراحی",
-              duration: "هفته ۱ تا ۳",
-              activities: [
-                "پاکسازی داده‌های GIS و ساخت مدل پایه",
-                "طراحی چیدمان حسگر و شبکه ارتباطی",
-                "تعریف KPI و خط مبنا"
-              ]
-            },
-            {
-              phase: "استقرار حسگر و دوقلو",
-              duration: "هفته ۴ تا ۸",
-              activities: [
-                "نصب حسگرهای فشار و آکوستیک",
-                "اتصال امن به پلتفرم و آزمون میدانی",
-                "کالیبراسیون مدل EPANET و تنظیم آستانه‌ها"
-              ]
-            },
-            {
-              phase: "راه‌اندازی و پایش",
-              duration: "هفته ۹ تا ۱۲",
-              activities: [
-                "Go-Live فاز اول و پایش پایدار",
-                "بهینه‌سازی الگوریتم با داده‌های واقعی",
-                "گزارش مدیریتی و تصمیم‌سازی سرمایه‌ای"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "۲۰۷ m³/روز",
-              label: "آب حفظ‌شده در DMA پایلوت",
-              description: "معادل بیش از ۶٫۲ میلیارد ریال صرفه‌جویی سالانه"
-            },
-            {
-              value: "۳۴ MWh/سال",
-              label: "کاهش انرژی پمپاژ",
-              description: "همراه با کاهش ۱۳۰ اعزام میدانی پرهزینه"
-            }
-          ],
-          deliverables: [
-            "دوقلوی دیجیتال کالیبره با نقشه‌های تعاملی",
-            "داشبورد مدیریتی دو زبانه و اپ میدانی",
-            "مستندات فنی، سناریوهای اقدام و آموزش تکمیلی"
-          ],
-          risks: [
-            {
-              risk: "خرابی حسگر یا تخلیه باتری",
-              mitigation: "پایش سلامت حسگر و برنامه نگهداشت پیشگیرانه با قطعات یدکی"
-            },
-            {
-              risk: "داده GIS ناقص یا قدیمی",
-              mitigation: "بازبینی میدانی هدفمند و همگام‌سازی دوره‌ای با واحد نقشه‌برداری"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "شبکه آبرسانی هوشمند",
-              prompt: "شبکه لوله زیرزمینی با هاله‌های نوری و حسگرهای متصل به پلتفرم ابری",
-              asset: "/images/projects/vista-leak-digital-twin/cover.svg"
-            },
-            {
-              title: "داشبورد مدیریتی",
-              prompt: "نمای هیت‌مپ احتمال نشتی با KPI های لحظه‌ای",
-              asset: "/images/projects/vista-leak-digital-twin/dashboard.svg"
-            },
-            {
-              title: "تیم میدانی مجهز",
-              prompt: "تکنسین با دستگاه آکوستیک و نور آبی-فیروزه‌ای",
-              asset: "/images/projects/vista-leak-digital-twin/field.svg"
-            }
-          ]
-        }
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>VistaLeak در استان سمنان به بهره‌بردار شبکه آب کمک می‌کند الگوی فشار، دبی و سیگنال آکوستیک را به‌صورت یکپارچه پایش کند. خروجی سامانه نقشه احتمال نشتی، هشدار عملیاتی و گزارش مدیریتی است تا تصمیم بر مبنای داده انجام شود.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>فرسودگی لوله‌های مدفون و نبود دید بلادرنگ از رفتار شبکه.</li>
+  <li>اعزام‌های تکراری بدون کشف محل دقیق نشتی و اتلاف منابع میدانی.</li>
+  <li>فاصله میان تیم‌های بهره‌برداری و مدیریت در ارزیابی اثر اقدامات.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>نصب حسگرهای فشار و صدا در DMZ های حساس با ارتباط امن.</li>
+  <li>کالیبراسیون مدل هیدرولیک و اتصال آن به داده‌های زنده.</li>
+  <li>تعریف آستانه‌های هوشمند، داشبورد یکپارچه و فرایند پیگیری تیکت.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد دو زبانه با نقشه نشتی و مسیر ایزوله‌سازی.</li>
+  <li>پروتکل واکنش میدانی و گزارش پس از اقدام برای مدیریت.</li>
+  <li>آموزش و پشتیبانی مستمر تیم بهره‌بردار در سمنان.</li>
+</ul>
+        `
       },
       en: {
-        title: "VistaLeak digital twin & leak detection platform",
+        title: "VistaLeak digital twin",
         summary:
-          "Reduce non-revenue water, cut false dispatches and build a calibrated digital twin for operational decision-making.",
-        category: "Water & infrastructure",
+          "An operational platform that fuses sensor data, hydraulic modelling and operator feedback to surface leaks before they escalate.",
+        category: "Water intelligence",
         badges: [
-          { label: "Operational programmes", value: "12+" },
-          { label: "Regional footprint", value: "6 provinces" },
-          { label: "NRW reduction", value: "10–25%" }
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Urban water network" }
         ],
-        executive: {
-          strapline: "Uncover invisible leaks by fusing sensor analytics, hydraulic modelling and AI forecasting.",
-          intro:
-            "VistaLeak ingests high-frequency pressure and acoustic data, calibrates an EPANET digital twin and guides operators before leaks escalate into outages.",
-          problem:
-            "Aging buried assets and fluctuating pressure drive NRW and unplanned maintenance while managers lack a consolidated operational view.",
-          mission:
-            "Deliver real-time situational awareness and playbooks for Semnan province utilities and partner cities.",
-          highlights: [
-            {
-              title: "What makes it different",
-              bullets: [
-                "Self-calibrating hybrid digital twin",
-                "Multimodal anomaly detection across pressure, flow and acoustics",
-                "Executive reporting with energy and NRW savings"
-              ]
-            },
-            {
-              title: "Operational enablement",
-              bullets: [
-                "24/7 monitoring with tiered alerts for management and field teams",
-                "Valve isolation recommendations that minimise service disruption",
-                "Capability transfer and certified operator training"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "Discovery & design",
-              duration: "Weeks 1–3",
-              activities: [
-                "Cleanse GIS layers and assemble the baseline model",
-                "Engineer the sensor and communications layout",
-                "Define KPIs and baseline measurements"
-              ]
-            },
-            {
-              phase: "Deployment",
-              duration: "Weeks 4–8",
-              activities: [
-                "Install pressure and acoustic sensors",
-                "Commission secure connectivity and run field acceptance tests",
-                "Calibrate EPANET and tune detection thresholds"
-              ]
-            },
-            {
-              phase: "Go-live & optimisation",
-              duration: "Weeks 9–12",
-              activities: [
-                "Launch pilot DMA with 24/7 monitoring",
-                "Refine the AI model with live data",
-                "Publish executive impact report and investment roadmap"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "207 m³/day",
-              label: "Water preserved per pilot DMA",
-              description: "Equivalent to 6.2B IRR of annual savings"
-            },
-            {
-              value: "34 MWh/year",
-              label: "Energy saved on pumping",
-              description: "Alongside 130 fewer false dispatches"
-            }
-          ],
-          deliverables: [
-            "Calibrated digital twin with interactive DMA maps",
-            "Bilingual executive dashboard and field companion app",
-            "Technical runbook, action scenarios and training"
-          ],
-          risks: [
-            {
-              risk: "Sensor failure or battery depletion",
-              mitigation: "Sensor health monitoring plus a preventive maintenance stock"
-            },
-            {
-              risk: "Outdated GIS records",
-              mitigation: "Targeted field surveys and scheduled synchronisation with mapping teams"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "Intelligent distribution network",
-              prompt: "Subsurface pipeline grid with luminous sensors linked to a cloud platform",
-              asset: "/images/projects/vista-leak-digital-twin/cover.svg"
-            },
-            {
-              title: "Operations dashboard",
-              prompt: "Leak probability heatmap and live KPIs",
-              asset: "/images/projects/vista-leak-digital-twin/dashboard.svg"
-            },
-            {
-              title: "Augmented field team",
-              prompt: "Technician with acoustic gear under teal lighting",
-              asset: "/images/projects/vista-leak-digital-twin/field.svg"
-            }
-          ]
-        }
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>VistaLeak gives Semnan's water utility a real-time view across pressure, flow and acoustic sensing. The digital twin produces leak probability maps, tiered alerts and concise executive briefings so decisions are grounded in trusted data.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Aging buried mains with limited situational awareness.</li>
+  <li>Repeated truck rolls without confirming the actual leak location.</li>
+  <li>Disconnected reporting between field operations and leadership.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy resilient pressure and acoustic sensing across priority DMAs.</li>
+  <li>Calibrate the hydraulic model with live telemetry.</li>
+  <li>Configure anomaly thresholds, bilingual dashboards and ticket workflows.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Actionable leak heatmaps with valve isolation guidance.</li>
+  <li>Shared incident playbooks and after-action reporting.</li>
+  <li>Ongoing enablement for the Semnan operations team.</li>
+</ul>
+        `
       }
     }
   },
@@ -334,259 +125,83 @@ const projects: Project[] = [
     cover: "/images/projects/vista-leak-score/cover.svg",
     gallery: [
       {
-        src: "/images/projects/vista-leak-score/risk-map.svg",
+        src: "/images/projects/vista-leak-score/cover.svg",
         alt: {
-          fa: "نقشه ریسک دارایی‌های لوله‌گذاری با گرادیان حرارتی",
-          en: "Asset risk map with thermal gradient"
+          fa: "نقشه اولویت‌بندی نوسازی لوله",
+          en: "Priority map for pipe renewal"
         },
         caption: {
-          fa: "Risk Map با امتیازدهی P×I برای هر قطعه شبکه",
-          en: "Risk map displaying P×I scores per network segment"
-        }
-      },
-      {
-        src: "/images/projects/vista-leak-score/capital.svg",
-        alt: {
-          fa: "جدول برنامه سرمایه‌ای سه‌ساله با نمودار بودجه",
-          en: "Three-year capital plan table with budget chart"
-        },
-        caption: {
-          fa: "سناریوهای سرمایه‌گذاری و بازگشت سرمایه",
-          en: "Capital investment scenarios and ROI"
-        }
-      },
-      {
-        src: "/images/projects/vista-leak-score/field.svg",
-        alt: {
-          fa: "تیم تعمیرات در حال تعویض لوله با سیستم هوشمند",
-          en: "Maintenance crew replacing pipe with smart guidance"
-        },
-        caption: {
-          fa: "اجرای عملیات تعویض هدفمند در معابر بحرانی",
-          en: "Targeted renewal on critical corridors"
+          fa: "امتیازدهی ریسک دارایی برای برنامه‌ریزی سرمایه‌ای",
+          en: "Risk scoring that guides capital planning"
         }
       }
     ],
     locales: {
       fa: {
-        title: "پلتفرم امتیازدهی ریسک دارایی VistaLeak-Score",
-        summary: "تعویض هدفمند لوله‌های فرسوده با بهینه‌سازی بودجه و کاهش شکست‌های تکراری.",
-        category: "آب و برنامه‌ریزی سرمایه",
+        title: "امتیازدهی ریسک VistaLeak-Score",
+        summary:
+          "چارچوبی برای اولویت‌بندی نوسازی خطوط فرسوده با ترکیب داده‌های تاریخی، محیطی و عملیاتی در استان سمنان.",
+        category: "آب و سرمایه‌گذاری",
         badges: [
-          { label: "پروژه در حال بهره‌برداری", value: "۸ شهر" },
-          { label: "صرفه‌جویی CAPEX", value: "۱۰ تا ۲۰٪" },
-          { label: "کاهش شکست", value: "۱۵ تا ۳۰٪" }
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "برنامه‌ریزی سرمایه‌ای" }
         ],
-        executive: {
-          strapline: "از داده تاریخی و محیطی تا سبد سرمایه‌ای بهینه برای استان سمنان.",
-          intro:
-            "VistaLeak-Score با ترکیب داده‌های GIS، شکست‌های گذشته، ویژگی‌های خاک و ترافیک سطحی، احتمال شکست هر قطعه شبکه را مدل‌سازی می‌کند و بهترین بسته سرمایه‌گذاری را پیشنهاد می‌دهد.",
-          problem:
-            "تعویض گسترده و غیرهدفمند باعث هدررفت سرمایه و استمرار شکست در نقاط حساس می‌شود.",
-          mission:
-            "تدوین نقشه راه سه‌ساله با اولویت‌بندی علمی و قابل دفاع برای هیئت مدیره و دستگاه‌های نظارتی.",
-          highlights: [
-            {
-              title: "چارچوب فنی",
-              bullets: [
-                "ساخت دیتاست ریسک با بیش از ۴۰ شاخص ساختاری، محیطی و عملیاتی",
-                "مدل یادگیری ماشین (XGBoost) با تحلیل SHAP برای شفافیت",
-                "بهینه‌سازی بودجه‌ای چندسناریو با قیود اجرایی"
-              ]
-            },
-            {
-              title: "ارزش مدیریتی",
-              bullets: [
-                "Risk Map تعاملی و داشبورد KPI",
-                "گزارش توجیه اقتصادی برای هر سناریو",
-                "ابزار شبیه‌سازی برای بازتنظیم سالانه"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "ساخت داده و استانداردسازی",
-              duration: "ماه ۱",
-              activities: [
-                "یکپارچه‌سازی لایه‌های GIS و پاکسازی شناسه‌ها",
-                "جمع‌آوری داده محیطی، خاک و ترافیک",
-                "طراحی ساختار ریسک و KPI"
-              ]
-            },
-            {
-              phase: "مدل‌سازی و سناریوسازی",
-              duration: "ماه ۲",
-              activities: [
-                "آموزش مدل احتمال شکست و اعتبارسنجی",
-                "تعریف شدت اثر و محاسبه Risk Score",
-                "ساخت سناریوهای سرمایه‌ای A/B/C"
-              ]
-            },
-            {
-              phase: "برنامه‌ریزی و اجرا",
-              duration: "ماه ۳ تا ۴",
-              activities: [
-                "تهیه BOQ و برنامه اجرایی",
-                "همکاری با شهرداری و راهور برای معابر پرترافیک",
-                "راه‌اندازی داشبورد تصمیم‌سازی و انتقال دانش"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "۳۰٪",
-              label: "کاهش شکست در کریدور هدف",
-              description: "۶ حادثه کمتر در سال با هزینه متوسط ۷۰ میلیون تومان"
-            },
-            {
-              value: "۱۴۴ میلیون ریال",
-              label: "صرفه‌جویی تکمیلی آب",
-              description: "حفظ ۴۸۰۰ مترمکعب آب با کاهش شکست‌های پرنشت"
-            }
-          ],
-          deliverables: [
-            "Risk Map و فایل‌های GIS به‌روزشده",
-            "سناریوهای سرمایه‌ای با محاسبات اقتصادی",
-            "کارگاه انتقال دانش و دستورالعمل نگهداشت"
-          ],
-          risks: [
-            {
-              risk: "ناقص بودن داده شکست گذشته",
-              mitigation: "وزن‌دهی عدم قطعیت و برنامه تکمیلی جمع‌آوری داده"
-            },
-            {
-              risk: "محدودیت اجرایی در معابر پرترافیک",
-              mitigation: "طراحی فازبندی شبانه و هماهنگی با نهادهای شهری"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "نقشه هوشمند ریسک",
-              prompt: "گرادیان حرارتی روی نقشه شهری با نقاط بحرانی",
-              asset: "/images/projects/vista-leak-score/risk-map.svg"
-            },
-            {
-              title: "داشبورد سرمایه‌ای",
-              prompt: "جدول بهینه‌سازی بودجه با نمودار",
-              asset: "/images/projects/vista-leak-score/capital.svg"
-            },
-            {
-              title: "تیم اجرا",
-              prompt: "تعمیرات هدفمند با هدست واقعیت افزوده",
-              asset: "/images/projects/vista-leak-score/field.svg"
-            }
-          ]
-        }
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>VistaLeak-Score به مدیریت استان سمنان کمک می‌کند بودجه نوسازی لوله‌ها را بر مبنای ریسک واقعی تخصیص دهد. سامانه با تحلیل داده‌های شکست، شرایط خاک و حساسیت مصرف‌کننده، نقشه‌ای شفاف برای تصمیم‌گیری فراهم می‌کند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>پراکندگی داده‌های شکست و نبود شاخص واحد ریسک.</li>
+  <li>کمبود بودجه برای تعویض گسترده و نیاز به هدف‌گذاری دقیق.</li>
+  <li>لزوم گزارش شفاف برای مدیران و مراجع نظارتی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>یکپارچه‌سازی داده GIS، حوادث و ویژگی‌های محیطی.</li>
+  <li>محاسبه امتیاز ریسک ترکیبی احتمال و شدت اثر.</li>
+  <li>ساخت سناریوهای بودجه‌ای و نقشه اقدام گام‌به‌گام.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>Risk Map قابل فیلتر با گزارش مدیریتی.</li>
+  <li>لیست پروژه‌های پیشنهادی به تفکیک سال و محدودیت اجرایی.</li>
+  <li>چارچوب پایش اثر اقدامات و به‌روزرسانی دوره‌ای.</li>
+</ul>
+        `
       },
       en: {
-        title: "VistaLeak-Score asset risk planning",
-        summary: "Target pipe renewals that deliver maximum risk reduction with optimised capital plans.",
-        category: "Water & capital planning",
+        title: "VistaLeak-Score asset risk",
+        summary:
+          "A Semnan-focused decision framework that ranks pipe renewal candidates using operational, environmental and customer impact data.",
+        category: "Water capital planning",
         badges: [
-          { label: "Operational cities", value: "8" },
-          { label: "CAPEX efficiency", value: "10–20%" },
-          { label: "Failure reduction", value: "15–30%" }
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Capital optimisation" }
         ],
-        executive: {
-          strapline: "Turn historical, environmental and operational data into a defensible three-year renewal roadmap.",
-          intro:
-            "VistaLeak-Score builds a unified risk dataset, trains an XGBoost model to forecast failure probability and optimises capital allocation under real-world constraints.",
-          problem:
-            "Length-based renewals waste scarce budgets and leave critical corridors exposed.",
-          mission:
-            "Equip boards and regulators with a transparent investment case for Semnan and partner municipalities.",
-          highlights: [
-            {
-              title: "Technical pillars",
-              bullets: [
-                "40+ structural, environmental and operational features",
-                "Explainable AI with SHAP-driven insights",
-                "Budget optimisation with execution constraints"
-              ]
-            },
-            {
-              title: "Management value",
-              bullets: [
-                "Interactive risk map and KPI cockpit",
-                "Economic justification per scenario",
-                "Simulation tooling for annual refresh"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "Data curation",
-              duration: "Month 1",
-              activities: [
-                "Merge GIS layers and reconcile asset IDs",
-                "Ingest soil, climate and traffic datasets",
-                "Define the risk framework and KPIs"
-              ]
-            },
-            {
-              phase: "Modelling & scenarios",
-              duration: "Month 2",
-              activities: [
-                "Train and validate failure probability model",
-                "Quantify impact severity and compute risk scores",
-                "Build capital scenarios A/B/C"
-              ]
-            },
-            {
-              phase: "Planning & launch",
-              duration: "Months 3–4",
-              activities: [
-                "Produce BOQ and execution calendar",
-                "Coordinate with city traffic authorities",
-                "Deploy decision dashboard and knowledge transfer"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "30%",
-              label: "Fewer failures on critical corridors",
-              description: "Six incidents avoided each year at 70M IRR per event"
-            },
-            {
-              value: "4,800 m³",
-              label: "Water preserved",
-              description: "Equal to 144M IRR in complementary savings"
-            }
-          ],
-          deliverables: [
-            "Risk map and refreshed GIS layers",
-            "Capital scenarios with economic justification",
-            "Knowledge transfer workshop and maintenance playbook"
-          ],
-          risks: [
-            {
-              risk: "Incomplete failure history",
-              mitigation: "Uncertainty weighting plus targeted data collection"
-            },
-            {
-              risk: "Execution limits on busy corridors",
-              mitigation: "Night-time phasing and stakeholder coordination"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "Smart risk map",
-              prompt: "Thermal gradient over a city grid highlighting hot spots",
-              asset: "/images/projects/vista-leak-score/risk-map.svg"
-            },
-            {
-              title: "Capital cockpit",
-              prompt: "Optimised budget table with scenario chart",
-              asset: "/images/projects/vista-leak-score/capital.svg"
-            },
-            {
-              title: "Guided crews",
-              prompt: "Renewal crew with augmented-reality overlay",
-              asset: "/images/projects/vista-leak-score/field.svg"
-            }
-          ]
-        }
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>VistaLeak-Score equips Semnan's asset planners with a unified risk index so limited renewal budgets can focus on the most critical corridors. It blends break history, soil conditions and customer sensitivity to surface defensible priorities.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Fragmented maintenance records with no common scoring method.</li>
+  <li>Capital constraints that prevent broad, undirected replacement.</li>
+  <li>Transparency requirements from executive and regulatory stakeholders.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Integrate GIS, failure and environmental datasets into a clean model.</li>
+  <li>Compute combined likelihood and consequence scores for each pipe segment.</li>
+  <li>Generate budget scenarios and phased construction roadmaps.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Interactive risk maps and dashboards in Persian and English.</li>
+  <li>Year-by-year project lists aligned with operational constraints.</li>
+  <li>Governance cadence to refresh data and track impact.</li>
+</ul>
+        `
       }
     }
   },
@@ -596,259 +211,943 @@ const projects: Project[] = [
     cover: "/images/projects/illegal-groundwater-detection/cover.svg",
     gallery: [
       {
-        src: "/images/projects/illegal-groundwater-detection/nightlight.svg",
+        src: "/images/projects/illegal-groundwater-detection/cover.svg",
         alt: {
-          fa: "نقشه نور شب VIIRS با نقاط پرریسک",
-          en: "VIIRS night light map with high-risk clusters"
+          fa: "نقشه فیوژن داده برای پایش چاه‌های غیرمجاز",
+          en: "Data fusion map for monitoring illegal wells"
         },
         caption: {
-          fa: "تحلیل نور شب برای شناسایی فعالیت چاه در ساعات غیر مجاز",
-          en: "Nighttime light analytics to detect out-of-hours pumping"
-        }
-      },
-      {
-        src: "/images/projects/illegal-groundwater-detection/vegetation.svg",
-        alt: {
-          fa: "نمودار سری زمانی شاخص گیاهی و مصرف برق",
-          en: "Time-series of vegetation index versus power consumption"
-        },
-        caption: {
-          fa: "ترکیب شاخص‌های NDVI و مصرف برق جهت رتبه‌بندی تخلف",
-          en: "Combining NDVI signatures with power usage to rank violations"
-        }
-      },
-      {
-        src: "/images/projects/illegal-groundwater-detection/inspection.svg",
-        alt: {
-          fa: "اپلیکیشن بازرسی میدانی با امتیاز تخلف",
-          en: "Field inspection app with violation scores"
-        },
-        caption: {
-          fa: "اپ هوشمند برای تیم‌های گشت با مسیرهای بهینه",
-          en: "Smart patrol app suggesting optimal inspection routes"
+          fa: "ترکیب نور شب، شاخص گیاهی و الگوی مصرف برق",
+          en: "Combining night lights, vegetation indices and power usage"
         }
       }
     ],
     locales: {
       fa: {
-        title: "رصد برداشت غیرمجاز آب زیرزمینی",
-        summary: "فیوژن داده‌های سنجش‌ازدور و مصرف برق برای اولویت‌بندی بازرسی و کاهش تخلف.",
-        category: "آب و محیط‌زیست",
+        title: "پایش برداشت غیرمجاز آب زیرزمینی",
+        summary:
+          "سامانه هوشمندی که با ترکیب تصاویر ماهواره‌ای و داده برق، نقاط داغ برداشت در دشت‌های سمنان را برای بازرسی اولویت‌بندی می‌کند.",
+        category: "منابع آب زیرزمینی",
         badges: [
-          { label: "پوشش دشت‌های مطالعاتی", value: "۵ دشت" },
-          { label: "کاهش اعزام بی‌نتیجه", value: "۳۰ تا ۵۰٪" },
-          { label: "کاهش تخلف", value: "۱۰ تا ۳۰٪" }
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "پایش آبخوان" }
         ],
-        executive: {
-          strapline: "از سنجش‌ازدور، مصرف برق و هوش مصنوعی برای حفظ آبخوان‌های استان.",
-          intro:
-            "پلتفرم رصد برداشت غیرمجاز داده‌های VIIRS، Sentinel-2 و سری‌زمان مصرف برق چاه‌ها را ادغام می‌کند تا امتیاز احتمال تخلف و مسیرهای بهینه بازرسی را پیشنهاد دهد.",
-          problem:
-            "پایش میدانی سنتی پرهزینه است و پوشش زمانی/مکانی کافی ندارد که منجر به افت سطح ایستابی و فرونشست می‌شود.",
-          mission:
-            "کاهش برداشت غیرمجاز و حمایت از برنامه تعادل‌بخشی در استان سمنان با هوش مصنوعی بومی.",
-          highlights: [
-            {
-              title: "منابع داده",
-              bullets: [
-                "نور شب VIIRS برای تشخیص فعالیت غیرمعمول",
-                "شاخص‌های NDVI و NDMI از Sentinel-2 برای بررسی الگوی کشت",
-                "سری زمانی مصرف برق چاه‌ها برای شناسایی امضای پمپاژ"
-              ]
-            },
-            {
-              title: "خروجی‌های عملیاتی",
-              bullets: [
-                "امتیاز احتمال تخلف برای هر چاه",
-                "مسیرهای پیشنهادی گشت با حداکثر بازده",
-                "داشبورد مدیریتی با KPI و گزارش حقوقی"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "داده و مدل پایه",
-              duration: "ماه ۱",
-              activities: [
-                "جمع‌آوری و همترازسازی تصاویر ماهواره‌ای",
-                "پاکسازی داده اشتراک برق و انطباق با مختصات",
-                "تعریف شاخص‌های ترکیبی و آستانه‌ها"
-              ]
-            },
-            {
-              phase: "مدل‌سازی و اعتبارسنجی",
-              duration: "ماه ۲",
-              activities: [
-                "ساخت مدل تشخیص آنومالی و رتبه‌بندی",
-                "اعتبارسنجی میدانی و بازتنظیم آستانه",
-                "طراحی گزارشات حقوقی و مدیریتی"
-              ]
-            },
-            {
-              phase: "استقرار و گشت هوشمند",
-              duration: "ماه ۳",
-              activities: [
-                "پیاده‌سازی اپلیکیشن گشت",
-                "آموزش تیم‌های استانی",
-                "پایش مستمر و بازخورد برخط"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "۴۰٪",
-              label: "افزایش موفقیت گشت",
-              description: "کاهش اعزام بی‌نتیجه و تمرکز بر نقاط داغ"
-            },
-            {
-              value: "۲٫۵ متر",
-              label: "کاهش روند افت سطح آبخوان",
-              description: "بر پایه سناریوی کنترل‌شده در دشت پایلوت"
-            }
-          ],
-          deliverables: [
-            "داشبورد مدیریتی تحت وب",
-            "اپلیکیشن موبایل با نقشه آفلاین",
-            "مستندات حقوقی و فرآیند رسیدگی"
-          ],
-          risks: [
-            {
-              risk: "پوشش ابری تصاویر ماهواره‌ای",
-              mitigation: "استفاده از ترکیب چند حسگر و میانگین‌گیری زمانی"
-            },
-            {
-              risk: "دقت موقعیت چاه‌ها",
-              mitigation: "به‌روزرسانی مختصات با تیم میدانی و اصلاح مداوم"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "نقشه نور شب",
-              prompt: "کلاسترهای روشن روی نقشه دشت",
-              asset: "/images/projects/illegal-groundwater-detection/nightlight.svg"
-            },
-            {
-              title: "تحلیل سری زمانی",
-              prompt: "نمودار موجی شاخص گیاهی و برق",
-              asset: "/images/projects/illegal-groundwater-detection/vegetation.svg"
-            },
-            {
-              title: "گشت هوشمند",
-              prompt: "تبلت میدانی با مسیرهای پیشنهادی",
-              asset: "/images/projects/illegal-groundwater-detection/inspection.svg"
-            }
-          ]
-        }
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>این پروژه به شرکت آب منطقه‌ای سمنان امکان می‌دهد با استفاده از نور شب، شاخص‌های گیاهی و سری زمانی مصرف برق چاه‌ها، برداشت غیرمجاز را سریع‌تر تشخیص دهد. نتیجه، لیست بازرسی هدفمند و کاهش اعزام‌های بی‌نتیجه است.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>کاهش سطح آب زیرزمینی و فشار مضاعف بر منابع آبی استان.</li>
+  <li>هزینه بالای بازرسی میدانی و نیاز به تمرکز بر نقاط پرریسک.</li>
+  <li>نبود داشبورد یکپارچه برای تصمیم‌سازی مدیریتی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>پردازش تصاویر VIIRS و Sentinel-2 برای استخراج الگوهای غیرعادی.</li>
+  <li>تحلیل سری زمانی مصرف برق چاه‌ها و همبستگی با داده میدانی.</li>
+  <li>ساخت امتیاز احتمال تخلف و نقشه راه بازرسی.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد مدیریتی با فیلتر مکانی و زمانی.</li>
+  <li>لیست اولویت‌بندی شده برای تیم بازرسی و گزارش پایش.</li>
+  <li>مستند روش‌شناسی برای اعتبارسنجی قضایی.</li>
+</ul>
+        `
       },
       en: {
-        title: "Illegal groundwater abstraction intelligence",
-        summary: "Fuse remote sensing and power data to prioritise inspections and curb violations.",
-        category: "Water & environmental compliance",
+        title: "Groundwater compliance analytics",
+        summary:
+          "A fusion of satellite imagery and electricity data that prioritises groundwater inspections across Semnan's plains.",
+        category: "Groundwater stewardship",
         badges: [
-          { label: "Aquifers covered", value: "5" },
-          { label: "Fewer false patrols", value: "30–50%" },
-          { label: "Violation reduction", value: "10–30%" }
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Aquifer monitoring" }
         ],
-        executive: {
-          strapline: "Protect Semnan's aquifers with AI that blends satellites, electricity usage and field feedback.",
-          intro:
-            "The monitoring platform combines VIIRS night lights, Sentinel-2 vegetation indices and pump power signatures to score illegal abstraction risk and optimise patrol routes.",
-          problem:
-            "Manual inspections are expensive, sparse and lag real activity, accelerating drawdown and subsidence.",
-          mission:
-            "Support the national groundwater balance programme with actionable intelligence for provincial teams.",
-          highlights: [
-            {
-              title: "Data sources",
-              bullets: [
-                "VIIRS night lights to detect out-of-hours pumping",
-                "Sentinel-2 NDVI/NDMI for crop persistence and anomaly detection",
-                "Electricity consumption time-series to capture pumping signatures"
-              ]
-            },
-            {
-              title: "Operational outputs",
-              bullets: [
-                "Violation probability score per well",
-                "Optimised patrol routes and workload balancing",
-                "Management dashboard with legal-ready reports"
-              ]
-            }
-          ],
-          timeline: [
-            {
-              phase: "Data alignment",
-              duration: "Month 1",
-              activities: [
-                "Collect and co-register satellite imagery",
-                "Cleanse utility subscriber data and geocode",
-                "Define composite indices and thresholds"
-              ]
-            },
-            {
-              phase: "Modelling & validation",
-              duration: "Month 2",
-              activities: [
-                "Build anomaly detection and ranking models",
-                "Field-validate and recalibrate thresholds",
-                "Design legal and executive reporting"
-              ]
-            },
-            {
-              phase: "Deployment & patrol ops",
-              duration: "Month 3",
-              activities: [
-                "Deploy patrol app with offline maps",
-                "Train provincial enforcement teams",
-                "Establish feedback loops and continuous monitoring"
-              ]
-            }
-          ],
-          roi: [
-            {
-              value: "40%",
-              label: "Higher patrol hit-rate",
-              description: "Fewer false visits by concentrating on hot spots"
-            },
-            {
-              value: "2.5 m",
-              label: "Projected drawdown improvement",
-              description: "Based on controlled pilot aquifer scenario"
-            }
-          ],
-          deliverables: [
-            "Web management console",
-            "Mobile inspection app with offline cartography",
-            "Legal workflow handbook and evidence package"
-          ],
-          risks: [
-            {
-              risk: "Cloud cover in optical imagery",
-              mitigation: "Blend multi-sensor sources and temporal smoothing"
-            },
-            {
-              risk: "Geolocation accuracy of wells",
-              mitigation: "Progressive field validation and GIS corrections"
-            }
-          ],
-          aiImagery: [
-            {
-              title: "Night light intelligence",
-              prompt: "Illuminated clusters across an aquifer map",
-              asset: "/images/projects/illegal-groundwater-detection/nightlight.svg"
-            },
-            {
-              title: "Time-series analytics",
-              prompt: "Waveform comparing vegetation and power usage",
-              asset: "/images/projects/illegal-groundwater-detection/vegetation.svg"
-            },
-            {
-              title: "Smart patrol",
-              prompt: "Field tablet with AI-recommended routes",
-              asset: "/images/projects/illegal-groundwater-detection/inspection.svg"
-            }
-          ]
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>This programme helps Semnan Regional Water Company surface unusual extraction patterns by linking night lights, vegetation signals and pump electricity logs. Inspectors receive a ranked list of locations instead of canvassing broad areas.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Declining aquifer levels and pressure on legal abstractions.</li>
+  <li>Expensive field patrols that must concentrate on high-risk hotspots.</li>
+  <li>Lack of a consolidated management view across remote sensing layers.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Process VIIRS and Sentinel-2 imagery to detect anomalies in cultivation.</li>
+  <li>Model well electricity consumption trends and correlate with field surveys.</li>
+  <li>Assign compliance scores and generate inspector-ready briefings.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Dashboards with spatial and temporal filtering.</li>
+  <li>Ranked inspection itineraries for enforcement teams.</li>
+  <li>Methodology documentation to support legal follow-up.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 4,
+    slug: "smart-irrigation-pistachio-damghan",
+    cover: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
+        alt: {
+          fa: "نقشه آبیاری دقیق باغ پسته",
+          en: "Precision irrigation map for pistachio orchards"
+        },
+        caption: {
+          fa: "پایش رطوبت خاک و زمان‌بندی آبیاری در دامغان",
+          en: "Soil moisture monitoring and irrigation scheduling in Damghan"
         }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "آبیاری هوشمند باغات پسته دامغان",
+        summary:
+          "پلتفرمی برای اندازه‌گیری رطوبت خاک، پیش‌بینی تبخیر و زمان‌بندی آبیاری هدفمند در باغ‌های پسته استان سمنان.",
+        category: "کشاورزی هوشمند",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "آبیاری دقیق" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>در باغ‌های پسته دامغان، مدیریت آب و انرژی حیاتی است. این سامانه با ترکیب حسگرهای رطوبت، پیش‌بینی هواشناسی و مدل‌سازی تبخیر، برنامه آبیاری را هوشمند می‌کند و مصرف آب را با نیاز واقعی درختان هماهنگ می‌سازد.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>افت سطح آب زیرزمینی و سهمیه‌بندی منابع در باغ‌های سنتی.</li>
+  <li>عدم شفافیت در تعیین نوبت آبیاری بین قطعات متنوع.</li>
+  <li>نیاز به مستندسازی برای ارائه گزارش به تشکل‌های کشاورزی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>استقرار ایستگاه‌های سنجش رطوبت و دمای خاک در قطعات نمونه.</li>
+  <li>یکپارچه‌سازی داده سنجش از دور و پیش‌بینی هواشناسی محلی.</li>
+  <li>محاسبه شاخص نیاز آبی و تولید برنامه نوبت‌دهی و هشدار.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد مزرعه با نقشه رنگی وضعیت هر قطعه.</li>
+  <li>گزارش مصرف واقعی در مقایسه با سهمیه و اهداف صرفه‌جویی.</li>
+  <li>بسته آموزشی برای بهره‌بردار و اپراتور سیستم آبیاری.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Smart irrigation for Damghan pistachios",
+        summary:
+          "A precision irrigation platform that aligns soil moisture, weather forecasts and grower routines for Semnan's pistachio orchards.",
+        category: "Smart agriculture",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Precision irrigation" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Pistachio orchards around Damghan rely on scarce groundwater. The platform blends in-field sensors with weather-led evapotranspiration models to recommend irrigation slots that respect both crop demand and allocation rules.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Declining aquifer levels and strict water quotas.</li>
+  <li>Manual scheduling that ignores differences between orchard blocks.</li>
+  <li>The need for transparent reporting to grower cooperatives.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy soil-moisture and canopy sensors in representative plots.</li>
+  <li>Fuse remote sensing indicators with hyperlocal weather forecasts.</li>
+  <li>Generate irrigation priority indices with alerts and advisory notes.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Farm dashboards with colour-coded block status.</li>
+  <li>Usage reports comparing consumption against targets.</li>
+  <li>Training materials for growers and irrigation technicians.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 5,
+    slug: "solar-forecast-soiling-optimization",
+    cover: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
+        alt: {
+          fa: "داشبورد عملکرد نیروگاه خورشیدی",
+          en: "Performance dashboard for a solar plant"
+        },
+        caption: {
+          fa: "پیش‌بینی تولید و برنامه شست‌وشوی پنل",
+          en: "Forecasting output and panel cleaning schedules"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "پیش‌بینی تولید و مدیریت آلودگی پنل خورشیدی",
+        summary:
+          "مدل ترکیبی تابش، غبار و سوابق تولید که برای نیروگاه خورشیدی سمنان برنامه شست‌وشو و انرژی قابل تحویل را پیش‌بینی می‌کند.",
+        category: "انرژی هوشمند",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "نیروگاه خورشیدی" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>این سامانه با تحلیل داده تابش، پیش‌بینی هواشناسی و میزان آلودگی پنل، تولید روزانه نیروگاه خورشیدی را برآورد و بهترین زمان شست‌وشو را پیشنهاد می‌کند تا بهره‌برداری در سمنان پایدار بماند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>تجمع غبار و کاهش راندمان در اقلیم خشک سمنان.</li>
+  <li>هزینه شست‌وشو و نیاز به هماهنگی با تیم بهره‌برداری.</li>
+  <li>گزارش‌دهی شفاف به سرمایه‌گذار و شرکت توزیع.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>مدلسازی تابش خورشیدی و سایه‌اندازی پنل‌ها.</li>
+  <li>محاسبه شاخص آلودگی پنل با استفاده از حسگر و داده تولید.</li>
+  <li>تولید سناریوی بهره‌برداری و اعلان برای تیم O&amp;M.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>گزارش پیش‌بینی تولید هفتگی و روزانه.</li>
+  <li>تقویم شست‌وشو با اولویت‌بندی و تخمین اثر.</li>
+  <li>رابط کاربری وب با داشبورد تحلیلی و آرشیو داده.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Solar generation & soiling optimisation",
+        summary:
+          "A forecasting and maintenance planner that keeps Semnan's solar plant output stable despite dust accumulation.",
+        category: "Renewable energy",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "PV performance" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>The platform estimates daily production and proposes optimal cleaning windows by combining irradiance models, weather forecasts and soiling sensors. Operations teams can plan maintenance without sacrificing energy delivery commitments.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Dust accumulation that quickly degrades photovoltaic performance.</li>
+  <li>Balancing cleaning costs with available O&amp;M crews.</li>
+  <li>Providing transparent production outlooks to investors and grid partners.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Model solar irradiance, shading and historical output trends.</li>
+  <li>Estimate soiling ratios from sensor readings and inverter data.</li>
+  <li>Generate cleaning schedules with projected energy uplift.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Rolling weekly and daily energy forecasts.</li>
+  <li>Maintenance calendars with quantified impact per action.</li>
+  <li>Web dashboards archiving performance and interventions.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 6,
+    slug: "wildfire-early-warning-abr",
+    cover: "/images/projects/wildfire-early-warning-abr/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/wildfire-early-warning-abr/cover.svg",
+        alt: {
+          fa: "نقشه خطر حریق در جنگل ابر",
+          en: "Wildfire risk map for Abr forest"
+        },
+        caption: {
+          fa: "پایش سوخت، باد و هشدار به یگان حفاظت",
+          en: "Monitoring fuel, wind and dispatching alerts"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "هشدار زودهنگام حریق جنگل ابر",
+        summary:
+          "مدل ریسک حریق که با تحلیل داده اقلیمی، تصاویر ماهواره‌ای و گزارش میدانی یگان حفاظت استان سمنان، هشدار عملیاتی صادر می‌کند.",
+        category: "محیط زیست",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "پایش حریق" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>جنگل ابر به‌دلیل شرایط اقلیمی متغیر نیازمند هشدار سریع است. این سامانه داده‌های سوخت، باد و رطوبت را یکپارچه می‌کند تا یگان حفاظت استان بتواند پیش از گسترش حریق وارد عمل شود.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>تغییرات شدید رطوبت و باد که تشخیص خطر را دشوار می‌کند.</li>
+  <li>پراکندگی گزارش‌های میدانی و عدم ثبت ساختارمند.</li>
+  <li>نیاز به هماهنگی با مدیریت بحران استان.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>پایش پیوسته شاخص‌های سوخت و وضعیت پوشش گیاهی با سنجش از دور.</li>
+  <li>اتصال سامانه به داده ایستگاه‌های هواشناسی و حسگرهای محلی.</li>
+  <li>تعریف سطح هشدار و ارسال اعلان از طریق پنل وب و پیامک.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>نقشه ریسک به تفکیک ناحیه و بازه زمانی.</li>
+  <li>گزارش روزانه برای مدیریت بحران و استانداری.</li>
+  <li>کتابچه عملیات استاندارد برای تیم‌های میدانی.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Abr forest wildfire early warning",
+        summary:
+          "A risk model for Semnan's Abr forest that blends fuel conditions, weather and ranger reports to trigger early interventions.",
+        category: "Environmental intelligence",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Wildfire readiness" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>The Abr forest faces rapid shifts in humidity and wind. Our early-warning stack consolidates fuel moisture, forecast data and ranger observations so Semnan's protection unit can mobilise before ignition becomes a large-scale fire.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Volatile microclimates that complicate fire risk estimation.</li>
+  <li>Unstructured incident notes from patrol teams.</li>
+  <li>The need for coordinated alerts to provincial crisis management.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Monitor vegetation and fuel indices through remote sensing.</li>
+  <li>Ingest station data and local sensors for high-frequency updates.</li>
+  <li>Configure alert levels delivered via dashboards and SMS.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Risk maps segmented by zone and time horizon.</li>
+  <li>Daily intelligence briefs for crisis managers.</li>
+  <li>Standard operating procedures for field deployment.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 7,
+    slug: "insar-subsidence-monitoring",
+    cover: "/images/projects/insar-subsidence-monitoring/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/insar-subsidence-monitoring/cover.svg",
+        alt: {
+          fa: "نقشه فرونشست با داده اینسار",
+          en: "InSAR-derived subsidence map"
+        },
+        caption: {
+          fa: "پایش فرونشست دشت سمنان با تحلیل راداری",
+          en: "Monitoring Semnan plain subsidence using radar analytics"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "پایش فرونشست با InSAR",
+        summary:
+          "سامانه‌ای برای پایش فرونشست زمین در دشت سمنان با استفاده از تصاویر راداری و هم‌پوشانی داده‌های میدانی.",
+        category: "ژئوماتیک",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "پایش فرونشست" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>فرونشست زمین تهدیدی برای زیرساخت و سکونتگاه‌های استان سمنان است. این پروژه با پردازش داده‌های InSAR، نرخ تغییر سطح زمین را استخراج و به زبان مدیریتی گزارش می‌کند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>فقدان داده منظم برای تصمیم درباره محدودیت برداشت آب.</li>
+  <li>ریسک برای زیرساخت‌های جاده‌ای، خطوط انتقال و ساختمان‌ها.</li>
+  <li>نیاز به مستندسازی جهت مکاتبات حاکمیتی و قضایی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>دریافت و پردازش تصاویر راداری Sentinel-1 در بازه‌های ماهانه.</li>
+  <li>هم‌پوشانی نتایج با داده GPS و مشاهدات میدانی.</li>
+  <li>تهیه نقشه و گزارش تحلیلی برای مناطق بحرانی.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>نقشه تعاملی سرعت فرونشست و ترند زمانی.</li>
+  <li>گزارش مدیریتی برای کمیته آب‌های زیرزمینی.</li>
+  <li>پیشنهاد پایش تکمیلی و نقاط نصب حسگر زمینی.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "InSAR subsidence monitoring",
+        summary:
+          "A radar-based monitoring workflow that quantifies land subsidence across the Semnan plain and aligns it with ground truth observations.",
+        category: "Geospatial analytics",
+        badges: [
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Land subsidence" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Land subsidence threatens infrastructure and communities in Semnan. Our programme processes Sentinel-1 radar stacks to measure ground deformation and translates the results into actionable reports for provincial committees.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Lack of frequent, reliable deformation measurements.</li>
+  <li>Exposure of roads, transmission lines and urban assets to gradual sinkage.</li>
+  <li>The need to document evidence for regulatory coordination.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Ingest monthly Sentinel-1 scenes and perform time-series InSAR processing.</li>
+  <li>Cross-validate displacements with GPS and field surveys.</li>
+  <li>Publish hotspot maps and commentary for decision-makers.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Interactive deformation layers with temporal trends.</li>
+  <li>Briefings for the groundwater task force.</li>
+  <li>Recommendations on where to expand ground instrumentation.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 8,
+    slug: "dust-aqi-nowcast-hvac",
+    cover: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+        alt: {
+          fa: "پیش‌بینی شاخص آلودگی هوا",
+          en: "Air quality index forecast"
+        },
+        caption: {
+          fa: "پیش‌آگاهی طوفان گرد و غبار برای مدیریت تهویه",
+          en: "Dust storm nowcast to manage HVAC operations"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "پیش‌آگاهی گرد و غبار و مدیریت تهویه",
+        summary:
+          "سامانه‌ای برای پیش‌بینی کوتاه‌مدت گرد و غبار و تنظیم راهبری HVAC در مراکز حساس استان سمنان.",
+        category: "محیط زیست و سلامت",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "پایش هوا" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>سمنان در معرض رخداد طوفان‌های گرد و غبار است. این سامانه با استفاده از مدل‌های هواشناسی و داده سنسورهای محلی، به مراکز درمانی و صنعتی کمک می‌کند تجهیزات تهویه را پیش از وقوع طوفان تنظیم کنند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>غافلگیری مراکز حساس و ورود گرد و غبار به فضاهای کنترل‌شده.</li>
+  <li>هزینه نگهداشت فیلترها و نیاز به برنامه‌ریزی دقیق.</li>
+  <li>نیاز به اطلاع‌رسانی سریع برای کارکنان و شهروندان.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>ترکیب مدل WRF با داده ایستگاه‌های سنجش کیفی هوا.</li>
+  <li>محاسبه سناریوهای ۶ تا ۲۴ ساعت آینده و میزان ورود ذرات.</li>
+  <li>ارسال هشدار و چک‌لیست اقدام برای تیم‌های تاسیسات.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد پیش‌آگاهی با نقشه و نمودار زمانی.</li>
+  <li>هشدار پیامکی و ایمیلی با سطح شدت و توصیه اقدام.</li>
+  <li>گزارش پس از رخداد برای ارزیابی عملکرد تهویه.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Dust nowcast & HVAC readiness",
+        summary:
+          "Short-term dust forecasting that helps Semnan's critical facilities prepare ventilation systems ahead of events.",
+        category: "Environmental resilience",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Air quality" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Frequent dust storms challenge Semnan's hospitals and industrial sites. The nowcast service blends mesoscale forecasts with sensor feeds so facility teams can reconfigure HVAC assets before particle loads spike.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Unexpected ingress of dust into controlled environments.</li>
+  <li>Filter maintenance costs when events are not anticipated.</li>
+  <li>Timely communication to staff and the public.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Combine WRF outputs with local air-quality sensors.</li>
+  <li>Project particle concentrations 6–24 hours ahead.</li>
+  <li>Issue actionable alerts and HVAC checklists.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Dashboards with maps and timeline visualisations.</li>
+  <li>SMS and email notifications graded by severity.</li>
+  <li>After-action reports benchmarking ventilation response.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 9,
+    slug: "uas-predictive-maintenance",
+    cover: "/images/projects/uas-predictive-maintenance/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/uas-predictive-maintenance/cover.svg",
+        alt: {
+          fa: "داشبورد سلامت پهپاد عملیاتی",
+          en: "Operational drone health dashboard"
+        },
+        caption: {
+          fa: "تحلیل پرواز و نگهداشت ناوگان پهپاد",
+          en: "Flight analytics and maintenance planning for drones"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "نگهداشت پیشگویانه ناوگان پهپاد",
+        summary:
+          "پلتفرمی برای تحلیل داده پرواز، باتری و قطعات پهپادهای عملیاتی که به تیم‌های سمنان برای برنامه‌ریزی تعمیر کمک می‌کند.",
+        category: "هوافضا و بازرسی",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "نگهداشت تجهیزات" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>پهپادهای بازرسی خطوط و تاسیسات برای مأموریت‌های سمنان به قابلیت اطمینان بالا نیاز دارند. این سامانه با تحلیل ثبت پرواز، لرزش و دمای قطعات، تعمیرات پیشگیرانه را پیشنهاد می‌کند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>خرابی ناگهانی باتری و موتور در عملیات حساس.</li>
+  <li>عدم وجود تصویر یکپارچه از سلامت ناوگان.</li>
+  <li>نیاز به مستندسازی برای رعایت استانداردهای ایمنی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>جمع‌آوری داده تله‌متری از کنترلر و حسگرهای جانبی.</li>
+  <li>مدل‌سازی چرخه عمر قطعات و تحلیل روند فرسایش.</li>
+  <li>تولید تیکت نگهداشت و زمان‌بندی تعمیر.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد سلامت ناوگان با هشدار سطح‌بندی شده.</li>
+  <li>گزارش بهره‌برداری برای مدیر فنی و ایمنی پرواز.</li>
+  <li>کتابچه فرآیند نگهداشت پیشگیرانه.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "UAS predictive maintenance",
+        summary:
+          "A fleet health platform that analyses flight logs, vibration and battery data to schedule preventative maintenance for Semnan's drone missions.",
+        category: "Aerial inspection",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Asset reliability" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Drones inspecting utilities and infrastructure need consistent readiness. The platform ingests telemetry, vibration and temperature signals to forecast component fatigue and recommend proactive interventions.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Unexpected battery or motor failures mid-mission.</li>
+  <li>No unified view of fleet health across missions.</li>
+  <li>Compliance obligations for flight safety audits.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Capture telemetry from flight controllers and auxiliary sensors.</li>
+  <li>Model component life and detect anomalous degradation trends.</li>
+  <li>Create maintenance tickets with recommended timelines.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Fleet health dashboards with tiered alerts.</li>
+  <li>Operational reports for technical and safety leads.</li>
+  <li>Preventive maintenance playbooks.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 10,
+    slug: "pavement-railway-iri-boq",
+    cover: "/images/projects/pavement-railway-iri-boq/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/pavement-railway-iri-boq/cover.svg",
+        alt: {
+          fa: "تحلیل وضعیت روسازی و خطوط ریلی",
+          en: "Condition analysis for pavement and rail"
+        },
+        caption: {
+          fa: "شاخص ناهمواری و برآورد هزینه نگهداشت",
+          en: "IRI scoring with maintenance cost estimates"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "ارزیابی روسازی و خطوط ریلی",
+        summary:
+          "تحلیل داده شتاب‌سنج و تصویر برای سنجش ناهمواری، ترک و هزینه نگهداشت راه و ریل در استان سمنان.",
+        category: "زیرساخت حمل‌ونقل",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "نگهداشت راه" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>زیرساخت‌های جاده و ریلی استان سمنان برای سرویس‌دهی ایمن نیازمند پایش مستمر هستند. این سامانه با داده‌های شتاب‌سنج، تصویر و بازدید میدانی، شاخص ناهمواری و هزینه تعمیر را محاسبه می‌کند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>نیاز به برنامه‌ریزی نگهداشت پیشگیرانه برای مسیرهای پرتردد.</li>
+  <li>عدم یکپارچگی داده‌های پیمایش میدانی و گزارش پیمانکاران.</li>
+  <li>ضرورت دفاع از بودجه در جلسات استانی و ملی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>نصب سنسور بر روی خودروهای پیمایش و جمع‌آوری داده شتاب.</li>
+  <li>تحلیل ویدئو برای شناسایی ترک و آسیب ساختاری.</li>
+  <li>تخمین هزینه بازسازی و اولویت‌بندی پروژه‌ها.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>نقشه ناهمواری و لایه GIS برای تصمیم‌سازان.</li>
+  <li>گزارش BOQ و برآورد هزینه برای هر مقطع.</li>
+  <li>داشبورد پیگیری اجرای پروژه و وضعیت قرارداد.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Pavement & rail condition analytics",
+        summary:
+          "A combined accelerometer and imagery workflow that quantifies IRI, defects and maintenance budgets for Semnan's transport corridors.",
+        category: "Transport infrastructure",
+        badges: [
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Maintenance planning" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Semnan's roads and rail lines require proactive maintenance. The analytics stack merges vehicle-based accelerometer feeds, imagery and field inspections to derive IRI scores and repair cost estimates.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Prioritising preventative maintenance on busy corridors.</li>
+  <li>Disparate datasets from inspectors and contractors.</li>
+  <li>Evidence needed to justify budgets to provincial and national bodies.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Equip survey vehicles with sensors to capture ride quality.</li>
+  <li>Process video frames to locate cracks and structural issues.</li>
+  <li>Estimate rehabilitation costs and rank projects.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>GIS layers and dashboards showing condition trends.</li>
+  <li>Bill-of-quantity reports per section.</li>
+  <li>Implementation tracker aligned with contract milestones.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 11,
+    slug: "retinopathy-clinical-nlp-fa",
+    cover: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+        alt: {
+          fa: "داشبورد غربالگری رتینوپاتی",
+          en: "Retinopathy screening dashboard"
+        },
+        caption: {
+          fa: "ترکیب تحلیل تصویر و پرونده بالینی",
+          en: "Fusing image analysis with clinical records"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "غربالگری رتینوپاتی مبتنی بر NLP",
+        summary:
+          "راهکاری برای تحلیل تصاویر فوندوس و متن پرونده بالینی فارسی جهت غربالگری رتینوپاتی دیابتی در مراکز درمانی سمنان.",
+        category: "سلامت دیجیتال",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "بینایی سنجی" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>با رشد بیماران دیابتی در سمنان، غربالگری رتینوپاتی نیازمند اتوماسیون است. این سامانه تصاویر شبکیه و یادداشت پزشکی فارسی را ترکیب می‌کند تا موارد پرریسک سریع‌تر معرفی شوند.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>کمبود نیروی متخصص و ازدحام لیست انتظار.</li>
+  <li>متن‌های آزاد در پرونده که استخراج ریسک را دشوار می‌کند.</li>
+  <li>لزوم رعایت حریم خصوصی و استقرار داخلی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>استفاده از مدل بینایی برای شناسایی ضایعات در تصاویر فوندوس.</li>
+  <li>پردازش زبان طبیعی برای استخراج شاخص‌های خطر از پرونده فارسی.</li>
+  <li>امتیازدهی و ایجاد داشبورد ارجاع برای پزشکان.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>سیستم غربالگری با رابط فارسی و ثبت سوابق.</li>
+  <li>گزارش بالینی برای کلینیک و معاونت درمان.</li>
+  <li>مستند حاکمیت داده و چارچوب حفظ حریم خصوصی.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Retinopathy screening with Farsi NLP",
+        summary:
+          "An on-premise workflow that analyses fundus images and Persian clinical notes to triage diabetic retinopathy cases in Semnan clinics.",
+        category: "Digital health",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Ophthalmology" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Diabetic populations in Semnan continue to grow. The screening platform fuses retinal imaging with Persian-language notes to flag high-risk patients and support clinicians.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Limited specialist availability and long waiting lists.</li>
+  <li>Unstructured Farsi notes that hide relevant risk factors.</li>
+  <li>Strict privacy requirements mandating on-prem deployment.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Apply computer vision to detect lesions in fundus images.</li>
+  <li>Use NLP pipelines to extract risk indicators from clinical text.</li>
+  <li>Score cases and populate referral dashboards.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Persian-language screening system with audit trails.</li>
+  <li>Clinical summaries for specialists and health authorities.</li>
+  <li>Data governance artefacts covering privacy and retention.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 12,
+    slug: "civic-rag-137",
+    cover: "/images/projects/civic-rag-137/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/civic-rag-137/cover.svg",
+        alt: {
+          fa: "داشبورد رسیدگی به درخواست‌های مردمی",
+          en: "Civic request handling dashboard"
+        },
+        caption: {
+          fa: "جست‌وجوی هوشمند پرونده‌های سامانه ۱۳۷",
+          en: "Intelligent search across municipality service cases"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "دستیار هوشمند سامانه ۱۳۷",
+        summary:
+          "راهکار بازیابی اطلاعات و تولید پاسخ که اپراتورهای سامانه ۱۳۷ شهرداری سمنان را در پاسخگویی سریع یاری می‌کند.",
+        category: "خدمات شهری",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "دستیار محاوره‌ای" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>سامانه تماس ۱۳۷ حجم زیادی از درخواست‌های مردمی را ثبت می‌کند. این دستیار با تکیه بر RAG فارسی، سوابق مشابه و مقررات را جمع‌بندی می‌کند تا پاسخ دقیق‌تر و سریع‌تر ارائه شود.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>یافتن پرونده مشابه در میان هزاران درخواست ثبت‌شده.</li>
+  <li>هماهنگی میان اپراتور، کارشناسان و مناطق شهرداری.</li>
+  <li>نیاز به مستندسازی پاسخ و کاهش اتکا به حافظه فردی.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>استخراج دانش از آرشیو مکاتبات، مصوبات و پاسخ‌های تاریخی.</li>
+  <li>پیاده‌سازی زنجیره بازیابی-تولید با مدل زبانی فارسی.</li>
+  <li>ارائه پیشنهاد پاسخ و ثبت تعامل برای ارزیابی کیفیت.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>پنل اپراتور با جست‌وجوی معنایی و پیشنهاد متن.</li>
+  <li>داشبورد نظارت برای معاونت خدمات شهری.</li>
+  <li>گزارش دوره‌ای از کیفیت پاسخ و زمان رسیدگی.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Civic RAG assistant for 137 hotline",
+        summary:
+          "A retrieval-augmented assistant that helps Semnan's municipal hotline operators answer citizen requests with consistent guidance.",
+        category: "Civic services",
+        badges: [
+          { label: "Status", value: "Operational pilot" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "Conversational AI" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Semnan's 137 hotline receives thousands of civic service cases. The assistant uses a Persian RAG pipeline to retrieve precedents, regulations and recommended steps so operators respond quickly and consistently.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Locating similar cases across a large historical archive.</li>
+  <li>Aligning operators, experts and district offices.</li>
+  <li>Documenting answers instead of relying on personal memory.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Index legacy correspondence, approvals and resolution notes.</li>
+  <li>Build a retrieval-augmented generation workflow tuned for Persian.</li>
+  <li>Surface suggested responses while logging interactions.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Operator console with semantic search and drafted replies.</li>
+  <li>Supervisory dashboards for municipal leadership.</li>
+  <li>Quality reports covering response accuracy and handling time.</li>
+</ul>
+        `
+      }
+    }
+  },
+  {
+    id: 13,
+    slug: "lite-soc-ot-security",
+    cover: "/images/projects/lite-soc-ot-security/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/lite-soc-ot-security/cover.svg",
+        alt: {
+          fa: "مرکز عملیات امنیت OT",
+          en: "OT security operations centre"
+        },
+        caption: {
+          fa: "پایش شبکه صنعتی و تولید هشدار",
+          en: "Monitoring industrial networks with actionable alerts"
+        }
+      }
+    ],
+    locales: {
+      fa: {
+        title: "SOC سبک برای شبکه‌های صنعتی",
+        summary:
+          "چارچوبی سبک و قابل استقرار داخلی برای پایش امنیت شبکه‌های OT در صنایع استان سمنان.",
+        category: "امنیت سایبری",
+        badges: [
+          { label: "وضعیت", value: "پروژه در حال بهره‌برداری" },
+          { label: "استان فعال", value: "سمنان" },
+          { label: "حوزه تخصصی", value: "امنیت OT" }
+        ],
+        executiveHtml: `
+<h3>خلاصه مدیریتی</h3>
+<p>زیرساخت‌های صنعتی سمنان به سامانه‌ای نیاز دارند که بدون وابستگی به سرویس ابری، تهدیدات سایبری را پایش کند. SOC سبک ویستا لاگ‌های شبکه و تجهیزات را تحلیل کرده و هشدار قابل اقدام ارائه می‌دهد.</p>
+<h3>مسئله اصلی</h3>
+<ul>
+  <li>محدودیت اتصال به اینترنت و نیاز به استقرار کاملاً داخلی.</li>
+  <li>کمبود تیم امنیتی بزرگ و نیاز به خودکارسازی.</li>
+  <li>حفاظت از فرآیندهای حساس تولید و توزیع.</li>
+</ul>
+<h3>رویکرد اجرا</h3>
+<ul>
+  <li>پیاده‌سازی ماژول جمع‌آوری لاگ و ترافیک در شبکه OT.</li>
+  <li>تحلیل رفتار ناهنجار با قوانین و مدل یادگیری ماشین.</li>
+  <li>تعریف روال پاسخ و داشبورد وضعیت برای مدیران.</li>
+</ul>
+<h3>خروجی‌های تحویلی</h3>
+<ul>
+  <li>داشبورد SOC با دید کلی و هشدارهای اولویت‌بندی شده.</li>
+  <li>کتابچه عملیات پاسخ‌گویی و تمرین‌های دوره‌ای.</li>
+  <li>گزارش انطباق برای ممیزی‌های داخلی و حاکمیتی.</li>
+</ul>
+        `
+      },
+      en: {
+        title: "Lightweight SOC for OT networks",
+        summary:
+          "An on-prem security operations framework tailored to the industrial OT environments operating across Semnan.",
+        category: "Cybersecurity",
+        badges: [
+          { label: "Status", value: "Operational programme" },
+          { label: "Province", value: "Semnan" },
+          { label: "Focus", value: "OT security" }
+        ],
+        executiveHtml: `
+<h3>Executive summary</h3>
+<p>Semnan's industrial operators need cyber monitoring that works fully on-premises. The lightweight SOC ingests logs and network telemetry from OT assets, correlates anomalies and produces actionable alerts.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Restricted connectivity and the requirement for self-hosted tooling.</li>
+  <li>Lean security teams who require automation.</li>
+  <li>Protecting sensitive production and distribution processes.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy collectors across OT segments to capture logs and traffic.</li>
+  <li>Apply behavioural analytics and rule-based detection tuned for OT.</li>
+  <li>Define response workflows and executive dashboards.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Prioritised alerting and situational awareness dashboards.</li>
+  <li>Runbooks and tabletop exercises for response teams.</li>
+  <li>Compliance-ready reporting for internal and governmental audits.</li>
+</ul>
+        `
       }
     }
   }

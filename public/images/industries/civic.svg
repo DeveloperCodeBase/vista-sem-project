@@ -1,0 +1,18 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="civic-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020d1c" />
+      <stop offset="100%" stop-color="#143661" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#civic-bg)" />
+  <g fill="#5ac1ff" opacity="0.4">
+    <circle cx="200" cy="260" r="80" />
+    <circle cx="360" cy="240" r="100" />
+    <circle cx="540" cy="260" r="110" />
+    <circle cx="700" cy="240" r="90" />
+  </g>
+  <g stroke="#8dd8ff" stroke-width="3" fill="none">
+    <path d="M140 420 Q260 360 380 380 T620 360 T720 380" />
+  </g>
+</svg>

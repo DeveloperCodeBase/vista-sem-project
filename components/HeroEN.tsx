@@ -36,11 +36,10 @@ export default function HeroEN() {
               Vista Smart Network
             </span>
             <h1 className="max-w-2xl text-3xl font-black leading-relaxed text-white sm:text-4xl lg:text-[42px]">
-              Operational <span className="text-cyan-300">AI platforms</span> for water, energy and resilient cities
+              Operational <span className="text-cyan-300">AI programmes</span> for Semnan province
             </h1>
             <p className="max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
-              We architect, deploy and support AI-driven systems—from leak detection digital twins to predictive maintenance and
-              executive dashboards—delivered on-premises with full security governance.
+              Vista Smart Network architects, deploys and maintains on-prem AI systems across Semnan—from water digital twins and smart irrigation to civic services—while staying embedded with local teams.
             </p>
             <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Link href="#contact" className="btn text-sm sm:text-base">
@@ -55,33 +54,33 @@ export default function HeroEN() {
           <div className="glass-panel space-y-5 rounded-3xl border border-white/10 p-6 text-white/90 shadow-[0_20px_80px_rgba(15,23,42,0.45)] backdrop-blur-xl">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Impact</p>
-                <p className="text-3xl font-bold">+28%</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Semnan</p>
+                <p className="text-3xl font-bold">Real-time Ops</p>
               </div>
               <span className="rounded-full bg-cyan-500/20 px-4 py-2 text-sm font-semibold text-cyan-200">
-                Water & Energy
+                Water · Energy · Civic
               </span>
             </div>
             <p className="text-sm leading-7 text-white/80">
-              Faster leak detection, optimized pressure management and reduced field OPEX through predictive analytics and digital twins.
+              A single multidisciplinary team covering data engineering, modelling and operations to keep AI platforms running on the ground with municipal and utility partners.
             </p>
             <div className="grid gap-3 sm:grid-cols-3 text-right sm:text-left">
               <div className="mini-stat items-start text-left">
-                <span className="mini-stat__value">12+</span>
-                <span className="mini-stat__label">Live deployments</span>
+                <span className="mini-stat__value">13</span>
+                <span className="mini-stat__label">Active delivery tracks</span>
               </div>
               <div className="mini-stat items-start text-left">
-                <span className="mini-stat__value">21 regions</span>
-                <span className="mini-stat__label">Nationwide coverage</span>
+                <span className="mini-stat__value">1 province</span>
+                <span className="mini-stat__label">Deep regional focus</span>
               </div>
               <div className="mini-stat items-start text-left">
                 <span className="mini-stat__value">24/7</span>
-                <span className="mini-stat__label">Operational monitoring</span>
+                <span className="mini-stat__label">Support & monitoring</span>
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-7 text-white/75">
-              <strong className="block text-white">Government & utility ready</strong>
-              Full knowledge transfer, on-premises deployment and secure integration with SCADA, GIS and enterprise systems.
+              <strong className="block text-white">Vista Smart Network · Semnan</strong>
+              Based at Semnan Science & Technology Park with executive sponsorship and embedded support for provincial utilities, municipalities and healthcare networks.
             </div>
           </div>
         </div>

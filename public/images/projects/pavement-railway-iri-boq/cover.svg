@@ -1,0 +1,26 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-pavement" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f" />
+      <stop offset="100%" stop-color="#1b1f2e" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg-pavement)" />
+  <g stroke="#8ea8ff" stroke-width="2" opacity="0.5">
+    <path d="M200 580 L1000 500" />
+    <path d="M200 640 L1000 560" />
+    <path d="M200 700 L1000 620" />
+  </g>
+  <g fill="none" stroke="#4ac6ff" stroke-width="4">
+    <polyline points="240,520 320,480 420,520 520,460 640,500 760,440 900,480" />
+  </g>
+  <g fill="#ffffff" font-family="'IRANSans','Segoe UI',sans-serif">
+    <text x="240" y="240" font-size="40" font-weight="700">Pavement & Railway Analytics</text>
+    <text x="240" y="288" font-size="24" fill="#c5d4ff">IRI & BOQ insights</text>
+  </g>
+  <g fill="#4ac6ff" opacity="0.6">
+    <circle cx="320" cy="480" r="12" />
+    <circle cx="520" cy="460" r="12" />
+    <circle cx="760" cy="440" r="12" />
+  </g>
+</svg>

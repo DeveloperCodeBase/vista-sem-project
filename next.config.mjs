@@ -3,11 +3,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["source.unsplash.com", "images.unsplash.com"]
+    remotePatterns: []
   },
-    experimental: {
-    optimizeCss: true,
-  },
+  experimental: {
+    optimizeCss: true
+  }
 };
 
 export default nextConfig;

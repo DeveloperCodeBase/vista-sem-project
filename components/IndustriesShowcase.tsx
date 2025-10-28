@@ -1,23 +1,23 @@
 const industries = [
   {
-    name: "آب و فاضلاب",
-    description: "پایش نشتی، بهینه‌سازی فشار، مدیریت انرژی پمپاژ و برنامه‌ریزی سرمایه‌ای شبکه‌های توزیع.",
-    image: "https://images.unsplash.com/photo-1502301197179-65228ab57f78?q=80&w=1600&auto=format&fit=crop"
+    name: "آب و زیرساخت",
+    description: "دوقلوی دیجیتال، کشف نشتی و پایش فرونشست برای شبکه‌های آب شهری و روستایی استان سمنان.",
+    image: "/images/industries/water.svg"
   },
   {
-    name: "انرژی و نیروگاه",
-    description: "مانیتورینگ بلادرنگ، تشخیص آنومالی در توربین و شبکه برق، مدیریت بار و پیش‌بینی مصرف.",
-    image: "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1600&auto=format&fit=crop"
+    name: "انرژی و صنایع",
+    description: "پایش نیروگاه خورشیدی، مدیریت انرژی و امنیت شبکه‌های صنعتی با استقرار کاملاً داخلی.",
+    image: "/images/industries/energy.svg"
   },
   {
-    name: "شهر هوشمند و ایمنی",
-    description: "تحلیل تصویری، مدیریت ترافیک، هشداردهی بحران و داشبورد فرماندهی برای مدیریت شهری.",
-    image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1600&auto=format&fit=crop"
+    name: "کشاورزی و محیط زیست",
+    description: "آبیاری دقیق باغات پسته دامغان، پایش آبخوان و هشدار حریق برای جنگل ابر.",
+    image: "/images/industries/agriculture.svg"
   },
   {
-    name: "سلامت و داده‌های بالینی",
-    description: "تحلیل پیش‌بینانه برای بیمارستان‌ها، اولویت‌بندی منابع، داشبوردهای کیفیت خدمت و رضایت بیماران.",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop"
+    name: "شهری و خدمات",
+    description: "دستیار هوشمند سامانه ۱۳۷، داشبوردهای تصمیم‌سازی شهری و تحلیل خدمات شهروندی در سمنان.",
+    image: "/images/industries/civic.svg"
   }
 ];
 
