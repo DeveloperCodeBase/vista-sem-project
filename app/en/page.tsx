@@ -5,6 +5,7 @@ import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import StatsHighlightsEN from "@/components/StatsHighlightsEN";
 import ServicesShowcaseEN from "@/components/ServicesShowcaseEN";
+import CompanyCarousel from "@/components/CompanyCarousel";
 import ProcessRoadmapEN from "@/components/ProcessRoadmapEN";
 import TestimonialBannerEN from "@/components/TestimonialBannerEN";
 import projects from "@/data/projects";
@@ -33,6 +34,7 @@ export default function HomeEN() {
         </section>
 
         <ServicesShowcaseEN />
+        <CompanyCarousel locale="en" />
         <ProcessRoadmapEN />
         <TestimonialBannerEN />
 

@@ -1,79 +1,122 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
+
+type Locale = "fa" | "en";
 
 const slides = [
   {
-    title: "تیم چندرشته‌ای",
-    description:
-      "متخصصان داده، مهندسی زیرساخت، نرم‌افزار و تجربه کاربری در یک تیم منسجم برای حل مسائل پیچیده سازمانی.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"
+    image: "/images/company/team-lab.svg",
+    alt: {
+      fa: "همکاری تیم چندرشته‌ای در آزمایشگاه داده",
+      en: "Cross-disciplinary lab collaborating on data"
+    },
+    title: {
+      fa: "تیم چندرشته‌ای",
+      en: "Cross-disciplinary team"
+    },
+    description: {
+      fa: "متخصصان داده، زیرساخت، نرم‌افزار و تجربه کاربری در یک تیم منسجم برای حل مسائل پیچیده سازمانی.",
+      en: "Data, infrastructure, software and UX experts working as one team to solve complex operational challenges."
+    }
   },
   {
-    title: "معماری امنیت و استقرار داخلی",
-    description:
-      "استقرار در دیتاسنتر سازمان، یکپارچه با سامانه‌های موجود، احراز هویت سازمانی و ممیزی کامل رویدادها.",
-    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1600&auto=format&fit=crop"
+    image: "/images/company/security-architecture.svg",
+    alt: {
+      fa: "معماری امنیت با هسته مرکزی و لایه‌های محافظ",
+      en: "Security architecture with core and protective layers"
+    },
+    title: {
+      fa: "معماری امنیت و استقرار داخلی",
+      en: "Secure on-prem architecture"
+    },
+    description: {
+      fa: "استقرار در دیتاسنتر سازمان، احراز هویت سازمانی و ممیزی کامل برای انطباق با الزامات حاکمیتی.",
+      en: "Delivered on customer infrastructure with enterprise identity, auditing and compliance."
+    }
   },
   {
-    title: "مرکز نوآوری پارک علم و فناوری سمنان",
-    description:
-      "به عنوان واحد فناور پارک علم و فناوری، دسترسی به شبکه مشاوران تخصصی و زیرساخت‌های آزمایشگاهی داریم.",
-    image: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop"
+    image: "/images/company/innovation-hub.svg",
+    alt: {
+      fa: "مرکز نوآوری پارک علم و فناوری با عناصر دیجیتال",
+      en: "Innovation hub at the science park"
+    },
+    title: {
+      fa: "مرکز نوآوری پارک علم و فناوری",
+      en: "Science park innovation hub"
+    },
+    description: {
+      fa: "به عنوان واحد فناور پارک علم و فناوری سمنان، به شبکه مشاوران تخصصی و آزمایشگاه‌های حرفه‌ای دسترسی داریم.",
+      en: "Operating from Semnan Science & Technology Park with access to specialist advisors and lab facilities."
+    }
   }
 ];
 
-export default function CompanyCarousel() {
+type CompanyCarouselProps = {
+  locale?: Locale;
+};
+
+export default function CompanyCarousel({ locale = "fa" }: CompanyCarouselProps) {
   const [index, setIndex] = React.useState(0);
+  const isFa = locale === "fa";
 
   React.useEffect(() => {
-    const timer = setInterval(() => setIndex((prev) => (prev + 1) % slides.length), 6500);
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % slides.length), 7000);
     return () => clearInterval(timer);
   }, []);
 
-  const prev = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  const next = () => setIndex((prev) => (prev + 1) % slides.length);
+  const go = (delta: number) => setIndex((prev) => (prev + delta + slides.length) % slides.length);
 
   return (
     <section className="py-20">
-      <div className="container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10">
+      <div className={`container grid gap-10 lg:grid-cols-[1.05fr_0.95fr] ${isFa ? "text-right" : "text-left"}`}>
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#070c1f]">
           {slides.map((slide, i) => (
-            <img
-              key={slide.image}
-              src={slide.image}
-              alt={slide.title}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ${
-                i === index ? "opacity-100" : "opacity-0"
-              }`}
-            />
+            <div key={slide.image} className={`absolute inset-0 transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== index}>
+              <Image src={slide.image} alt={slide.alt[locale]} fill sizes="(min-width: 1024px) 50vw, 90vw" className="object-cover" />
+            </div>
           ))}
           <div className="relative h-[360px] w-full bg-gradient-to-br from-[#050b1e]/90 to-[#07102c]/70">
-            <div className="absolute inset-0 flex items-end justify-between p-4 text-white/80">
-              <button onClick={prev} className="carousel-btn">قبلی</button>
-              <button onClick={next} className="carousel-btn">بعدی</button>
+            <div className={`absolute inset-0 flex items-end justify-between p-4 text-white/80 ${isFa ? "flex-row" : "flex-row-reverse"}`}>
+              <button onClick={() => go(-1)} className="carousel-btn" aria-label={isFa ? "قبلی" : "Previous"}>
+                {isFa ? "قبلی" : "Prev"}
+              </button>
+              <button onClick={() => go(1)} className="carousel-btn" aria-label={isFa ? "بعدی" : "Next"}>
+                {isFa ? "بعدی" : "Next"}
+              </button>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-[#020617]/40 to-transparent" />
           </div>
         </div>
 
-        <div className="space-y-6 text-right">
+        <div className="space-y-6">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1 text-xs text-white/70">
-            درباره ویستا
+            {isFa ? "درباره ویستا" : "About Vista"}
           </span>
-          <h2 className="section-title">شرکت شبکه هوشمند ابتکار ویستا</h2>
+          <h2 className="section-title">{isFa ? "شرکت شبکه هوشمند ابتکار ویستا" : "Vista Smart Network"}</h2>
           <p className="text-lg leading-8 text-white/70">
-            با تکیه بر تجربه عملیاتی در پروژه‌های آب، انرژی و شهری، ویستا راهکارهای داده‌محور با استقرار داخلی، امنیت کامل و پشتیبانی طولانی‌مدت ارائه می‌دهد.
+            {isFa
+              ? "با تجربه عملیاتی در پروژه‌های آب، انرژی و شهری، ویستا راهکارهای داده‌محور با استقرار داخلی، امنیت کامل و پشتیبانی مداوم ارائه می‌دهد."
+              : "With hands-on programmes across water, energy and civic innovation, Vista delivers secure on-prem AI solutions with long-term support."}
           </p>
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 className="mb-2 text-xl font-bold text-white">{slides[index].title}</h3>
-            <p className="text-sm leading-7 text-white/70">{slides[index].description}</p>
+            <h3 className="mb-2 text-xl font-bold text-white">{slides[index].title[locale]}</h3>
+            <p className="text-sm leading-7 text-white/70">{slides[index].description[locale]}</p>
           </div>
-          <ul className="grid gap-3 text-sm text-white/70 sm:grid-cols-2">
-            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">مدیرعامل: مسعود بخشی — کارشناس هوش مصنوعی</li>
-            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">هیئت‌مدیره: محمدرضا یوسفی — فرماندار اسبق</li>
-            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">هیئت‌مدیره: محمد بخشی — مدیر اسبق آب منطقه‌ای شاهرود</li>
-            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">آدرس: پارک علم و فناوری استان سمنان</li>
+          <ul className={`grid gap-3 text-sm text-white/70 sm:grid-cols-2 ${isFa ? "" : "text-left"}`}>
+            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              {isFa ? "مدیرعامل: مسعود بخشی — معمار سامانه‌های هوشمند" : "CEO: Masoud Bakhshi — Intelligent systems architect"}
+            </li>
+            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              {isFa ? "هیئت‌مدیره: محمدرضا یوسفی — فرماندار اسبق" : "Board: Mohammadreza Yousefi — Former governor"}
+            </li>
+            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              {isFa ? "هیئت‌مدیره: محمد بخشی — مدیر اسبق آب منطقه‌ای شاهرود" : "Board: Mohammad Bakhshi — Former regional water director"}
+            </li>
+            <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              {isFa ? "آدرس: پارک علم و فناوری استان سمنان" : "Address: Semnan Science & Technology Park"}
+            </li>
           </ul>
         </div>
       </div>

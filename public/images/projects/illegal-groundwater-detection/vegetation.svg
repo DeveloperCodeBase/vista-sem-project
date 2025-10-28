@@ -1,0 +1,34 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#041226" />
+      <stop offset="50%" stop-color="#07203a" />
+      <stop offset="100%" stop-color="#041628" />
+    </linearGradient>
+    <linearGradient id="lineA" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#63ff8c" />
+      <stop offset="100%" stop-color="#18d08f" />
+    </linearGradient>
+    <linearGradient id="lineB" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#69c8ff" />
+      <stop offset="100%" stop-color="#3aa0ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g stroke="rgba(255,255,255,0.1)">
+    <path d="M200 220 L1000 220" />
+    <path d="M200 300 L1000 300" />
+    <path d="M200 380 L1000 380" />
+    <path d="M200 460 L1000 460" />
+    <path d="M200 540 L1000 540" />
+    <path d="M200 620 L1000 620" />
+  </g>
+  <g fill="none" stroke-width="6" stroke-linecap="round">
+    <path d="M220 520 Q320 360 420 400 T620 420 T820 360 T1000 300" stroke="url(#lineA)" />
+    <path d="M220 580 Q320 480 420 500 T620 540 T820 440 T1000 380" stroke="url(#lineB)" opacity="0.7" />
+  </g>
+  <g fill="#fff" font-family="'Segoe UI', sans-serif" font-size="22" opacity="0.65">
+    <text x="240" y="180">NDVI vs power signature</text>
+    <text x="240" y="660">Seasonal anomaly detection</text>
+  </g>
+</svg>

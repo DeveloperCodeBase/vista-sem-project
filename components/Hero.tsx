@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop"
+  { src: "/images/hero/ai-water-grid.svg", alt: "شبکه آبرسانی هوشمند با حسگرهای متصل" },
+  { src: "/images/hero/command-center.svg", alt: "مرکز فرمان هوش مصنوعی با داشبوردهای مدیریتی" },
+  { src: "/images/hero/field-team.svg", alt: "تیم میدانی مجهز به ابزارهای تحلیلی" }
 ];
 
 export default function Hero() {
@@ -20,15 +21,10 @@ export default function Hero() {
   return (
     <section className="hero relative overflow-hidden">
       <div className="absolute inset-0">
-        {heroImages.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt="هوش مصنوعی در زیرساخت"
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ${
-              i === index ? "opacity-90" : "opacity-0"
-            }`}
-          />
+        {heroImages.map((item, i) => (
+          <div key={item.src} className={`absolute inset-0 transition-opacity duration-[2000ms] ${i === index ? "opacity-100" : "opacity-0"}`}>
+            <Image src={item.src} alt={item.alt} fill priority sizes="100vw" className="object-cover" />
+          </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-br from-[#05070f]/95 via-[#080e21]/90 to-[#101b3a]/80" />
         <div className="absolute -left-40 top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
@@ -73,11 +69,11 @@ export default function Hero() {
             </p>
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="mini-stat">
-                <span className="mini-stat__value">12+</span>
+                <span className="mini-stat__value">۱۲+</span>
                 <span className="mini-stat__label">پروژه در حال بهره‌برداری</span>
               </div>
               <div className="mini-stat">
-                <span className="mini-stat__value">6 استان</span>
+                <span className="mini-stat__value">۲۱ استان</span>
                 <span className="mini-stat__label">پوشش جغرافیایی</span>
               </div>
               <div className="mini-stat">

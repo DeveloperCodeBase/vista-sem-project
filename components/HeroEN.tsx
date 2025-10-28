@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1920&auto=format&fit=crop"
+  { src: "/images/hero/command-center.svg", alt: "AI command center with live dashboards" },
+  { src: "/images/hero/ai-water-grid.svg", alt: "Digital twin of an intelligent water grid" },
+  { src: "/images/hero/field-team.svg", alt: "Field engineers with augmented analytics" }
 ];
 
 export default function HeroEN() {
@@ -20,15 +21,10 @@ export default function HeroEN() {
   return (
     <section className="hero relative overflow-hidden">
       <div className="absolute inset-0">
-        {heroImages.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt="AI infrastructure"
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ${
-              i === index ? "opacity-100" : "opacity-0"
-            }`}
-          />
+        {heroImages.map((item, i) => (
+          <div key={item.src} className={`absolute inset-0 transition-opacity duration-[2000ms] ${i === index ? "opacity-100" : "opacity-0"}`}>
+            <Image src={item.src} alt={item.alt} fill priority sizes="100vw" className="object-cover" />
+          </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-br from-[#05070f]/95 via-[#080e21]/90 to-[#101b3a]/80" />
       </div>
@@ -75,7 +71,7 @@ export default function HeroEN() {
                 <span className="mini-stat__label">Live deployments</span>
               </div>
               <div className="mini-stat items-start text-left">
-                <span className="mini-stat__value">6 regions</span>
+                <span className="mini-stat__value">21 regions</span>
                 <span className="mini-stat__label">Nationwide coverage</span>
               </div>
               <div className="mini-stat items-start text-left">

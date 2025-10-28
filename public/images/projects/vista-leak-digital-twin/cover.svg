@@ -1,0 +1,39 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020a1b" />
+      <stop offset="50%" stop-color="#041631" />
+      <stop offset="100%" stop-color="#031125" />
+    </linearGradient>
+    <radialGradient id="pulse" cx="0.7" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="#00ffe9" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#00ffe9" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00f5ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#37d7ff" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <circle cx="880" cy="260" r="320" fill="url(#pulse)" />
+  <g stroke="url(#line)" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M160 620 Q420 480 720 560 T1040 520" />
+    <path d="M180 520 Q360 360 600 440 T980 440" opacity="0.7" />
+    <path d="M140 700 H1040" opacity="0.4" />
+  </g>
+  <g stroke="#00faff" stroke-width="3" opacity="0.35">
+    <path d="M200 300 H1000" />
+    <path d="M200 380 H1000" />
+    <path d="M200 460 H1000" />
+  </g>
+  <g fill="#65f7ff">
+    <circle cx="320" cy="500" r="12" />
+    <circle cx="520" cy="450" r="10" />
+    <circle cx="780" cy="500" r="13" />
+    <circle cx="980" cy="440" r="11" />
+  </g>
+  <g fill="#fff" font-family="'IRANSans', 'Segoe UI', sans-serif" font-size="24" opacity="0.65">
+    <text x="200" y="240">VistaLeak Digital Twin</text>
+    <text x="200" y="280">Real-time leak intelligence</text>
+  </g>
+</svg>

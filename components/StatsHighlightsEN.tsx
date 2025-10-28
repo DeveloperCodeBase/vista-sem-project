@@ -1,8 +1,8 @@
 export default function StatsHighlightsEN() {
   const stats = [
-    { value: "18+", label: "AI & GeoAI programmes" },
-    { value: "$700K", label: "Annual savings unlocked" },
-    { value: "97%", label: "Stakeholder satisfaction" },
+    { value: "14 platforms", label: "Live operational programmes" },
+    { value: "21 provinces", label: "Footprint across Iran" },
+    { value: "32B IRR", label: "Documented annual savings" },
     { value: "ISO 27001", label: "Security governance" }
   ];
 
