@@ -1,0 +1,28 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#020817"/>
+  <defs>
+    <radialGradient id="surveyGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#surveyGrad)"/>
+  <g transform="translate(160,160)">
+    <text font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">برداشت میدانی</text>
+    <text y="52" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#A5B4FC">Line-scan • IMU • GNSS RTK</text>
+  </g>
+  <g transform="translate(160,260)">
+    <rect width="880" height="360" rx="32" fill="#0B1120" stroke="#3B82F6" stroke-opacity="0.5" stroke-width="2"/>
+    <g transform="translate(60,80)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#BFDBFE">
+      <text>frame  12458   lat 35.58   lon 53.39   speed 64 km/h</text>
+      <text y="44">IRI left  3.6      IRI right 3.4      variance 0.6</text>
+      <text y="88" fill="#FACC15">distress crack  severity 2  length 12.5m</text>
+      <text y="132" fill="#FDBA74">distress pothole severity 1  area 0.9m²</text>
+    </g>
+    <g transform="translate(620,60)">
+      <circle cx="100" cy="100" r="96" fill="rgba(59,130,246,0.12)" stroke="#60A5FA" stroke-width="4"/>
+      <path d="M80 60 L120 100 L80 140" stroke="#60A5FA" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <text x="64" y="178" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="18" fill="#BFDBFE">Re-survey flag</text>
+    </g>
+  </g>
+</svg>

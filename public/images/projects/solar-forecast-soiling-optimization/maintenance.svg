@@ -1,0 +1,28 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#130A06"/>
+  <defs>
+    <radialGradient id="maintGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#FB923C" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#maintGrad)"/>
+  <g transform="translate(180,160)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#FED7AA">
+    <text font-size="36" font-weight="700">برنامه شست‌وشوی پنل</text>
+    <text y="52" font-size="20" fill="#FDBA74">Smart Scheduling • Water Saving</text>
+  </g>
+  <g transform="translate(180,260)">
+    <rect width="880" height="360" rx="32" fill="#431407" stroke="#FB923C" stroke-opacity="0.5" stroke-width="2"/>
+    <g transform="translate(60,80)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#FED7AA">
+      <text>next-wash       2024-05-24 06:00</text>
+      <text y="44">water-needed    18 m³</text>
+      <text y="88">soiling after    0.04 (est.)</text>
+      <text y="132" fill="#FACC15">savings         22% vs routine</text>
+    </g>
+    <g transform="translate(640,60)">
+      <circle cx="100" cy="100" r="96" fill="rgba(251,146,60,0.12)" stroke="#FDBA74" stroke-width="4"/>
+      <text x="48" y="110" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="30" fill="#FED7AA">+5.6%</text>
+      <text x="40" y="150" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="18" fill="#FDBA74">Energy gain</text>
+    </g>
+  </g>
+</svg>

@@ -40,7 +40,7 @@
     <circle cx="920" cy="320" r="16" />
     <circle cx="1020" cy="260" r="16" />
   </g>
-  <g fill="#fff" font-family="'IRANSans', 'Segoe UI', sans-serif" font-size="24" opacity="0.7">
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="24" opacity="0.7">
     <text x="240" y="180">VistaLeak-Score</text>
     <text x="240" y="220">Risk-driven capital planning</text>
   </g>

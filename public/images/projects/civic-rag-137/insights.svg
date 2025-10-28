@@ -1,0 +1,41 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#0B1222"/>
+  <defs>
+    <radialGradient id="rad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(580 420)">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="40" y="40" width="1120" height="720" rx="40" fill="url(#rad)" opacity="0.85"/>
+  <g transform="translate(160,160)">
+    <rect width="880" height="520" rx="28" fill="rgba(8,145,178,0.1)" stroke="#38BDF8" stroke-opacity="0.4" stroke-width="2"/>
+    <g transform="translate(60,60)" font-family="'Vazirmatn','Segoe UI',sans-serif">
+      <text font-size="38" font-weight="700" fill="#E0F2FE">تحلیل شکایات شهروندی</text>
+      <text y="54" font-size="20" fill="#BAE6FD">Topic Clusters • Sentiment • SLA</text>
+    </g>
+    <g transform="translate(60,150)">
+      <rect width="220" height="260" rx="22" fill="#0EA5E9" fill-opacity="0.18" stroke="#38BDF8" stroke-opacity="0.6" stroke-width="2"/>
+      <rect x="260" width="220" height="260" rx="22" fill="#6366F1" fill-opacity="0.18" stroke="#818CF8" stroke-opacity="0.6" stroke-width="2"/>
+      <rect x="520" width="220" height="260" rx="22" fill="#F97316" fill-opacity="0.18" stroke="#FB923C" stroke-opacity="0.6" stroke-width="2"/>
+    </g>
+    <g transform="translate(60,150)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="20" fill="#E0F2FE">
+      <text x="40" y="48" font-size="26" font-weight="600">محور خدمات شهری</text>
+      <text x="36" y="86" fill="#BAE6FD">۴۲٪ درخواست‌ها</text>
+      <text x="300" y="48" font-size="26" font-weight="600">زیرساخت ترافیک</text>
+      <text x="292" y="86" fill="#BAE6FD">۲۶٪ شکایات</text>
+      <text x="560" y="48" font-size="26" font-weight="600">امنیت و ایمنی</text>
+      <text x="556" y="86" fill="#FACC15">+۱۸٪ نسبت ماه قبل</text>
+    </g>
+    <g transform="translate(60,280)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#BAE6FD">
+      <text>vector-search latency  &lt; 45 ms</text>
+      <text y="44">sentiment accuracy      0.91</text>
+      <text y="88">knowledge sync         روزانه</text>
+    </g>
+    <g transform="translate(640,340)">
+      <circle cx="100" cy="100" r="96" fill="rgba(59,130,246,0.12)" stroke="#3B82F6" stroke-opacity="0.6" stroke-width="3"/>
+      <path d="M100 24 L128 80 H72 L100 24Z" fill="#3B82F6" fill-opacity="0.5"/>
+      <text x="72" y="118" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="22" fill="#BFDBFE">NLP</text>
+      <text x="48" y="152" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="18" fill="#BAE6FD">Alert</text>
+    </g>
+  </g>
+</svg>

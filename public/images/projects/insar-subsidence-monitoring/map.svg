@@ -1,0 +1,33 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#0A101F"/>
+  <defs>
+    <linearGradient id="heat" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#DC2626"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(80,80)">
+    <rect width="1040" height="640" rx="40" fill="#0F172A" stroke="#475569" stroke-opacity="0.5" stroke-width="2"/>
+    <g transform="translate(80,80)">
+      <rect width="720" height="480" rx="32" fill="#020617"/>
+      <path d="M40 420C120 320 220 360 320 300C420 240 520 180 640 220" stroke="url(#heat)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="180" cy="340" r="20" fill="#3B82F6"/>
+      <circle cx="420" cy="260" r="20" fill="#F97316"/>
+      <circle cx="560" cy="210" r="20" fill="#EF4444"/>
+      <text x="60" y="96" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="28" fill="#E2E8F0">نقشه نرخ فرونشست</text>
+      <text x="60" y="142" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#94A3B8">Sentinel-1 • PS/SBAS</text>
+    </g>
+    <g transform="translate(840,100)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#F1F5F9" font-size="22">
+      <text>سمنان</text>
+      <text y="44" fill="#F97316">-24 mm/yr</text>
+      <text y="88">دامغان</text>
+      <text y="132" fill="#3B82F6">-6 mm/yr</text>
+      <text y="176">شاهرود</text>
+      <text y="220" fill="#EF4444">-31 mm/yr</text>
+    </g>
+    <g transform="translate(160,620)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#CBD5F5">
+      <text>update cadence: 6 days</text>
+      <text x="360">processing: SBAS hybrid</text>
+    </g>
+  </g>
+</svg>

@@ -38,7 +38,7 @@
     <circle cx="900" cy="420" r="18" />
     <circle cx="1040" cy="300" r="18" />
   </g>
-  <g fill="#fff" font-family="'IRANSans', 'Segoe UI', sans-serif" font-size="22" opacity="0.7">
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="22" opacity="0.7">
     <text x="240" y="150">Risk map — VistaLeak-Score</text>
   </g>
 </svg>

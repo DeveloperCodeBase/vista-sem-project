@@ -32,7 +32,7 @@
     <circle cx="780" cy="500" r="13" />
     <circle cx="980" cy="440" r="11" />
   </g>
-  <g fill="#fff" font-family="'IRANSans', 'Segoe UI', sans-serif" font-size="24" opacity="0.65">
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="24" opacity="0.65">
     <text x="200" y="240">VistaLeak Digital Twin</text>
     <text x="200" y="280">Real-time leak intelligence</text>
   </g>

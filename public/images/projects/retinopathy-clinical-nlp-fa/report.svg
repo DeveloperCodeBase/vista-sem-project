@@ -1,0 +1,34 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#070A18"/>
+  <defs>
+    <radialGradient id="reportGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#6366F1" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#reportGrad)"/>
+  <g transform="translate(180,160)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#E0E7FF">
+    <text font-size="36" font-weight="700">گزارش بالینی دو زبانه</text>
+    <text y="52" font-size="20" fill="#C7D2FE">Persian SOAP • English Summary</text>
+  </g>
+  <g transform="translate(180,240)">
+    <rect width="360" height="400" rx="28" fill="#0F172A" stroke="#818CF8" stroke-opacity="0.5" stroke-width="2"/>
+    <rect x="400" width="360" height="400" rx="28" fill="#111827" stroke="#22D3EE" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+  <g transform="translate(220,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="20" fill="#E0E7FF">
+    <text font-weight="600">SOAP فارسی</text>
+    <text y="40" fill="#C7D2FE">س: تاری دید شبانه</text>
+    <text y="80" fill="#C7D2FE">ع: HbA1c=8.2%</text>
+    <text y="120" fill="#C7D2FE">پ: رتینوپاتی NPDR</text>
+    <text y="160" fill="#C7D2FE">پ: ارجاع فوری</text>
+  </g>
+  <g transform="translate(620,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="20" fill="#CFFAFE">
+    <text font-weight="600">English Summary</text>
+    <text y="40">• Referable DR detected</text>
+    <text y="80">• Quality check passed</text>
+    <text y="120">• Follow-up within 2 weeks</text>
+  </g>
+  <g transform="translate(180,680)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#A5B4FC">
+    <text>export format: HL7 CDA + PDF</text>
+  </g>
+</svg>

@@ -23,7 +23,7 @@
     <path d="M560 260 L560 360" />
     <path d="M520 360 L600 360" />
   </g>
-  <g fill="#ffffff" font-family="'IRANSans','Segoe UI',sans-serif">
+  <g fill="#ffffff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif">
     <text x="240" y="240" font-size="40" font-weight="700">UAS Predictive Maintenance</text>
     <text x="240" y="288" font-size="24" fill="#b5f2ff">Telemetry driven insights</text>
   </g>

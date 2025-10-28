@@ -24,11 +24,12 @@ export const projects: Project[] = [
     summaryEn: "An operational platform that fuses sensor data, hydraulic modelling and operator feedback to surface leaks before they escalate.",
     category: "آب/زیرساخت",
     categoryEn: "Water intelligence",
-    cover: "https://images.unsplash.com/photo-1521207418485-99c705420785?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/vista-leak-digital-twin/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1518470604146-58d2d2b2d08c?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/vista-leak-digital-twin/cover.svg",
+      "/images/projects/vista-leak-digital-twin/dashboard.svg",
+      "/images/projects/vista-leak-digital-twin/field.svg",
+      "/images/projects/vista-leak-digital-twin/insights.svg"
     ],
     content: `
 <h2>۱) سامانهٔ یکپارچه کشف نشتی و دوقلوی دیجیتال شبکه آب (VistaLeak)</h2>
@@ -118,11 +119,12 @@ export const projects: Project[] = [
     summaryEn: "A Semnan-focused decision framework that ranks pipe renewal candidates using operational, environmental and customer impact data.",
     category: "آب/زیرساخت",
     categoryEn: "Water capital planning",
-    cover: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/vista-leak-score/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1565708097881-bbf5e0b8f0f2?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1532634896-26909d0d4b6a?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/vista-leak-score/cover.svg",
+      "/images/projects/vista-leak-score/risk-map.svg",
+      "/images/projects/vista-leak-score/field.svg",
+      "/images/projects/vista-leak-score/capital.svg"
     ],
     content: `
 <h2>۲) تعویض هدفمند لوله‌های فرسوده (VistaLeak-Score)</h2>
@@ -242,11 +244,12 @@ export const projects: Project[] = [
     summaryEn: "A fusion of satellite imagery and electricity data that prioritises groundwater inspections across Semnan's plains.",
     category: "آب/محیط",
     categoryEn: "Groundwater stewardship",
-    cover: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/illegal-groundwater-detection/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1472157592780-9d0f59b4b175?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/illegal-groundwater-detection/cover.svg",
+      "/images/projects/illegal-groundwater-detection/nightlight.svg",
+      "/images/projects/illegal-groundwater-detection/vegetation.svg",
+      "/images/projects/illegal-groundwater-detection/inspection.svg"
     ],
     content: `
 <h2>۳) کشف برداشت غیرمجاز آب زیرزمینی (VIIRS + Sentinel-2 + برق چاه)</h2>
@@ -348,11 +351,11 @@ export const projects: Project[] = [
     summaryEn: "A precision irrigation platform that aligns soil moisture, weather forecasts and grower routines for Semnan's pistachio orchards.",
     category: "کشاورزی هوشمند",
     categoryEn: "Smart agriculture",
-    cover: "https://images.unsplash.com/photo-1545243424-0ce743321e11?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1519003300449-424ad0405076?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1541580621-5fc4d86e7845?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
+      "/images/projects/smart-irrigation-pistachio-damghan/dashboard.svg",
+      "/images/projects/smart-irrigation-pistachio-damghan/field.svg"
     ],
     content: `
 <h2>۴) آبیاری هوشمند باغات پسته دامغان</h2>
@@ -432,11 +435,11 @@ export const projects: Project[] = [
     summaryEn: "A forecasting and maintenance planner that keeps Semnan's solar plant output stable despite dust accumulation.",
     category: "انرژی پاک",
     categoryEn: "Renewable energy",
-    cover: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516116216624-53e697fedb15?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/solar-forecast-soiling-optimization/cover.svg",
+      "/images/projects/solar-forecast-soiling-optimization/forecast.svg",
+      "/images/projects/solar-forecast-soiling-optimization/maintenance.svg"
     ],
     content: `
 <h2>۵) پیش‌بینی تولید خورشیدی و شست‌وشوی بهینه</h2>
@@ -517,11 +520,11 @@ export const projects: Project[] = [
     summaryEn: "A risk model for Semnan's Abr forest that blends fuel conditions, weather and ranger reports to trigger early interventions.",
     category: "محیط زیست",
     categoryEn: "Environmental intelligence",
-    cover: "https://images.unsplash.com/photo-1503387762-730bce8583d9?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/wildfire-early-warning-abr/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1505826759031-1f0cf7f35649?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/wildfire-early-warning-abr/cover.svg",
+      "/images/projects/wildfire-early-warning-abr/tower.svg",
+      "/images/projects/wildfire-early-warning-abr/map.svg"
     ],
     content: `
 <h2>۶) هشدار سریع حریق جنگل ابر</h2>
@@ -600,11 +603,11 @@ export const projects: Project[] = [
     summaryEn: "A radar-based monitoring workflow that quantifies land subsidence across the Semnan plain and aligns it with ground truth observations.",
     category: "ژئودیتا/زمین",
     categoryEn: "Geospatial analytics",
-    cover: "https://images.unsplash.com/photo-1533157942-7d8c5f1bf57b?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/insar-subsidence-monitoring/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517940310602-27589c7c0a38?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/insar-subsidence-monitoring/cover.svg",
+      "/images/projects/insar-subsidence-monitoring/map.svg",
+      "/images/projects/insar-subsidence-monitoring/profile.svg"
     ],
     content: `
 <h2>۷) پایش فرونشست (InSAR)</h2>
@@ -682,11 +685,11 @@ export const projects: Project[] = [
     summaryEn: "Short-term dust forecasting that helps Semnan's critical facilities prepare ventilation systems ahead of events.",
     category: "محیط زیست",
     categoryEn: "Environmental resilience",
-    cover: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503508343067-7f3a3a5b69fb?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+      "/images/projects/dust-aqi-nowcast-hvac/dashboard.svg",
+      "/images/projects/dust-aqi-nowcast-hvac/hvac.svg"
     ],
     content: `
 <h2>۸) سامانهٔ هشدار گردوغبار و کیفیت هوا (Nowcasting PM + HVAC API)</h2>
@@ -798,11 +801,11 @@ export const projects: Project[] = [
     summaryEn: "A fleet health platform that analyses flight logs, vibration and battery data to schedule preventative maintenance for Semnan's drone missions.",
     category: "صنعت/نگهداشت",
     categoryEn: "Aerial inspection",
-    cover: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/uas-predictive-maintenance/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1447433819943-74a20887a81e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1496065187959-7f07b8353c55?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/uas-predictive-maintenance/cover.svg",
+      "/images/projects/uas-predictive-maintenance/inspection.svg",
+      "/images/projects/uas-predictive-maintenance/thermal.svg"
     ],
     content: `
 <h2>۹) بازرسی پهپادی و نگهداشت پیش‌گویانهٔ صنعتی (UAS + CV/IR + CMMS)</h2>
@@ -917,11 +920,11 @@ export const projects: Project[] = [
     summaryEn: "A combined accelerometer and imagery workflow that quantifies IRI, defects and maintenance budgets for Semnan's transport corridors.",
     category: "حمل‌ونقل",
     categoryEn: "Transport infrastructure",
-    cover: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/pavement-railway-iri-boq/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1430760814266-9c81759e5e55?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1536304940858-5f3ad9ab2f90?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/pavement-railway-iri-boq/cover.svg",
+      "/images/projects/pavement-railway-iri-boq/dashboard.svg",
+      "/images/projects/pavement-railway-iri-boq/survey.svg"
     ],
     content: `
 <h2>۱۰) پایش هوشمند روسازی راه/ریل (Imaging + IRI & Distress + BOQ)</h2>
@@ -1022,11 +1025,11 @@ export const projects: Project[] = [
     summaryEn: "An on-premise workflow that analyses fundus images and Persian clinical notes to triage diabetic retinopathy cases in Semnan clinics.",
     category: "سلامت دیجیتال",
     categoryEn: "Digital health",
-    cover: "https://images.unsplash.com/photo-1586015555751-63bb77f4322f?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+      "/images/projects/retinopathy-clinical-nlp-fa/workflow.svg",
+      "/images/projects/retinopathy-clinical-nlp-fa/report.svg"
     ],
     content: `
 <h2>۱۱) غربالگری رتینوپاتی و خلاصه‌ساز پزشکی فارسی (CV + Clinical NLP + HIS)</h2>
@@ -1135,11 +1138,11 @@ export const projects: Project[] = [
     summaryEn: "A retrieval-augmented assistant that helps Semnan's municipal hotline operators answer citizen requests with consistent guidance.",
     category: "شهر هوشمند",
     categoryEn: "Civic services",
-    cover: "https://images.unsplash.com/photo-1451188502541-13943edb6acb?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/civic-rag-137/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1497493292307-31c376b6e479?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/civic-rag-137/cover.svg",
+      "/images/projects/civic-rag-137/workflow.svg",
+      "/images/projects/civic-rag-137/insights.svg"
     ],
     content: `
 <h2>۱۲) Civic-RAG و تحلیل سامانه ۱۳۷ (On-Prem)</h2>
@@ -1250,11 +1253,11 @@ export const projects: Project[] = [
     summaryEn: "An on-prem security operations framework tailored to the industrial OT environments operating across Semnan.",
     category: "امنیت سایبری",
     categoryEn: "Cybersecurity",
-    cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+    cover: "/images/projects/lite-soc-ot-security/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1563986768817-257bf91c5753?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
+      "/images/projects/lite-soc-ot-security/cover.svg",
+      "/images/projects/lite-soc-ot-security/operations.svg",
+      "/images/projects/lite-soc-ot-security/ot.svg"
     ],
     content: `
 <h2>۱۳) SOC سبک‌وزن + امنیت OT</h2>

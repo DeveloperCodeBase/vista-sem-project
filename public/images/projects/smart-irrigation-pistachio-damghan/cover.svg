@@ -20,7 +20,7 @@
     <circle cx="520" cy="480" r="160" />
     <circle cx="760" cy="480" r="200" />
   </g>
-  <g fill="#f5fff7" font-family="'IRANSans','Segoe UI',sans-serif">
+  <g fill="#f5fff7" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif">
     <text x="200" y="260" font-size="40" font-weight="700">Smart Irrigation</text>
     <text x="200" y="310" font-size="24" fill="#ccfbe6">Damghan Pistachio Orchards</text>
   </g>

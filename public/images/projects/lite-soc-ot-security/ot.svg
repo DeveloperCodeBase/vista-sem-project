@@ -1,0 +1,28 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#050B14"/>
+  <defs>
+    <radialGradient id="otGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#otGrad)"/>
+  <g transform="translate(160,160)">
+    <text font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">پایش Passive شبکه OT</text>
+    <text y="52" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#86EFAC">Modbus • DNP3 • OPC-UA</text>
+  </g>
+  <g transform="translate(160,250)">
+    <rect width="880" height="360" rx="32" fill="#031C2D" stroke="#34D399" stroke-opacity="0.5" stroke-width="2"/>
+    <g transform="translate(60,80)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#BBF7D0">
+      <text>src:plc-03    dst:rtu-02    proto:Modbus/TCP    func:03</text>
+      <text y="44">baseline     allow         flow_rate             18.4</text>
+      <text y="88" fill="#FDE68A">alert       warn          setpoint jump  +12%</text>
+      <text y="132" fill="#F97316">playbook    isolate PLC bay 2</text>
+    </g>
+    <g transform="translate(640,60)">
+      <circle cx="100" cy="100" r="96" fill="rgba(34,197,94,0.1)" stroke="#34D399" stroke-width="4"/>
+      <text x="62" y="110" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="32" fill="#86EFAC">OT SAFE</text>
+      <text x="32" y="150" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="18" fill="#BBF7D0">Passive sensor</text>
+    </g>
+  </g>
+</svg>

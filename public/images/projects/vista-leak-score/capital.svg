@@ -34,7 +34,7 @@
     <text x="500" y="300">Budget B — 150 units</text>
     <text x="720" y="340">Budget C — 200 units</text>
   </g>
-  <g fill="#fff" font-family="'IRANSans', 'Segoe UI', sans-serif" font-size="22" opacity="0.7">
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="22" opacity="0.7">
     <text x="240" y="180">Capital scenarios & ROI</text>
   </g>
 </svg>

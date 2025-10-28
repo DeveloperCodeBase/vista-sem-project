@@ -8,7 +8,7 @@ module.exports = {
       boxShadow: { soft: "0 10px 30px rgba(0,0,0,.06)" },
       borderRadius: { '2xl': "1rem" }
     },
-    fontFamily: { iran: ["IRANSans", "Vazirmatn", "system-ui", "Arial"] },
+    fontFamily: { iran: ["Vazirmatn", "IRANSans", "Segoe UI", "Tahoma", "Arial", "sans-serif"] },
   },
   plugins: [require('@tailwindcss/typography')],
   corePlugins: { preflight: true },

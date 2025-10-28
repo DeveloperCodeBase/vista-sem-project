@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face{
-  font-family: 'IRANSans';
-  src: url('/fonts/IRANSans.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 html{ direction: rtl; }
 body{
   @apply font-iran bg-[#090d1a] text-white antialiased;
