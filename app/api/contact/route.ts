@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { saveContactRequest, type ContactPayload } from "@/lib/contactStore";
+import { sendContactNotification, verifyMailerConfig } from "@/lib/mailer";
 
 function sanitize(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -30,6 +31,19 @@ export async function POST(request: Request) {
     );
   }
 
+  try {
+    verifyMailerConfig();
+  } catch (error: any) {
+    console.error("CONTACT_EMAIL_CONFIG_ERROR", error);
+    return NextResponse.json({ ok: false, error: "EMAIL_CONFIGURATION_MISSING" }, { status: 500 });
+  }
+
   const stored = await saveContactRequest(payload);
-  return NextResponse.json({ ok: true, id: stored.id, createdAt: stored.createdAt });
+  try {
+    await sendContactNotification(stored);
+    return NextResponse.json({ ok: true, id: stored.id, createdAt: stored.createdAt });
+  } catch (error: any) {
+    console.error("CONTACT_EMAIL_DELIVERY_FAILED", error);
+    return NextResponse.json({ ok: false, error: "EMAIL_DELIVERY_FAILED" }, { status: 500 });
+  }
 }
