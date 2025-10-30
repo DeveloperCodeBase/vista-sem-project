@@ -9,9 +9,6 @@ const nextConfig = {
         hostname: "images.unsplash.com"
       }
     ]
-  },
-  experimental: {
-    optimizeCss: true
   }
 };
 

@@ -22,3 +22,6 @@ Thumbs.db
 # Misc
 # اگر می‌خواهی code.zip را پوشش ندهد، این خط را حذف کن یا از Git LFS استفاده کن
 *.zip
+
+# Contact submissions (runtime data)
+data/contact-submissions.json

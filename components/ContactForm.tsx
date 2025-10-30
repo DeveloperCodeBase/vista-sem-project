@@ -21,13 +21,32 @@ export default function ContactForm({ locale = "fa" }: ContactFormProps) {
       message: fd.get("message"),
     };
     try {
-      const r = await fetch("/api/contact", { method: "POST", body: JSON.stringify(payload) });
-      if (r.ok) {
-        setOk(locale === "fa" ? "درخواست شما ثبت شد. در اولین فرصت تماس می‌گیریم." : "Thank you. We will get back within 48 hours.");
+      const r = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await r.json().catch(() => null);
+      if (r.ok && data?.ok) {
+        setOk(
+          locale === "fa"
+            ? "درخواست شما ثبت شد. در اولین فرصت تماس می‌گیریم."
+            : "Thank you. We will get back within 48 hours."
+        );
         e.currentTarget.reset();
-      } else setOk(locale === "fa" ? "ثبت با خطا مواجه شد." : "Submission failed. Please try again.");
+      } else {
+        setOk(
+          locale === "fa"
+            ? "ثبت با خطا مواجه شد. لطفاً دوباره تلاش کنید."
+            : "Submission failed. Please try again."
+        );
+      }
     } catch (_) {
-      setOk(locale === "fa" ? "ثبت با خطا مواجه شد." : "Submission failed. Please try again.");
+      setOk(
+        locale === "fa"
+          ? "ثبت با خطا مواجه شد. لطفاً دوباره تلاش کنید."
+          : "Submission failed. Please try again."
+      );
     }
     setPending(false);
   };
