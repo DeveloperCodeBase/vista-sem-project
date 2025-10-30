@@ -1,0 +1,27 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-insar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020b17" />
+      <stop offset="100%" stop-color="#102547" />
+    </linearGradient>
+    <linearGradient id="contour" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5fd4ff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#8ef0ff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg-insar)" />
+  <g fill="none" stroke="url(#contour)" stroke-width="3">
+    <path d="M160 560 Q340 460 520 500 T880 520 T1080 480" />
+    <path d="M160 620 Q340 520 520 560 T880 580 T1080 540" opacity="0.6" />
+    <path d="M160 680 Q340 600 520 620 T880 640 T1080 600" opacity="0.3" />
+  </g>
+  <g fill="#32d5ff" opacity="0.3">
+    <circle cx="360" cy="400" r="140" />
+    <circle cx="680" cy="360" r="180" />
+    <circle cx="920" cy="400" r="120" />
+  </g>
+  <g fill="#ffffff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif">
+    <text x="220" y="240" font-size="40" font-weight="700">InSAR Subsidence</text>
+    <text x="220" y="288" font-size="24" fill="#aee8ff">Semnan Plain Monitoring</text>
+  </g>
+</svg>

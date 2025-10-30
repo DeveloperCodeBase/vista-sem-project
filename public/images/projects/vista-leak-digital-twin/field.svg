@@ -1,0 +1,38 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#041426" />
+      <stop offset="50%" stop-color="#05223d" />
+      <stop offset="100%" stop-color="#031425" />
+    </linearGradient>
+    <radialGradient id="beam" cx="0.25" cy="0.6" r="0.7">
+      <stop offset="0%" stop-color="#00fff5" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#00fff5" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <circle cx="380" cy="520" r="360" fill="url(#beam)" />
+  <g fill="#0b1d34">
+    <rect x="260" y="420" width="200" height="240" rx="40" />
+    <rect x="520" y="440" width="240" height="220" rx="50" />
+    <rect x="840" y="460" width="200" height="200" rx="44" />
+  </g>
+  <g stroke="#00ffe8" stroke-width="5" stroke-linecap="round" opacity="0.85">
+    <path d="M320 500 L340 440 L420 380" />
+    <path d="M600 520 L640 460 L720 400" />
+    <path d="M920 520 L960 470 L1020 420" />
+  </g>
+  <g fill="#18f8ff">
+    <circle cx="320" cy="500" r="16" />
+    <circle cx="600" cy="520" r="16" />
+    <circle cx="920" cy="520" r="16" />
+  </g>
+  <g stroke="#22d3ee" stroke-width="3" stroke-linecap="round" opacity="0.4">
+    <path d="M220 640 H1000" />
+    <path d="M240 700 H980" />
+  </g>
+  <g fill="#fff" font-family="'Segoe UI', sans-serif" font-size="20" opacity="0.65">
+    <text x="240" y="220">Field telemetry, VistaLeak</text>
+    <text x="240" y="260">Predictive maintenance routes</text>
+  </g>
+</svg>

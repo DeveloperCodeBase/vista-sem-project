@@ -1,9 +1,9 @@
 export default function StatsHighlightsEN() {
   const stats = [
-    { value: "18+", label: "AI & GeoAI programmes" },
-    { value: "$700K", label: "Annual savings unlocked" },
-    { value: "97%", label: "Stakeholder satisfaction" },
-    { value: "ISO 27001", label: "Security governance" }
+    { value: "13 programmes", label: "Active tracks in Semnan" },
+    { value: "1 province", label: "Dedicated regional focus" },
+    { value: "24/7", label: "Operational support" },
+    { value: "Science park", label: "Semnan innovation hub" }
   ];
 
   return (

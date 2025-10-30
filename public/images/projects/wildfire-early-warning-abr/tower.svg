@@ -1,0 +1,32 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#170A0A"/>
+  <defs>
+    <linearGradient id="fire" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F97316"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect x="52" y="52" width="1096" height="696" rx="40" fill="url(#fire)"/>
+  <g transform="translate(140,140)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#FFE4D6">
+    <text font-size="38" font-weight="700">برج دیدبانی حرارتی</text>
+    <text y="56" font-size="22" fill="#FED7AA">Hotspot Fusion • Drone Dispatch</text>
+  </g>
+  <g transform="translate(160,220)">
+    <rect width="880" height="400" rx="32" fill="#3F1D0F" stroke="#FDBA74" stroke-opacity="0.5" stroke-width="2"/>
+    <g transform="translate(80,60)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#FED7AA">
+      <text font-weight="600">ورودی‌ها</text>
+      <text y="40" fill="#FDE68A">• VIIRS Hotspot</text>
+      <text y="80" fill="#FDE68A">• برج PTZ حرارتی</text>
+      <text y="120" fill="#FDE68A">• پهپاد تأییدی</text>
+    </g>
+    <g transform="translate(520,60)">
+      <circle cx="120" cy="120" r="110" fill="rgba(249,115,22,0.12)" stroke="#FDBA74" stroke-width="4"/>
+      <text x="60" y="126" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="36" fill="#FED7AA">Alert 04</text>
+      <text x="58" y="168" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#FED7AA">Lat 36.7</text>
+      <text x="58" y="202" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#FED7AA">Lon 54.5</text>
+    </g>
+  </g>
+  <g transform="translate(160,660)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#FDE68A">
+    <text>response time ↓ 36%</text>
+  </g>
+</svg>

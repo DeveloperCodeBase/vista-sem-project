@@ -1,0 +1,40 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#061022" />
+      <stop offset="50%" stop-color="#091a33" />
+      <stop offset="100%" stop-color="#051424" />
+    </linearGradient>
+    <linearGradient id="barA" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff9152" />
+      <stop offset="100%" stop-color="#ffd978" />
+    </linearGradient>
+    <linearGradient id="barB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#45f5ff" />
+      <stop offset="100%" stop-color="#8cddff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <rect x="220" y="200" width="760" height="360" rx="36" fill="#081628" stroke="#10395c" stroke-width="3" />
+  <g fill="#0c2a44" opacity="0.85">
+    <rect x="260" y="240" width="180" height="240" rx="22" />
+    <rect x="480" y="280" width="180" height="200" rx="22" />
+    <rect x="700" y="320" width="180" height="160" rx="22" />
+  </g>
+  <rect x="260" y="280" width="180" height="180" rx="22" fill="url(#barA)" />
+  <rect x="480" y="320" width="180" height="140" rx="22" fill="url(#barB)" />
+  <rect x="700" y="360" width="180" height="100" rx="22" fill="#2f82ff" />
+  <g fill="#fff" font-family="'Segoe UI', sans-serif" font-size="18">
+    <text x="280" y="510">Scenario A</text>
+    <text x="500" y="510">Scenario B</text>
+    <text x="720" y="510">Scenario C</text>
+  </g>
+  <g fill="#41f6ff" font-family="'Segoe UI', sans-serif" font-size="20">
+    <text x="280" y="260">Budget A — 100 units</text>
+    <text x="500" y="300">Budget B — 150 units</text>
+    <text x="720" y="340">Budget C — 200 units</text>
+  </g>
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="22" opacity="0.7">
+    <text x="240" y="180">Capital scenarios & ROI</text>
+  </g>
+</svg>

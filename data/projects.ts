@@ -1,27 +1,86 @@
 // data/projects.ts
+type LocalizedCopy = {
+  fa: string;
+  en: string;
+};
+
+export type ProjectGalleryItem = {
+  src: string;
+  alt: LocalizedCopy;
+  caption: LocalizedCopy;
+};
+
 export type Project = {
-  id:number;
-  slug:string;
-  title:string;
-  summary:string;
-  category:string;
-  cover:string;
-  gallery:string[];
-  content:string; // HTML (rendered via dangerouslySetInnerHTML)
+  id: number;
+  slug: string;
+  title: string;
+  titleEn: string;
+  summary: string;
+  summaryEn: string;
+  category: string;
+  categoryEn: string;
+  cover: string;
+  gallery: ProjectGalleryItem[];
+  content: string; // HTML (rendered via dangerouslySetInnerHTML)
+  contentEn: string; // HTML (rendered via dangerouslySetInnerHTML)
 };
 
 export const projects: Project[] = [
   {
-    id:1,
-    slug:"vista-leak-digital-twin",
-    title:`سامانهٔ یکپارچه کشف نشتی و دوقلوی دیجیتال شبکه آب (VistaLeak)`,
-    summary:`کشف سریع نشتی‌های مدفون، بهینه‌سازی فشار و ساخت دوقلوی دیجیتال شبکه برای کاهش تلفات آب و انرژی.`,
-    category:`آب/زیرساخت`,
-    cover:"https://images.unsplash.com/photo-1521207418485-99c705420785?q=80&w=1600&auto=format&fit=crop",
-    gallery:[
-      "https://images.unsplash.com/photo-1518470604146-58d2d2b2d08c?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1600&auto=format&fit=crop"
+    id: 1,
+    slug: "vista-leak-digital-twin",
+    title: "سامانهٔ یکپارچه کشف نشتی و دوقلوی دیجیتال شبکه آب (VistaLeak)",
+    titleEn: "VistaLeak digital twin",
+    summary: "کشف سریع نشتی‌های مدفون، بهینه‌سازی فشار و ساخت دوقلوی دیجیتال شبکه برای کاهش تلفات آب و انرژی.",
+    summaryEn: "An operational platform that fuses sensor data, hydraulic modelling and operator feedback to surface leaks before they escalate.",
+    category: "آب/زیرساخت",
+    categoryEn: "Water intelligence",
+    cover: "/images/projects/vista-leak-digital-twin/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/vista-leak-digital-twin/cover.svg",
+        alt: {
+          fa: "تصویر هنری شبکه توزیع آب با خطوط فیروزه‌ای و نقطه داغ نشتی",
+          en: "Stylised water distribution grid with cyan leak highlights"
+        },
+        caption: {
+          fa: "نمای سینمایی از شهر شبانه که مسیرهای نشتی و مسیر ایزوله‌سازی را با گلوهای نورانی نشان می‌دهد.",
+          en: "Cinematic night view of the city highlighting leak paths and valve isolation corridors."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/dashboard.svg",
+        alt: {
+          fa: "داشبورد دوقلوی دیجیتال با نقشه حرارتی احتمال نشتی",
+          en: "Digital twin dashboard with a leak probability heatmap"
+        },
+        caption: {
+          fa: "داشبورد مدیریتی VistaLeak با نقشه حرارتی، شاخص‌های KPI و مسیرهای رفع حادثه برای تیم‌های سمنان.",
+          en: "VistaLeak command dashboard showing heatmaps, KPIs and guided mitigation paths for Semnan crews."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/field.svg",
+        alt: {
+          fa: "تکنسین میدانی در کنار جعبه ولو و سنسورهای فشار",
+          en: "Field technician beside a valve pit instrumented with pressure sensors"
+        },
+        caption: {
+          fa: "تیم عملیات با حسگر فشار و آکوستیک در محل ولو شبکه برای تأیید نشتی پیشنهاد شده.",
+          en: "Operations crew validating the suggested leak point using pressure and acoustic instrumentation."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-digital-twin/insights.svg",
+        alt: {
+          fa: "نمای نزدیک از نمودار شاخص‌های عملکرد و اعلان هوشمند",
+          en: "Close-up of performance indicators and smart alert cards"
+        },
+        caption: {
+          fa: "پنل تحلیلی با شاخص‌های کاهش تلفات، اعزام هوشمند و گزارش‌های پس از اقدام برای مدیران.",
+          en: "Analytical panel summarising NRW reduction, smart dispatching and executive after-action reports."
+        }
+      }
     ],
     content: `
 <h2>۱) سامانهٔ یکپارچه کشف نشتی و دوقلوی دیجیتال شبکه آب (VistaLeak)</h2>
@@ -77,20 +136,86 @@ export const projects: Project[] = [
   <li><b>Dashboard:</b> کلوزآپ تبلت با نقشهٔ شبکه و هِیت‌مپ احتمال نشتی.</li>
   <li><b>Field:</b> میکروفون آکوستیک روی آسفالت، کلاه ایمنی و نور محیط آبی/سبز.</li>
 </ul>
-    `
+    `,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>VistaLeak gives Semnan's water utility a real-time view across pressure, flow and acoustic sensing. The digital twin produces leak probability maps, tiered alerts and concise executive briefings so decisions are grounded in trusted data.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Aging buried mains with limited situational awareness.</li>
+  <li>Repeated truck rolls without confirming the actual leak location.</li>
+  <li>Disconnected reporting between field operations and leadership.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy resilient pressure and acoustic sensing across priority DMAs.</li>
+  <li>Calibrate the hydraulic model with live telemetry.</li>
+  <li>Configure anomaly thresholds, bilingual dashboards and ticket workflows.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Actionable leak heatmaps with valve isolation guidance.</li>
+  <li>Shared incident playbooks and after-action reporting.</li>
+  <li>Ongoing enablement for the Semnan operations team.</li>
+</ul>
+        `
   },
 
   {
-    id:2,
-    slug:"vista-leak-score",
-    title:`تعویض هدفمند لوله‌های فرسوده (VistaLeak-Score)`,
-    summary:`امتیازدهی ریسک دارایی‌ها و برنامهٔ سرمایه‌ای بهینه برای بیشترین کاهش شکست/نشتی با کمترین CAPEX.`,
-    category:`آب/زیرساخت`,
-    cover:"https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
-    gallery:[
-      "https://images.unsplash.com/photo-1565708097881-bbf5e0b8f0f2?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1532634896-26909d0d4b6a?q=80&w=1600&auto=format&fit=crop"
+    id: 2,
+    slug: "vista-leak-score",
+    title: "تعویض هدفمند لوله‌های فرسوده (VistaLeak-Score)",
+    titleEn: "VistaLeak-Score asset risk",
+    summary: "امتیازدهی ریسک دارایی‌ها و برنامهٔ سرمایه‌ای بهینه برای بیشترین کاهش شکست/نشتی با کمترین CAPEX.",
+    summaryEn: "A Semnan-focused decision framework that ranks pipe renewal candidates using operational, environmental and customer impact data.",
+    category: "آب/زیرساخت",
+    categoryEn: "Water capital planning",
+    cover: "/images/projects/vista-leak-score/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/vista-leak-score/cover.svg",
+        alt: {
+          fa: "نقشه شهری با لایه حرارتی ریسک خطوط لوله",
+          en: "City map with a thermal risk overlay for buried mains"
+        },
+        caption: {
+          fa: "کریدورهای پرریسک برای تعویض لوله با گرادیان رنگی و مسیرهای دسترسی به سبک VistaLeak-Score.",
+          en: "High-risk corridors for pipe renewal rendered with VistaLeak-Score’s gradient risk surface."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/risk-map.svg",
+        alt: {
+          fa: "داشبورد نقشه ریسک با فیلتر بودجه",
+          en: "Risk ranking dashboard with budget scenario filters"
+        },
+        caption: {
+          fa: "نقشه اولویت‌بندی، سناریوهای بودجه و شاخص‌های CAPEX برای تصمیم‌سازی هیئت‌مدیره.",
+          en: "Priority map, capital scenarios and KPI widgets that guide board-level investment decisions."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/field.svg",
+        alt: {
+          fa: "تیم اجرایی در حال برش آسفالت و تعویض لوله",
+          en: "Renewal crew cutting asphalt while preparing a targeted pipe replacement"
+        },
+        caption: {
+          fa: "اجرای تعویض هدفمند در معابر بحرانی با برنامه‌ریزی مرحله‌ای و کنترل ترافیک.",
+          en: "Targeted renewal at a critical corridor with phased construction and managed traffic impacts."
+        }
+      },
+      {
+        src: "/images/projects/vista-leak-score/capital.svg",
+        alt: {
+          fa: "نمودار سرمایه‌گذاری و جدول BOQ",
+          en: "Capital allocation chart and BOQ summary"
+        },
+        caption: {
+          fa: "داشبورد تصمیم‌یار با جدول BOQ و مقایسه سناریوهای سرمایه‌ای برای کاهش CAPEX.",
+          en: "Decision assistant showing the BOQ breakdown and comparative capital plans to shrink CAPEX."
+        }
+      }
     ],
     content: `
 <h2>۲) تعویض هدفمند لوله‌های فرسوده (VistaLeak-Score)</h2>
@@ -176,20 +301,86 @@ export const projects: Project[] = [
   <li><b>میدانی:</b> تیم تعمیرات با برش تمیز آسفالت، نور صنعتی گرم، ابزار نو، حس سازمان‌یافتگی.</li>
   <li><b>داشبورد:</b> مانیتور ۳۲ اینچ با نقشهٔ ریسک و جدول BOQ/سناریوها، پس‌زمینهٔ تیرهٔ حرفه‌ای.</li>
 </ul>
-    `
+    `,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>VistaLeak-Score equips Semnan's asset planners with a unified risk index so limited renewal budgets can focus on the most critical corridors. It blends break history, soil conditions and customer sensitivity to surface defensible priorities.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Fragmented maintenance records with no common scoring method.</li>
+  <li>Capital constraints that prevent broad, undirected replacement.</li>
+  <li>Transparency requirements from executive and regulatory stakeholders.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Integrate GIS, failure and environmental datasets into a clean model.</li>
+  <li>Compute combined likelihood and consequence scores for each pipe segment.</li>
+  <li>Generate budget scenarios and phased construction roadmaps.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Interactive risk maps and dashboards in Persian and English.</li>
+  <li>Year-by-year project lists aligned with operational constraints.</li>
+  <li>Governance cadence to refresh data and track impact.</li>
+</ul>
+        `
   },
 
   {
-    id:3,
-    slug:"illegal-groundwater-detection",
-    title:`کشف برداشت غیرمجاز آب زیرزمینی (VIIRS + Sentinel-2 + برق چاه)`,
-    summary:`ادغام نور شب، شاخص‌های گیاهی و سری‌زمان مصرف برق برای اولویت‌بندی بازرسی و کاهش تخلف در دشت‌های استان.`,
-    category:`آب/محیط`,
-    cover:"https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1600&auto=format&fit=crop",
-    gallery:[
-      "https://images.unsplash.com/photo-1472157592780-9d0f59b4b175?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
+    id: 3,
+    slug: "illegal-groundwater-detection",
+    title: "کشف برداشت غیرمجاز آب زیرزمینی (VIIRS + Sentinel-2 + برق چاه)",
+    titleEn: "Groundwater compliance analytics",
+    summary: "ادغام نور شب، شاخص‌های گیاهی و سری‌زمان مصرف برق برای اولویت‌بندی بازرسی و کاهش تخلف در دشت‌های استان.",
+    summaryEn: "A fusion of satellite imagery and electricity data that prioritises groundwater inspections across Semnan's plains.",
+    category: "آب/محیط",
+    categoryEn: "Groundwater stewardship",
+    cover: "/images/projects/illegal-groundwater-detection/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/illegal-groundwater-detection/cover.svg",
+        alt: {
+          fa: "نقشه شبانه دشت کشاورزی با نقاط نور مشکوک",
+          en: "Night map of agricultural plains with suspicious light clusters"
+        },
+        caption: {
+          fa: "نقاط داغ برداشت غیرمجاز در دشت‌های سمنان با ادغام نور شب، زمین مرجع و لایه‌های نظارتی.",
+          en: "Semnan plain hotspots rendered from fused night lights, cadastral parcels and monitoring layers."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/nightlight.svg",
+        alt: {
+          fa: "تحلیل نور شب و نمودارهای زمانی مصرف",
+          en: "Night light analytics with temporal pump usage charts"
+        },
+        caption: {
+          fa: "آنالیز نور شب VIIRS در کنار سری‌زمان برق چاه برای آشکارسازی الگوهای پمپاژ غیرمجاز.",
+          en: "VIIRS night light anomalies blended with pump electricity profiles to expose unauthorised drawdowns."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/vegetation.svg",
+        alt: {
+          fa: "نقشه NDVI با هایلایت قطعات دارای ریسک",
+          en: "NDVI surface highlighting parcels with atypical vigour"
+        },
+        caption: {
+          fa: "پروفایل‌های NDVI و NDMI که پایداری پوشش گیاهی خارج از تقویم رسمی کشت را نشان می‌دهند.",
+          en: "NDVI/NDMI profiles surfacing crop vigour that deviates from the authorised planting calendar."
+        }
+      },
+      {
+        src: "/images/projects/illegal-groundwater-detection/inspection.svg",
+        alt: {
+          fa: "بازرسی میدانی با پهپاد و خودرو در مزرعه",
+          en: "Field inspection with drone support at a flagged farm"
+        },
+        caption: {
+          fa: "تیم بازرسی مشترک منابع آب و جهاد کشاورزی در حال مستندسازی تخلف با پهپاد و فرم‌های دیجیتال.",
+          en: "Joint water and agriculture inspectors documenting infringements using drones and digital forms."
+        }
+      }
     ],
     content: `
 <h2>۳) کشف برداشت غیرمجاز آب زیرزمینی (VIIRS + Sentinel-2 + برق چاه)</h2>
@@ -257,20 +448,75 @@ export const projects: Project[] = [
   <li><b>تحلیلی:</b> لایهٔ NDVI رنگی روی موزاییک Sentinel-2 با مارکرهای مشکوک، تایپوگرافی مینیمال.</li>
   <li><b>میدانی:</b> خودروی بازرسی در مزرعه هنگام غروب، کادر حرفه‌ای، تُن رنگی گرم.</li>
 </ul>
-    `
+    `,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>This programme helps Semnan Regional Water Company surface unusual extraction patterns by linking night lights, vegetation signals and pump electricity logs. Inspectors receive a ranked list of locations instead of canvassing broad areas.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Declining aquifer levels and pressure on legal abstractions.</li>
+  <li>Expensive field patrols that must concentrate on high-risk hotspots.</li>
+  <li>Lack of a consolidated management view across remote sensing layers.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Process VIIRS and Sentinel-2 imagery to detect anomalies in cultivation.</li>
+  <li>Model well electricity consumption trends and correlate with field surveys.</li>
+  <li>Assign compliance scores and generate inspector-ready briefings.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Dashboards with spatial and temporal filtering.</li>
+  <li>Ranked inspection itineraries for enforcement teams.</li>
+  <li>Methodology documentation to support legal follow-up.</li>
+</ul>
+        `
   },
 
- {
+  {
     id: 4,
     slug: "smart-irrigation-pistachio-damghan",
     title: "آبیاری هوشمند باغات پسته دامغان (ET/NDVI + سنسور رطوبت + هواشناسی محلی)",
+    titleEn: "Smart irrigation for Damghan pistachios",
     summary: "توصیه آبیاری قطعه‌به‌قطعه با تلفیق تبخیرـتعرق، شاخص‌های گیاهی و سنسور رطوبت؛ صرفه‌جویی ۲۰–۳۰٪ آب.",
+    summaryEn: "A precision irrigation platform that aligns soil moisture, weather forecasts and grower routines for Semnan's pistachio orchards.",
     category: "کشاورزی هوشمند",
-    cover: "https://images.unsplash.com/photo-1545243424-0ce743321e11?q=80&w=1600&auto=format&fit=crop",
+    categoryEn: "Smart agriculture",
+    cover: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1519003300449-424ad0405076?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1541580621-5fc4d86e7845?q=80&w=1600&auto=format&fit=crop"
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/cover.svg",
+        alt: {
+          fa: "باغ پسته با خطوط آبیاری هوشمند و سنسور",
+          en: "Pistachio orchard with smart irrigation lines and sensors"
+        },
+        caption: {
+          fa: "باغات پسته دامغان با سامانه آبیاری هوشمند و لایه‌های داده تبخیرـتعرق و سنسورهای خاک.",
+          en: "Damghan pistachio groves instrumented with smart irrigation informed by ET and soil sensor data."
+        }
+      },
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/dashboard.svg",
+        alt: {
+          fa: "داشبورد توصیه آبیاری با نمودار ET و NDVI",
+          en: "Irrigation advisory dashboard with ET and NDVI charts"
+        },
+        caption: {
+          fa: "داشبورد توصیه آبیاری قطعه‌به‌قطعه با ترکیب NDVI، سنسور رطوبت و پیش‌بینی هواشناسی محلی.",
+          en: "Block-level irrigation recommendations fusing NDVI, soil moisture probes and local forecasts."
+        }
+      },
+      {
+        src: "/images/projects/smart-irrigation-pistachio-damghan/field.svg",
+        alt: {
+          fa: "کارشناس در حال بررسی سنسور رطوبت در باغ",
+          en: "Agronomist reviewing soil moisture probes in the orchard"
+        },
+        caption: {
+          fa: "کارشناس کشاورزی ویستا با تبلت و سنسورهای رطوبت برای پایش سلامت خاک و زمان‌بندی آبیاری.",
+          en: "Vista agronomist validating soil health and irrigation schedules with handheld probes."
+        }
+      }
     ],
     content: `
 <h2>۴) آبیاری هوشمند باغات پسته دامغان</h2>
@@ -316,20 +562,75 @@ export const projects: Project[] = [
     <li>نقشهٔ NDVI با رنگ‌های مختلف به‌صورت باریک و دقیق.</li>
     <li>نمودار سنسور خاک در نزدیکی درختان پسته، با کادری زیبا و روشن.</li>
 </ul>
-`
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Pistachio orchards around Damghan rely on scarce groundwater. The platform blends in-field sensors with weather-led evapotranspiration models to recommend irrigation slots that respect both crop demand and allocation rules.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Declining aquifer levels and strict water quotas.</li>
+  <li>Manual scheduling that ignores differences between orchard blocks.</li>
+  <li>The need for transparent reporting to grower cooperatives.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy soil-moisture and canopy sensors in representative plots.</li>
+  <li>Fuse remote sensing indicators with hyperlocal weather forecasts.</li>
+  <li>Generate irrigation priority indices with alerts and advisory notes.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Farm dashboards with colour-coded block status.</li>
+  <li>Usage reports comparing consumption against targets.</li>
+  <li>Training materials for growers and irrigation technicians.</li>
+</ul>
+        `
   },
 
-{
+  {
     id: 5,
     slug: "solar-forecast-soiling-optimization",
     title: "پیش‌بینی تولید خورشیدی و شست‌وشوی بهینهٔ پنل‌ها",
+    titleEn: "Solar generation & soiling optimisation",
     summary: "Forecast تابش/ابرناکی + مدل Soiling برای زمان‌بندی شست‌وشو؛ افزایش ۳–۷٪ انرژی سالانه و کاهش آب شست‌وشو.",
+    summaryEn: "A forecasting and maintenance planner that keeps Semnan's solar plant output stable despite dust accumulation.",
     category: "انرژی پاک",
-    cover: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop",
+    categoryEn: "Renewable energy",
+    cover: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516116216624-53e697fedb15?q=80&w=1600&auto=format&fit=crop"
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/cover.svg",
+        alt: {
+          fa: "مزرعه خورشیدی با الگوریتم‌های پیش‌بینی روی آسمان",
+          en: "Solar farm with forecasting overlays in the sky"
+        },
+        caption: {
+          fa: "مزرعه خورشیدی در حاشیه کویر با پیش‌بینی تابش و شاخص‌های آلودگی گردوغبار برای زمان‌بندی شست‌وشو.",
+          en: "Desert-edge solar farm contextualised with irradiance and dust forecasts to time cleaning cycles."
+        }
+      },
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/forecast.svg",
+        alt: {
+          fa: "داشبورد پیش‌بینی تابش و تولید انرژی",
+          en: "Solar irradiance and production forecast dashboard"
+        },
+        caption: {
+          fa: "داشبورد پیش‌بینی تابش، ابرناکی و تولید انرژی با سناریوهای برنامه‌ریزی و هشدار Soiling.",
+          en: "Forecast interface showing irradiance, cloud cover and production scenarios with soiling alerts."
+        }
+      },
+      {
+        src: "/images/projects/solar-forecast-soiling-optimization/maintenance.svg",
+        alt: {
+          fa: "تیم عملیات در حال شست‌وشوی پنل خورشیدی",
+          en: "Operations crew cleaning solar modules"
+        },
+        caption: {
+          fa: "تیم نگهداشت با برنامه‌ریزی هوشمند شست‌وشو و مدیریت مصرف آب در نیروگاه خورشیدی.",
+          en: "Maintenance team executing optimised wash cycles while managing water use efficiently."
+        }
+      }
     ],
     content: `
 <h2>۵) پیش‌بینی تولید خورشیدی و شست‌وشوی بهینه</h2>
@@ -376,19 +677,75 @@ export const projects: Project[] = [
     <li>نمودار تولید انرژی در مقابل گردوغبار و شست‌وشو با نشانگرهای رنگی.</li>
     <li>تیم عملیاتی در حال شست‌وشو پنل‌های خورشیدی در محیط بیابانی.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>The platform estimates daily production and proposes optimal cleaning windows by combining irradiance models, weather forecasts and soiling sensors. Operations teams can plan maintenance without sacrificing energy delivery commitments.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Dust accumulation that quickly degrades photovoltaic performance.</li>
+  <li>Balancing cleaning costs with available O&amp;M crews.</li>
+  <li>Providing transparent production outlooks to investors and grid partners.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Model solar irradiance, shading and historical output trends.</li>
+  <li>Estimate soiling ratios from sensor readings and inverter data.</li>
+  <li>Generate cleaning schedules with projected energy uplift.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Rolling weekly and daily energy forecasts.</li>
+  <li>Maintenance calendars with quantified impact per action.</li>
+  <li>Web dashboards archiving performance and interventions.</li>
+</ul>
+        `
+  },
+
   {
     id: 6,
     slug: "wildfire-early-warning-abr",
     title: "سامانهٔ هشدار سریع حریق «جنگل ابر» (ماهواره + برج حرارتی + UAS)",
+    titleEn: "Abr forest wildfire early warning",
     summary: "کشف و تأیید سریع حریق با فیوژن Hotspot ماهواره‌ای، دوربین PTZ حرارتی و پهپاد؛ کاهش زمان پاسخ ۳۰–۶۰٪.",
+    summaryEn: "A risk model for Semnan's Abr forest that blends fuel conditions, weather and ranger reports to trigger early interventions.",
     category: "محیط زیست",
-    cover: "https://images.unsplash.com/photo-1503387762-730bce8583d9?q=80&w=1600&auto=format&fit=crop",
+    categoryEn: "Environmental intelligence",
+    cover: "/images/projects/wildfire-early-warning-abr/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1505826759031-1f0cf7f35649?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop"
+      {
+        src: "/images/projects/wildfire-early-warning-abr/cover.svg",
+        alt: {
+          fa: "جنگل ابر با برج دیده‌بانی و پهپاد",
+          en: "Abr forest with watchtower and drone patrol"
+        },
+        caption: {
+          fa: "چشم‌انداز جنگل ابر با برج دیده‌بانی حرارتی و پهپاد تأیید حریق برای کاهش زمان واکنش.",
+          en: "Abr forest landscape showing thermal watchtowers and drone confirmation to compress response times."
+        }
+      },
+      {
+        src: "/images/projects/wildfire-early-warning-abr/tower.svg",
+        alt: {
+          fa: "نمای نزدیک برج PTZ حرارتی با رابط کاربری",
+          en: "Close-up of a thermal PTZ tower with user interface"
+        },
+        caption: {
+          fa: "برج دیدبانی با دوربین PTZ حرارتی، هشداری بر روی رابط کاربری و کنترل مسیر پهپاد.",
+          en: "Thermal PTZ tower view with alert banner and drone routing control."
+        }
+      },
+      {
+        src: "/images/projects/wildfire-early-warning-abr/map.svg",
+        alt: {
+          fa: "نقشه نقاط داغ و مسیر تیم اطفا",
+          en: "Hotspot situational map with response routes"
+        },
+        caption: {
+          fa: "نقشه عملیاتی با نقاط داغ VIIRS، مسیرهای تیم اطفا و برآورد ریسک برای مدیریت بحران.",
+          en: "Operational map overlaying VIIRS hotspots, crew routes and risk tiers for incident command."
+        }
+      }
     ],
     content: `
 <h2>۶) هشدار سریع حریق جنگل ابر</h2>
@@ -433,19 +790,75 @@ export const projects: Project[] = [
     <li>نقشهٔ نقاط داغ ماهواره‌ای و تصاویر آشکارسازی حریق.</li>
     <li>تیم آتش‌نشانان در حال واکنش به وضعیت حریق.</li>
 </ul>
-`
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>The Abr forest faces rapid shifts in humidity and wind. Our early-warning stack consolidates fuel moisture, forecast data and ranger observations so Semnan's protection unit can mobilise before ignition becomes a large-scale fire.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Volatile microclimates that complicate fire risk estimation.</li>
+  <li>Unstructured incident notes from patrol teams.</li>
+  <li>The need for coordinated alerts to provincial crisis management.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Monitor vegetation and fuel indices through remote sensing.</li>
+  <li>Ingest station data and local sensors for high-frequency updates.</li>
+  <li>Configure alert levels delivered via dashboards and SMS.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Risk maps segmented by zone and time horizon.</li>
+  <li>Daily intelligence briefs for crisis managers.</li>
+  <li>Standard operating procedures for field deployment.</li>
+</ul>
+        `
   },
+
   {
     id: 7,
     slug: "insar-subsidence-monitoring",
     title: "پایش فرونشست با تداخل‌سنجی راداری ماهواره‌ای (InSAR: PS/SBAS)",
+    titleEn: "InSAR subsidence monitoring",
     summary: "نقشهٔ نرخ نشست میلی‌متری، نقاط داغ و اولویت‌بندی بازرسی زیرساخت‌ها با Sentinel-1.",
+    summaryEn: "A radar-based monitoring workflow that quantifies land subsidence across the Semnan plain and aligns it with ground truth observations.",
     category: "ژئودیتا/زمین",
-    cover: "https://images.unsplash.com/photo-1533157942-7d8c5f1bf57b?q=80&w=1600&auto=format&fit=crop",
+    categoryEn: "Geospatial analytics",
+    cover: "/images/projects/insar-subsidence-monitoring/cover.svg",
     gallery: [
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517940310602-27589c7c0a38?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1600&auto=format&fit=crop"
+      {
+        src: "/images/projects/insar-subsidence-monitoring/cover.svg",
+        alt: {
+          fa: "نمای شهری با لایه نرخ فرونشست میلی‌متری",
+          en: "Urban landscape with millimetric subsidence layer"
+        },
+        caption: {
+          fa: "نقشه نرخ فرونشست میلی‌متری برای زیرساخت‌های حیاتی سمنان با روش‌های PS/SBAS.",
+          en: "Millimetric subsidence rates mapped for Semnan’s critical infrastructure via PS/SBAS processing."
+        }
+      },
+      {
+        src: "/images/projects/insar-subsidence-monitoring/map.svg",
+        alt: {
+          fa: "داشبورد GIS با نقاط داغ نشست زمین",
+          en: "GIS dashboard showing land subsidence hotspots"
+        },
+        caption: {
+          fa: "داشبورد تحلیلی با نقاط داغ نشست، نمودار روند و فیلتر زیرساخت برای اولویت‌بندی بازدید.",
+          en: "Analytical GIS view combining hotspot clusters, trend charts and infrastructure filters for inspections."
+        }
+      },
+      {
+        src: "/images/projects/insar-subsidence-monitoring/profile.svg",
+        alt: {
+          fa: "پروفایل نشست یک مسیر راه‌آهن",
+          en: "Subsidence profile for a railway corridor"
+        },
+        caption: {
+          fa: "پروفایل نشست طولی برای مسیر راه‌آهن و جدول تصمیم نگهداشت جهت کاهش ریسک.",
+          en: "Longitudinal subsidence profile paired with maintenance actions for rail safety."
+        }
+      }
     ],
     content: `
 <h2>۷) پایش فرونشست (InSAR)</h2>
@@ -489,21 +902,77 @@ export const projects: Project[] = [
     <li>پروفایل نشست زمین بر روی پل یا جاده.</li>
     <li>کاربرد ابزارهای جغرافیایی و سامانه‌های رصد راداری.</li>
 </ul>
-`
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Land subsidence threatens infrastructure and communities in Semnan. Our programme processes Sentinel-1 radar stacks to measure ground deformation and translates the results into actionable reports for provincial committees.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Lack of frequent, reliable deformation measurements.</li>
+  <li>Exposure of roads, transmission lines and urban assets to gradual sinkage.</li>
+  <li>The need to document evidence for regulatory coordination.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Ingest monthly Sentinel-1 scenes and perform time-series InSAR processing.</li>
+  <li>Cross-validate displacements with GPS and field surveys.</li>
+  <li>Publish hotspot maps and commentary for decision-makers.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Interactive deformation layers with temporal trends.</li>
+  <li>Briefings for the groundwater task force.</li>
+  <li>Recommendations on where to expand ground instrumentation.</li>
+</ul>
+        `
   },
-{
-  id:8,
-  slug:"dust-aqi-nowcast-hvac",
-  title:`سامانهٔ هشدار گردوغبار و کیفیت هوا (Nowcasting PM + HVAC API)`,
-  summary:`اکنون‌پیش‌بینی ذرات معلق PM، توصیهٔ سلامت، و کنترل هوشمند HVAC در مدارس/ادارات؛ کاهش مواجهه و ۵–۱۲٪ صرفه‌جویی انرژی.`,
-  category:`محیط زیست`,
-  cover:"https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1503508343067-7f3a3a5b69fb?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+
+  {
+    id: 8,
+    slug: "dust-aqi-nowcast-hvac",
+    title: "سامانهٔ هشدار گردوغبار و کیفیت هوا (Nowcasting PM + HVAC API)",
+    titleEn: "Dust nowcast & HVAC readiness",
+    summary: "اکنون‌پیش‌بینی ذرات معلق PM، توصیهٔ سلامت، و کنترل هوشمند HVAC در مدارس/ادارات؛ کاهش مواجهه و ۵–۱۲٪ صرفه‌جویی انرژی.",
+    summaryEn: "Short-term dust forecasting that helps Semnan's critical facilities prepare ventilation systems ahead of events.",
+    category: "محیط زیست",
+    categoryEn: "Environmental resilience",
+    cover: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/cover.svg",
+        alt: {
+          fa: "خط افق شهری در مه غبارآلود با اعلان کیفیت هوا",
+          en: "Dusty city skyline with air quality alert display"
+        },
+        caption: {
+          fa: "سامانه هشدار گردوغبار ویستا با اعلان هوشمند کیفیت هوا در مراکز آموزشی و اداری استان سمنان.",
+          en: "Vista’s dust alerting platform broadcasting adaptive air quality guidance across Semnan facilities."
+        }
+      },
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/dashboard.svg",
+        alt: {
+          fa: "داشبورد Nowcast با نقشه و کارت سلامت",
+          en: "Nowcast dashboard with heatmap and health cards"
+        },
+        caption: {
+          fa: "داشبورد Nowcasting با نقشه نقاط داغ، توصیه سلامت گروه‌های حساس و همگام‌سازی خودکار با مدارس.",
+          en: "Nowcasting dashboard layering hotspots with targeted health guidance and school coordination."
+        }
+      },
+      {
+        src: "/images/projects/dust-aqi-nowcast-hvac/hvac.svg",
+        alt: {
+          fa: "یونیت‌های HVAC هوشمند روی بام",
+          en: "Smart HVAC rooftop units"
+        },
+        caption: {
+          fa: "یونیت‌های HVAC هوشمند با کنترل خودکار ورودی هوا و بهینه‌سازی مصرف انرژی بر اساس پیش‌بینی گردوغبار.",
+          en: "Smart HVAC units adjusting intake strategy and energy use based on dust forecasts."
+        }
+      }
+    ],
+    content: `
 <h2>۸) سامانهٔ هشدار گردوغبار و کیفیت هوا (Nowcasting PM + HVAC API)</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -579,22 +1048,77 @@ export const projects: Project[] = [
   <li><b>Analytics:</b> نمودار Nowcast PM و کارت سلامت برای مدارس.</li>
   <li><b>HVAC Rooftop:</b> یونیت‌های هواساز روی بام هنگام غروب با حس صنعتی لوکس.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Frequent dust storms challenge Semnan's hospitals and industrial sites. The nowcast service blends mesoscale forecasts with sensor feeds so facility teams can reconfigure HVAC assets before particle loads spike.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Unexpected ingress of dust into controlled environments.</li>
+  <li>Filter maintenance costs when events are not anticipated.</li>
+  <li>Timely communication to staff and the public.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Combine WRF outputs with local air-quality sensors.</li>
+  <li>Project particle concentrations 6–24 hours ahead.</li>
+  <li>Issue actionable alerts and HVAC checklists.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Dashboards with maps and timeline visualisations.</li>
+  <li>SMS and email notifications graded by severity.</li>
+  <li>After-action reports benchmarking ventilation response.</li>
+</ul>
+        `
+  },
 
-{
-  id:9,
-  slug:"uas-predictive-maintenance",
-  title:`بازرسی پهپادی و نگهداشت پیش‌گویانهٔ صنعتی (UAS + CV/IR + CMMS)`,
-  summary:`بازرسی ایمن تجهیزات با پهپاد و تحلیل RGB/حرارتی؛ کشف نشتی/خورندگی/داغی، تیکت خودکار CMMS و کاهش توقف ناگهانی ۱۰–۲۰٪.`,
-  category:`صنعت/نگهداشت`,
-  cover:"https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1447433819943-74a20887a81e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1496065187959-7f07b8353c55?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+  {
+    id: 9,
+    slug: "uas-predictive-maintenance",
+    title: "بازرسی پهپادی و نگهداشت پیش‌گویانهٔ صنعتی (UAS + CV/IR + CMMS)",
+    titleEn: "UAS predictive maintenance",
+    summary: "بازرسی ایمن تجهیزات با پهپاد و تحلیل RGB/حرارتی؛ کشف نشتی/خورندگی/داغی، تیکت خودکار CMMS و کاهش توقف ناگهانی ۱۰–۲۰٪.",
+    summaryEn: "A fleet health platform that analyses flight logs, vibration and battery data to schedule preventative maintenance for Semnan's drone missions.",
+    category: "صنعت/نگهداشت",
+    categoryEn: "Aerial inspection",
+    cover: "/images/projects/uas-predictive-maintenance/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/uas-predictive-maintenance/cover.svg",
+        alt: {
+          fa: "پهپاد صنعتی در تاسیسات آب و انرژی",
+          en: "Industrial drone surveying water and energy assets"
+        },
+        caption: {
+          fa: "پهپاد با دوربین RGB/IR برای بازرسی ایمن تاسیسات آب و انرژی استان سمنان.",
+          en: "RGB/IR drone enabling safe inspections across Semnan’s critical water and energy sites."
+        }
+      },
+      {
+        src: "/images/projects/uas-predictive-maintenance/inspection.svg",
+        alt: {
+          fa: "گزارش بازرسی خودکار با آنومالی مشخص شده",
+          en: "Automated inspection report highlighting anomalies"
+        },
+        caption: {
+          fa: "گزارش بازرسی خودکار با کشف ترک، خوردگی و اتصال شل و ارسال خودکار به سامانه CMMS.",
+          en: "Automated inspection findings marking corrosion, leaks and loose fittings with CMMS tickets."
+        }
+      },
+      {
+        src: "/images/projects/uas-predictive-maintenance/thermal.svg",
+        alt: {
+          fa: "تصویر حرارتی از تجهیزات با هات‌اسپات",
+          en: "Thermal imagery of equipment with hotspots"
+        },
+        caption: {
+          fa: "تحلیل حرارتی ماژولار برای شناسایی نقاط داغ پنهان و برنامه‌ریزی تعمیر پیش‌گیرانه.",
+          en: "Modular thermal analytics uncovering hidden hotspots to schedule preventive maintenance."
+        }
+      }
+    ],
+    content: `
 <h2>۹) بازرسی پهپادی و نگهداشت پیش‌گویانهٔ صنعتی (UAS + CV/IR + CMMS)</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -673,22 +1197,77 @@ export const projects: Project[] = [
   <li><b>Thermal Panel:</b> تصویر IR با هات‌اسپات مشخص و Annotation مینیمال.</li>
   <li><b>Dashboard/CMMS:</b> مانیتور با کارت تیکت، SLA و نقشهٔ دارایی.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Drones inspecting utilities and infrastructure need consistent readiness. The platform ingests telemetry, vibration and temperature signals to forecast component fatigue and recommend proactive interventions.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Unexpected battery or motor failures mid-mission.</li>
+  <li>No unified view of fleet health across missions.</li>
+  <li>Compliance obligations for flight safety audits.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Capture telemetry from flight controllers and auxiliary sensors.</li>
+  <li>Model component life and detect anomalous degradation trends.</li>
+  <li>Create maintenance tickets with recommended timelines.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Fleet health dashboards with tiered alerts.</li>
+  <li>Operational reports for technical and safety leads.</li>
+  <li>Preventive maintenance playbooks.</li>
+</ul>
+        `
+  },
 
-{
-  id:10,
-  slug:"pavement-railway-iri-boq",
-  title:`پایش هوشمند روسازی راه/ریل (Imaging + IRI & Distress + BOQ)`,
-  summary:`محاسبهٔ IRI و شناسایی خرابی روسازی با تصویربرداری و CV؛ تولید BOQ دقیق و برنامهٔ مرمت اولویت‌محور؛ کاهش هزینه پیمان ۸–۱۵٪.`,
-  category:`حمل‌ونقل`,
-  cover:"https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1430760814266-9c81759e5e55?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1536304940858-5f3ad9ab2f90?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+  {
+    id: 10,
+    slug: "pavement-railway-iri-boq",
+    title: "پایش هوشمند روسازی راه/ریل (Imaging + IRI & Distress + BOQ)",
+    titleEn: "Pavement & rail condition analytics",
+    summary: "محاسبهٔ IRI و شناسایی خرابی روسازی با تصویربرداری و CV؛ تولید BOQ دقیق و برنامهٔ مرمت اولویت‌محور؛ کاهش هزینه پیمان ۸–۱۵٪.",
+    summaryEn: "A combined accelerometer and imagery workflow that quantifies IRI, defects and maintenance budgets for Semnan's transport corridors.",
+    category: "حمل‌ونقل",
+    categoryEn: "Transport infrastructure",
+    cover: "/images/projects/pavement-railway-iri-boq/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/pavement-railway-iri-boq/cover.svg",
+        alt: {
+          fa: "جاده بین‌شهری با نتایج پایش هوشمند",
+          en: "Intercity road with intelligent monitoring overlays"
+        },
+        caption: {
+          fa: "پایش هوشمند روسازی با شاخص IRI و تحلیل خرابی برای کریدورهای پر تردد استان.",
+          en: "Intelligent pavement monitoring for Semnan corridors combining IRI metrics and distress analytics."
+        }
+      },
+      {
+        src: "/images/projects/pavement-railway-iri-boq/dashboard.svg",
+        alt: {
+          fa: "داشبورد IRI و خرابی با سناریوهای BOQ",
+          en: "IRI and distress dashboard with BOQ scenarios"
+        },
+        caption: {
+          fa: "داشبورد برنامه‌ریزی مرمت با نقشه کریدورها، شاخص IRI و سناریوهای بودجه‌ای BOQ.",
+          en: "Rehabilitation planning dashboard with corridor map, IRI metrics and BOQ budget scenarios."
+        }
+      },
+      {
+        src: "/images/projects/pavement-railway-iri-boq/survey.svg",
+        alt: {
+          fa: "خودرو برداشت تصویری و لیدار از روسازی",
+          en: "Imaging and LiDAR survey vehicle for pavement"
+        },
+        caption: {
+          fa: "خودرو برداشت تصویری/لیدار برای ثبت داده‌های هندسی و بافت روسازی جهت تحلیل دقیق.",
+          en: "Imaging and LiDAR survey capturing surface geometry and texture for precise diagnostics."
+        }
+      }
+    ],
+    content: `
 <h2>۱۰) پایش هوشمند روسازی راه/ریل (Imaging + IRI & Distress + BOQ)</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -753,21 +1332,77 @@ export const projects: Project[] = [
   <li><b>Distress Sheet:</b> کلوزآپ ترک و Annotation مینیمال با خطوط تمیز.</li>
   <li><b>Dashboard:</b> نقشهٔ رنگی IRI/Distress و کارت BOQ روی مانیتور.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Semnan's roads and rail lines require proactive maintenance. The analytics stack merges vehicle-based accelerometer feeds, imagery and field inspections to derive IRI scores and repair cost estimates.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Prioritising preventative maintenance on busy corridors.</li>
+  <li>Disparate datasets from inspectors and contractors.</li>
+  <li>Evidence needed to justify budgets to provincial and national bodies.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Equip survey vehicles with sensors to capture ride quality.</li>
+  <li>Process video frames to locate cracks and structural issues.</li>
+  <li>Estimate rehabilitation costs and rank projects.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>GIS layers and dashboards showing condition trends.</li>
+  <li>Bill-of-quantity reports per section.</li>
+  <li>Implementation tracker aligned with contract milestones.</li>
+</ul>
+        `
+  },
+
   {
-  id:11,
-  slug:"retinopathy-clinical-nlp-fa",
-  title:`غربالگری رتینوپاتی و خلاصه‌ساز پزشکی فارسی (CV + Clinical NLP + HIS)`,
-  summary:`تریاژ رتینوپاتی دیابتی با CNN/ViT، کنترل کیفیت تصویر، و خلاصه‌سازی SOAP فارسی یکپارچه با HIS/PACS؛ کاهش بار متخصص ۲۰–۳۰٪.`,
-  category:`سلامت دیجیتال`,
-  cover:"https://images.unsplash.com/photo-1586015555751-63bb77f4322f?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+    id: 11,
+    slug: "retinopathy-clinical-nlp-fa",
+    title: "غربالگری رتینوپاتی و خلاصه‌ساز پزشکی فارسی (CV + Clinical NLP + HIS)",
+    titleEn: "Retinopathy screening with Farsi NLP",
+    summary: "تریاژ رتینوپاتی دیابتی با CNN/ViT، کنترل کیفیت تصویر، و خلاصه‌سازی SOAP فارسی یکپارچه با HIS/PACS؛ کاهش بار متخصص ۲۰–۳۰٪.",
+    summaryEn: "An on-premise workflow that analyses fundus images and Persian clinical notes to triage diabetic retinopathy cases in Semnan clinics.",
+    category: "سلامت دیجیتال",
+    categoryEn: "Digital health",
+    cover: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/cover.svg",
+        alt: {
+          fa: "تصویر فوندوس با نقشه حرارتی تشخیص",
+          en: "Fundus imagery with diagnostic heatmap"
+        },
+        caption: {
+          fa: "غربالگری رتینوپاتی دیابتی با مدل‌های بینایی ماشین و نقشه حرارتی تشخیص ضایعات.",
+          en: "Diabetic retinopathy screening using computer vision models and lesion heatmaps."
+        }
+      },
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/workflow.svg",
+        alt: {
+          fa: "گردش‌کار بالینی از دریافت تا تریاژ",
+          en: "Clinical workflow from intake to triage"
+        },
+        caption: {
+          fa: "گردش‌کار بالینی ترکیبی از پردازش تصویر، خلاصه‌ساز فارسی و اتصال به HIS/PACS.",
+          en: "Clinical pipeline merging image QC, Persian summarisation and HIS/PACS integration."
+        }
+      },
+      {
+        src: "/images/projects/retinopathy-clinical-nlp-fa/report.svg",
+        alt: {
+          fa: "گزارش SOAP فارسی با شاخص‌های کلیدی",
+          en: "Persian SOAP report with key indicators"
+        },
+        caption: {
+          fa: "گزارش خودکار SOAP فارسی با شاخص‌های کلیدی و وضعیت ارجاع فوری برای متخصصان.",
+          en: "Automated Persian SOAP note summarising key indicators and referral urgency."
+        }
+      }
+    ],
+    content: `
 <h2>۱۱) غربالگری رتینوپاتی و خلاصه‌ساز پزشکی فارسی (CV + Clinical NLP + HIS)</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -840,22 +1475,77 @@ export const projects: Project[] = [
   <li><b>SOAP:</b> کارت فارسی SOAP در UI تمیز و خوانا.</li>
   <li><b>PACS:</b> تصویر DICOM با آنوتیشن ضایعات.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Diabetic populations in Semnan continue to grow. The screening platform fuses retinal imaging with Persian-language notes to flag high-risk patients and support clinicians.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Limited specialist availability and long waiting lists.</li>
+  <li>Unstructured Farsi notes that hide relevant risk factors.</li>
+  <li>Strict privacy requirements mandating on-prem deployment.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Apply computer vision to detect lesions in fundus images.</li>
+  <li>Use NLP pipelines to extract risk indicators from clinical text.</li>
+  <li>Score cases and populate referral dashboards.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Persian-language screening system with audit trails.</li>
+  <li>Clinical summaries for specialists and health authorities.</li>
+  <li>Data governance artefacts covering privacy and retention.</li>
+</ul>
+        `
+  },
 
-{
-  id:12,
-  slug:"civic-rag-137",
-  title:`Civic-RAG و تحلیل سامانه ۱۳۷ (نمایه‌سازی معنایی فارسی On-Prem + SLA)`,
-  summary:`نمایه‌سازی معنایی تماس‌ها/تیکت‌ها، خوشه‌بندی موضوعی، ارجاع هوشمند و بهبود SLA شهرداری/استانداری؛ کاهش زمان پاسخ ۲۰–۳۵٪.`,
-  category:`شهر هوشمند`,
-  cover:"https://images.unsplash.com/photo-1451188502541-13943edb6acb?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1497493292307-31c376b6e479?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+  {
+    id: 12,
+    slug: "civic-rag-137",
+    title: "Civic-RAG و تحلیل سامانه ۱۳۷ (نمایه‌سازی معنایی فارسی On-Prem + SLA)",
+    titleEn: "Civic RAG assistant for 137 hotline",
+    summary: "نمایه‌سازی معنایی تماس‌ها/تیکت‌ها، خوشه‌بندی موضوعی، ارجاع هوشمند و بهبود SLA شهرداری/استانداری؛ کاهش زمان پاسخ ۲۰–۳۵٪.",
+    summaryEn: "A retrieval-augmented assistant that helps Semnan's municipal hotline operators answer citizen requests with consistent guidance.",
+    category: "شهر هوشمند",
+    categoryEn: "Civic services",
+    cover: "/images/projects/civic-rag-137/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/civic-rag-137/cover.svg",
+        alt: {
+          fa: "مرکز تماس هوشمند با دیوار KPI",
+          en: "Smart contact centre with KPI wall"
+        },
+        caption: {
+          fa: "سامانه Civic-RAG برای تحلیل تماس‌های ۱۳۷ با دیوار KPI و پاسخگوی مجهز به هوش مصنوعی.",
+          en: "Civic-RAG elevating the 137 call centre with AI-guided responses and live KPIs."
+        }
+      },
+      {
+        src: "/images/projects/civic-rag-137/workflow.svg",
+        alt: {
+          fa: "گردش‌کار ارجاع و پاسخ هوشمند",
+          en: "Intelligent routing and response workflow"
+        },
+        caption: {
+          fa: "گردش‌کار ارجاع هوشمند با پردازش زبان طبیعی فارسی، طبقه‌بندی موضوع و اتصال به واحدهای شهرداری.",
+          en: "Intelligent routing pipeline using Persian NLP, topic clustering and municipal ticketing."
+        }
+      },
+      {
+        src: "/images/projects/civic-rag-137/insights.svg",
+        alt: {
+          fa: "نقشه نقاط داغ شکایات شهری",
+          en: "Urban complaints hotspot map"
+        },
+        caption: {
+          fa: "تحلیل مکانی تماس‌های شهروندان با نقشه نقاط داغ و شاخص‌های SLA برای مدیریت استانی.",
+          en: "Geo-analytics of citizen reports with hotspot mapping and SLA insights for provincial leaders."
+        }
+      }
+    ],
+    content: `
 <h2>۱۲) Civic-RAG و تحلیل سامانه ۱۳۷ (On-Prem)</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -930,22 +1620,77 @@ export const projects: Project[] = [
   <li><b>Heatmap:</b> نقشهٔ شهری با نقاط داغ موضوعی.</li>
   <li><b>Workflow:</b> کارت ارجاع با SLA و وضعیت.</li>
 </ul>
-`
-},
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Semnan's 137 hotline receives thousands of civic service cases. The assistant uses a Persian RAG pipeline to retrieve precedents, regulations and recommended steps so operators respond quickly and consistently.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Locating similar cases across a large historical archive.</li>
+  <li>Aligning operators, experts and district offices.</li>
+  <li>Documenting answers instead of relying on personal memory.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Index legacy correspondence, approvals and resolution notes.</li>
+  <li>Build a retrieval-augmented generation workflow tuned for Persian.</li>
+  <li>Surface suggested responses while logging interactions.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Operator console with semantic search and drafted replies.</li>
+  <li>Supervisory dashboards for municipal leadership.</li>
+  <li>Quality reports covering response accuracy and handling time.</li>
+</ul>
+        `
+  },
 
-{
-  id:13,
-  slug:"lite-soc-ot-security",
-  title:`SOC سبک‌وزن + امنیت OT (SIEM/UEBA + Anti-Phishing فارسی + OT Monitoring)`,
-  summary:`SOC سبک برای جمع‌آوری لاگ، UEBA، ضد فیشینگ فارسی و پایش شبکه‌های OT/ICS (Modbus/DNP3/OPC-UA)؛ کاهش MTTD/MTTR ۲۰–۴۰٪.`,
-  category:`امنیت سایبری`,
-  cover:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-  gallery:[
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1563986768817-257bf91c5753?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
-  ],
-  content: `
+  {
+    id: 13,
+    slug: "lite-soc-ot-security",
+    title: "SOC سبک‌وزن + امنیت OT (SIEM/UEBA + Anti-Phishing فارسی + OT Monitoring)",
+    titleEn: "Lightweight SOC for OT networks",
+    summary: "SOC سبک برای جمع‌آوری لاگ، UEBA، ضد فیشینگ فارسی و پایش شبکه‌های OT/ICS (Modbus/DNP3/OPC-UA)؛ کاهش MTTD/MTTR ۲۰–۴۰٪.",
+    summaryEn: "An on-prem security operations framework tailored to the industrial OT environments operating across Semnan.",
+    category: "امنیت سایبری",
+    categoryEn: "Cybersecurity",
+    cover: "/images/projects/lite-soc-ot-security/cover.svg",
+    gallery: [
+      {
+        src: "/images/projects/lite-soc-ot-security/cover.svg",
+        alt: {
+          fa: "اتاق عملیات SOC سبک‌وزن",
+          en: "Lightweight SOC operations room"
+        },
+        caption: {
+          fa: "اتاق عملیات SOC سبک با تیم مانیتورینگ، دیوار تصویر و تحلیل هشدار برای دستگاه‌های استانی.",
+          en: "Lightweight SOC operations suite monitoring provincial infrastructure with live dashboards."
+        }
+      },
+      {
+        src: "/images/projects/lite-soc-ot-security/operations.svg",
+        alt: {
+          fa: "پانل همبستگی رخداد و پلی‌بوک",
+          en: "Incident correlation panel and playbook"
+        },
+        caption: {
+          fa: "پانل همبستگی رخداد، UEBA و پلی‌بوک واکنش سریع برای کاهش MTTD/MTTR.",
+          en: "Correlation and UEBA console with guided playbooks to compress MTTD/MTTR."
+        }
+      },
+      {
+        src: "/images/projects/lite-soc-ot-security/ot.svg",
+        alt: {
+          fa: "پایش شبکه OT با نقشه دارایی",
+          en: "OT network monitoring with asset map"
+        },
+        caption: {
+          fa: "نقشه دارایی شبکه‌های OT و پایش Passive پروتکل‌های صنعتی برای جلوگیری از حملات.",
+          en: "OT asset map with passive protocol monitoring to guard industrial operations."
+        }
+      }
+    ],
+    content: `
 <h2>۱۳) SOC سبک‌وزن + امنیت OT</h2>
 
 <h3>خلاصهٔ مدیریتی</h3>
@@ -1017,8 +1762,30 @@ export const projects: Project[] = [
   <li><b>OT Panel:</b> تابلو صنعتی با هشدار IDS، نورپردازی تکنیکال.</li>
   <li><b>Playbook:</b> کارت عملیات خودکار با مراحل بلاک/قرنطینه.</li>
 </ul>
-`
-}
+`,
+    contentEn: `
+<h3>Executive summary</h3>
+<p>Semnan's industrial operators need cyber monitoring that works fully on-premises. The lightweight SOC ingests logs and network telemetry from OT assets, correlates anomalies and produces actionable alerts.</p>
+<h3>Challenges addressed</h3>
+<ul>
+  <li>Restricted connectivity and the requirement for self-hosted tooling.</li>
+  <li>Lean security teams who require automation.</li>
+  <li>Protecting sensitive production and distribution processes.</li>
+</ul>
+<h3>Delivery approach</h3>
+<ul>
+  <li>Deploy collectors across OT segments to capture logs and traffic.</li>
+  <li>Apply behavioural analytics and rule-based detection tuned for OT.</li>
+  <li>Define response workflows and executive dashboards.</li>
+</ul>
+<h3>Delivered outcomes</h3>
+<ul>
+  <li>Prioritised alerting and situational awareness dashboards.</li>
+  <li>Runbooks and tabletop exercises for response teams.</li>
+  <li>Compliance-ready reporting for internal and governmental audits.</li>
+</ul>
+        `
+  }
 ];
 
 export default projects;

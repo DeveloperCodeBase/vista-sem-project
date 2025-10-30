@@ -1,0 +1,39 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#0B101F"/>
+  <defs>
+    <linearGradient id="road" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect x="52" y="52" width="1096" height="696" rx="40" fill="url(#road)"/>
+  <g transform="translate(140,140)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#F8FAFC">
+    <text font-size="38" font-weight="700">داشبورد پایش روسازی</text>
+    <text y="56" font-size="22" fill="#94A3B8">IRI • Distress • BOQ</text>
+  </g>
+  <g transform="translate(140,240)">
+    <rect width="440" height="360" rx="28" fill="#111827" stroke="#38BDF8" stroke-opacity="0.4" stroke-width="2"/>
+    <rect x="480" width="360" height="360" rx="28" fill="#0F172A" stroke="#F97316" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+  <g transform="translate(180,280)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#93C5FD">
+    <text>IRI mean    3.2 m/km</text>
+    <text y="44">IRI target  2.4 m/km</text>
+    <text y="88">coverage    52 km</text>
+  </g>
+  <g transform="translate(540,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#F8FAFC">
+    <text font-weight="600">BOQ پیشنهادی</text>
+    <text y="40" fill="#F97316">• روکش نازک: ۱۸,۴۰۰ m²</text>
+    <text y="80" fill="#FDBA74">• لکه‌گیری: ۹,۲۰۰ m²</text>
+    <text y="120" fill="#FACC15">• درزگیری: ۱۲,۵۰۰ m</text>
+  </g>
+  <g transform="translate(860,240)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#FACC15">
+    <text font-weight="600">صرفه‌جویی</text>
+    <text y="44" fill="#FDE68A">۸٪ هزینه پیمان</text>
+  </g>
+  <g transform="translate(140,560)">
+    <path d="M0 80C80 20 160 20 240 80C320 140 400 140 480 80" stroke="#38BDF8" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <circle cx="80" cy="52" r="10" fill="#38BDF8"/>
+    <circle cx="240" cy="100" r="10" fill="#38BDF8"/>
+    <circle cx="400" cy="60" r="10" fill="#38BDF8"/>
+  </g>
+</svg>

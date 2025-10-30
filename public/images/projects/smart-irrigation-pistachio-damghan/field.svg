@@ -1,0 +1,31 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#061108"/>
+  <defs>
+    <radialGradient id="fieldGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#fieldGrad)"/>
+  <g transform="translate(180,160)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#DCFCE7">
+    <text font-size="36" font-weight="700">مزرعه پایش‌شده</text>
+    <text y="52" font-size="20" fill="#BBF7D0">Damghan Pistachio Grove</text>
+  </g>
+  <g transform="translate(180,240)">
+    <rect width="880" height="360" rx="32" fill="#052e16" stroke="#34D399" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M60 80 L820 80" stroke="#34D399" stroke-width="6" stroke-linecap="round"/>
+    <path d="M60 160 L820 160" stroke="#34D399" stroke-width="4" stroke-dasharray="18 14" stroke-linecap="round"/>
+    <path d="M60 240 L820 240" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+    <g transform="translate(80,60)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="20" fill="#BBF7D0">
+      <text>قطعه A1</text>
+      <text y="80" fill="#FACC15">آبیاری برنامه‌ریزی شد</text>
+      <text y="160">قطعه B2</text>
+      <text y="240" fill="#A7F3D0">کافی</text>
+    </g>
+    <g transform="translate(620,60)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="18" fill="#A7F3D0">
+      <text>soil moisture  24%</text>
+      <text y="44">stem water pot -0.82</text>
+      <text y="88">valve status   OPEN</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#041023" />
+      <stop offset="50%" stop-color="#081b34" />
+      <stop offset="100%" stop-color="#04162b" />
+    </linearGradient>
+    <radialGradient id="night" cx="0.7" cy="0.3" r="0.6">
+      <stop offset="0%" stop-color="#ffe66b" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ffe66b" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <circle cx="880" cy="260" r="320" fill="url(#night)" />
+  <g stroke="rgba(255,255,255,0.1)">
+    <path d="M200 200 L1000 200" />
+    <path d="M200 300 L1000 300" />
+    <path d="M200 400 L1000 400" />
+    <path d="M200 500 L1000 500" />
+    <path d="M200 600 L1000 600" />
+    <path d="M200 680 L1000 680" />
+    <path d="M200 200 L200 680" />
+    <path d="M320 200 L320 680" />
+    <path d="M440 200 L440 680" />
+    <path d="M560 200 L560 680" />
+    <path d="M680 200 L680 680" />
+    <path d="M800 200 L800 680" />
+    <path d="M920 200 L920 680" />
+    <path d="M1040 200 L1040 680" />
+  </g>
+  <g fill="#ffb347" opacity="0.9">
+    <circle cx="360" cy="420" r="18" />
+    <circle cx="520" cy="360" r="14" />
+    <circle cx="660" cy="500" r="16" />
+    <circle cx="820" cy="320" r="18" />
+    <circle cx="940" cy="420" r="14" />
+  </g>
+  <g fill="#4cf8ff">
+    <circle cx="360" cy="420" r="6" />
+    <circle cx="520" cy="360" r="6" />
+    <circle cx="660" cy="500" r="6" />
+    <circle cx="820" cy="320" r="6" />
+    <circle cx="940" cy="420" r="6" />
+  </g>
+  <g fill="#fff" font-family="'Vazirmatn','IRANSans','Segoe UI',sans-serif" font-size="24" opacity="0.7">
+    <text x="240" y="160">Illegal groundwater abstraction intelligence</text>
+  </g>
+</svg>

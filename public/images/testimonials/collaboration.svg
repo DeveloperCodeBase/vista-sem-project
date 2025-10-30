@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="collab-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#041028" />
+      <stop offset="100%" stop-color="#15214a" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#collab-bg)" />
+  <g fill="#44c8ff" opacity="0.45">
+    <circle cx="420" cy="360" r="140" />
+    <circle cx="820" cy="300" r="200" />
+    <circle cx="1180" cy="360" r="160" />
+  </g>
+  <g stroke="#7be0ff" stroke-width="3" fill="none" opacity="0.6">
+    <path d="M260 620 Q420 520 580 560 T920 520 T1240 540" />
+  </g>
+  <g fill="#7be0ff" opacity="0.7">
+    <circle cx="580" cy="560" r="14" />
+    <circle cx="920" cy="520" r="12" />
+    <circle cx="1240" cy="540" r="10" />
+  </g>
+</svg>

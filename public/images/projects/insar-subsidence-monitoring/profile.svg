@@ -1,0 +1,29 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#020817"/>
+  <defs>
+    <radialGradient id="profileGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 400) scale(520 360)">
+      <stop offset="0" stop-color="#22D3EE" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+  </defs>
+  <rect x="60" y="60" width="1080" height="680" rx="44" fill="url(#profileGrad)"/>
+  <g transform="translate(160,160)">
+    <text font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">پروفایل نشست طول مسیر</text>
+    <text y="52" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#94A3B8">Baseline: Oct 2023 • Update: Apr 2024</text>
+  </g>
+  <g transform="translate(160,260)">
+    <rect width="880" height="360" rx="32" fill="#030712" stroke="#38BDF8" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M40 300C120 260 160 200 220 180C280 160 360 220 420 200C480 180 560 80 640 120C720 160 780 220 840 200" stroke="#38BDF8" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40 260C120 220 180 140 240 120C300 100 360 140 440 160C520 180 620 240 720 220C820 200 860 160 880 140" stroke="#F97316" stroke-width="6" fill="none" stroke-dasharray="16 18" stroke-linecap="round"/>
+    <g font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="20" fill="#E2E8F0">
+      <text x="60" y="60">خط انتقال آب ۲۴"</text>
+      <text x="60" y="100" fill="#FACC15">خطر نشست بالا</text>
+      <text x="60" y="340">پهنه امن</text>
+    </g>
+    <g transform="translate(720,40)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="18" fill="#BAE6FD">
+      <text>max settlement   -38 mm</text>
+      <text y="36">mm/year trend   -14</text>
+      <text y="72">confidence       0.92</text>
+    </g>
+  </g>
+</svg>

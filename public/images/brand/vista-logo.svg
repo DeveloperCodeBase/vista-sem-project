@@ -1,0 +1,20 @@
+<svg width="220" height="64" viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="vistaLogoTitle vistaLogoDesc">
+  <title id="vistaLogoTitle">Vista Smart Network logo</title>
+  <desc id="vistaLogoDesc">Futuristic AI-inspired monogram with radiant gradients</desc>
+  <defs>
+    <linearGradient id="vistaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <radialGradient id="vistaGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28" />
+      <stop offset="55%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="220" height="64" rx="18" fill="#060b1b" />
+  <rect width="220" height="64" rx="18" fill="url(#vistaGlow)" />
+  <path d="M30 16c-6.5 0-11.5 5.4-11.5 12.4 0 9.6 10.7 14.6 18.3 7.9l6.2 9.5c0.8 1.2 2.3 1.5 3.5 0.7 1.2-0.8 1.5-2.3 0.7-3.5l-6.3-9.6c1.9-3.2 2.8-7.2 2.8-11.2C43.7 21.4 38.3 16 30 16zm0 6.2c3 0 5.3 2.3 5.3 6.2 0 3.9-2.3 6.2-5.3 6.2-3 0-5.3-2.3-5.3-6.2 0-3.9 2.3-6.2 5.3-6.2z" fill="url(#vistaGradient)" />
+  <path d="M69.4 18l-12.8 28h7.2l2.3-5.2h11.8l2.2 5.2h7.3l-12.7-28h-5.3zm-0.4 16.4l3.5-7.9 3.4 7.9h-6.9zm30.4-16.4c-7 0-12.1 5.4-12.1 14.1 0 8.5 5.1 14 12.1 14 4 0 7.2-1.5 9.8-4.8l-4.6-3.8c-1.6 1.7-3 2.4-4.9 2.4-2.8 0-4.9-2.2-5-6.2h15.6c0.1-0.8 0.2-1.7 0.2-2.7 0-7.7-4.5-12.8-11.1-12.8zm-4.9 10.5c0.4-3.4 2.2-5.2 4.8-5.2 2.6 0 4.5 1.9 4.5 5.2h-9.3zm34.8-10.5c-3.7 0-6.8 1.3-8.9 3.7v-2.9h-6.9V46h7v-9.6c0-4.6 2.2-7.1 5.8-7.1 3.5 0 5.3 2.2 5.3 6.7V46h7V34.7c0-7.3-3.9-10.7-9.3-10.7z" fill="#e2e8f0" />
+  <text x="145" y="37" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="12" fill="#e2e8f0" letter-spacing="0.22em" text-anchor="middle">VISTA AI</text>
+</svg>

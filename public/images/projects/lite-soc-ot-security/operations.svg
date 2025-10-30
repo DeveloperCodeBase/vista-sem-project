@@ -1,0 +1,40 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#050810"/>
+  <defs>
+    <linearGradient id="soc" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect x="52" y="52" width="1096" height="696" rx="40" fill="url(#soc)"/>
+  <g transform="translate(140,140)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#E2E8F0">
+    <text font-size="38" font-weight="700">SOC سبک‌وزن استان</text>
+    <text y="56" font-size="22" fill="#94A3B8">SIEM • UEBA • SOAR</text>
+  </g>
+  <g transform="translate(140,240)">
+    <rect width="280" height="360" rx="28" fill="#1E293B" stroke="#38BDF8" stroke-opacity="0.5" stroke-width="2"/>
+    <rect x="320" width="280" height="360" rx="28" fill="#0F172A" stroke="#22D3EE" stroke-opacity="0.4" stroke-width="2"/>
+    <rect x="640" width="280" height="360" rx="28" fill="#111827" stroke="#FACC15" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+  <g transform="translate(180,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#E2E8F0">
+    <text font-weight="600">ورود لاگ</text>
+    <text y="40" fill="#94A3B8">Firewall • AD • Endpoint</text>
+  </g>
+  <g transform="translate(500,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#E2E8F0">
+    <text font-weight="600">UEBA</text>
+    <text y="40" fill="#94A3B8">anomaly score 0.78</text>
+  </g>
+  <g transform="translate(820,280)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="22" fill="#FACC15">
+    <text font-weight="600">پلی‌بوک</text>
+    <text y="40" fill="#FDE68A">بلاک IP • ریست رمز</text>
+  </g>
+  <g transform="translate(220,540)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#38BDF8">
+    <text>MTTD  ↓ 32%</text>
+  </g>
+  <g transform="translate(540,540)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#22D3EE">
+    <text>Alerts triaged / day  58</text>
+  </g>
+  <g transform="translate(860,540)" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="20" fill="#FACC15">
+    <text>response SLA   12m</text>
+  </g>
+</svg>

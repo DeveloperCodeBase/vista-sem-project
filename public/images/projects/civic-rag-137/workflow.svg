@@ -1,0 +1,48 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="url(#grad)"/>
+  <defs>
+    <linearGradient id="grad" x1="1200" y1="0" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1E40AF"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(120,120)">
+    <rect width="960" height="560" rx="36" fill="rgba(15,23,42,0.72)" stroke="#60A5FA" stroke-opacity="0.35" stroke-width="2"/>
+    <g transform="translate(80,80)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#E0F2FE">
+      <text font-size="40" font-weight="700">گردش‌کار ارجاع هوشمند</text>
+      <text y="64" font-size="22" fill="#BAE6FD">Civic-RAG • Semnan</text>
+    </g>
+    <g transform="translate(80,180)" fill="#1E40AF">
+      <rect width="220" height="120" rx="24" fill="#1D4ED8" fill-opacity="0.85"/>
+      <rect x="260" width="220" height="120" rx="24" fill="url(#card)" fill-opacity="0.85"/>
+      <rect x="520" width="220" height="120" rx="24" fill="#2563EB" fill-opacity="0.85"/>
+      <rect x="780" width="220" height="120" rx="24" fill="#1E40AF" fill-opacity="0.85"/>
+    </g>
+    <g transform="translate(80,180)" font-family="'Vazirmatn','Segoe UI',sans-serif" font-size="24" fill="#EFF6FF">
+      <text x="40" y="56" font-weight="600">دریافت ۱۳۷</text>
+      <text x="20" y="92" font-size="18" fill="#BFDBFE">ASR + تحلیل</text>
+      <text x="300" y="56" font-weight="600">بردار معنایی</text>
+      <text x="288" y="92" font-size="18" fill="#BFDBFE">Vector DB داخلی</text>
+      <text x="560" y="56" font-weight="600">پاسخ RAG</text>
+      <text x="540" y="92" font-size="18" fill="#BFDBFE">سیاست‌های مصوب</text>
+      <text x="820" y="56" font-weight="600">ارجاع SLA</text>
+      <text x="800" y="92" font-size="18" fill="#BFDBFE">واحد مسئول</text>
+    </g>
+    <g transform="translate(80,220)" stroke="#38BDF8" stroke-width="4" stroke-dasharray="10 14" opacity="0.7">
+      <path d="M200 80 H260"/>
+      <path d="M460 80 H520"/>
+      <path d="M720 80 H780"/>
+    </g>
+    <g transform="translate(80,360)" font-family="'Vazirmatn','Segoe UI',sans-serif" fill="#BFDBFE">
+      <text font-size="22">• ۳۵٪ کاهش زمان پاسخ</text>
+      <text y="48" font-size="22">• داشبورد نقطه‌داغ شهری</text>
+      <text y="96" font-size="22">• امنیت داده On-Prem</text>
+    </g>
+    <circle cx="880" cy="420" r="90" fill="rgba(96,165,250,0.12)" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="4"/>
+    <text x="840" y="428" font-family="'Fira Code','Vazirmatn','Segoe UI',monospace" font-size="22" fill="#93C5FD">SLA 02:45</text>
+  </g>
+</svg>
