@@ -1,246 +1,122 @@
-import net from "node:net";
-import tls from "node:tls";
-import { Buffer } from "node:buffer";
-import type { ContactRecord } from "@/lib/contactStore";
+// lib/mailer.ts
+import nodemailer from "nodemailer";
+import dns from "dns";
 
-function parseBoolean(value: string | undefined) {
-  if (!value) return false;
-  return ["1", "true", "yes", "on"].includes(value.toLowerCase());
+try { dns.setDefaultResultOrder?.("ipv4first"); } catch {}
+
+function bool(v?: string) {
+  if (!v) return false;
+  return ["1","true","yes","on"].includes(v.toLowerCase());
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+function must(v: string | undefined, name: string) {
+  if (!v) throw new Error(`${name}_MISSING`);
+  return v;
 }
 
-function sanitizeLine(value: string) {
-  return value.replace(/[\r\n]+/g, " ").trim();
-}
-
-type SmtpConfig = {
-  host: string;
-  port: number;
-  user: string;
-  pass: string;
-  secure: boolean;
-  heloDomain: string;
+export type ContactPayload = {
+  name: string;
+  email: string;
+  phone?: string;
+  subject?: string;
+  message: string;
+  id?: string;
+  createdAt?: string;
+  ip?: string | null;
+  userAgent?: string | null;
 };
 
-function ensureConfig(): SmtpConfig {
-  const host = process.env.EMAIL_HOST;
-  const portRaw = process.env.EMAIL_PORT;
-  const user = process.env.EMAIL_USER;
-  const pass = process.env.EMAIL_PASS;
-  if (!host || !portRaw || !user || !pass) {
-    throw new Error("EMAIL_CONFIGURATION_MISSING");
-  }
-  const port = Number(portRaw);
-  if (Number.isNaN(port)) {
-    throw new Error("EMAIL_PORT_INVALID");
-  }
-  return {
-    host,
-    port,
-    user,
-    pass,
-    secure: parseBoolean(process.env.EMAIL_SECURE) || port === 465,
-    heloDomain: sanitizeLine(process.env.EMAIL_HELO_DOMAIN || "vista.devcodebase.com"),
-  };
+function cfg() {
+  const host = process.env.EMAIL_HOST || "smtp.gmail.com";
+  const port = Number(process.env.EMAIL_PORT || "587");
+  const secure = bool(process.env.EMAIL_SECURE) && port === 465; // روی 587 باید false باشد
+  const user = must(process.env.EMAIL_USER, "EMAIL_USER");
+  const pass = must(process.env.EMAIL_PASS, "EMAIL_PASS");
+  const helo = process.env.EMAIL_HELO_DOMAIN || "vista.devcodebase.com";
+  const from = process.env.EMAIL_FROM || user;
+  const to = process.env.EMAIL_TO || user;
+
+  return { host, port, secure, user, pass, helo, from, to };
 }
 
 export function verifyMailerConfig() {
-  ensureConfig();
+  cfg(); // فقط ولیدیشن
 }
 
-function readResponse(socket: net.Socket): Promise<{ code: number; message: string }> {
-  return new Promise((resolve, reject) => {
-    let buffer = "";
-
-    const cleanup = () => {
-      socket.off("data", onData);
-      socket.off("error", onError);
-      socket.off("end", onClose);
-      socket.off("close", onClose);
-      socket.off("timeout", onTimeout);
-      socket.setTimeout(0);
-    };
-
-    const onData = (chunk: Buffer) => {
-      buffer += chunk.toString("utf8");
-      if (!buffer.endsWith("\r\n")) {
-        return;
-      }
-      const lines = buffer.split("\r\n").filter(Boolean);
-      if (lines.length === 0) {
-        return;
-      }
-      const last = lines[lines.length - 1];
-      if (!/^\d{3} /.test(last)) {
-        return;
-      }
-      cleanup();
-      const code = parseInt(last.slice(0, 3), 10);
-      resolve({ code, message: buffer });
-    };
-
-    const onError = (error: Error) => {
-      cleanup();
-      reject(error);
-    };
-
-    const onClose = () => {
-      cleanup();
-      reject(new Error("SMTP_CONNECTION_CLOSED"));
-    };
-
-    const onTimeout = () => {
-      cleanup();
-      reject(new Error("SMTP_TIMEOUT"));
-    };
-
-    socket.on("data", onData);
-    socket.on("error", onError);
-    socket.on("end", onClose);
-    socket.on("close", onClose);
-    socket.on("timeout", onTimeout);
-    socket.setTimeout(15000);
+const transporter = (() => {
+  const c = cfg();
+  return nodemailer.createTransport({
+    host: c.host,
+    port: c.port,               // 587 → STARTTLS
+    secure: c.secure,           // برای 587 باید false باشد
+    auth: { user: c.user, pass: c.pass },
+    name: c.helo,
+    requireTLS: true,
+    family: 4,
+    connectionTimeout: 15000,
+    tls: { minVersion: "TLSv1.2" },
   });
+})();
+
+function esc(s: unknown) {
+  return String(s ?? "")
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
-async function sendCommand(
-  socket: net.Socket,
-  command: string,
-  expected?: number[]
-): Promise<{ code: number; message: string }> {
-  socket.write(`${command}\r\n`);
-  const response = await readResponse(socket);
-  if (expected && !expected.includes(response.code)) {
-    throw new Error(`SMTP_UNEXPECTED_CODE ${response.code}`);
-  }
-  if (!expected && response.code >= 400) {
-    throw new Error(`SMTP_COMMAND_FAILED ${command} => ${response.message.trim()}`);
-  }
-  return response;
-}
-
-function parseAddress(value: string) {
-  const cleaned = sanitizeLine(value);
-  const match = cleaned.match(/^(.*)<([^>]+)>$/);
-  if (match) {
-    const name = match[1].trim().replace(/^"|"$/g, "");
-    return { name, address: match[2].trim() };
-  }
-  return { name: "", address: cleaned };
-}
-
-function encodeHeader(value: string) {
-  if (!/[\u0080-\uFFFF]/.test(value)) {
-    return value;
-  }
-  const base64 = Buffer.from(value, "utf8").toString("base64");
-  return `=?UTF-8?B?${base64}?=`;
-}
-
-function resolveSender(input: string, fallback: string) {
-  const parsed = parseAddress(input || fallback);
-  const address = parsed.address || fallback;
-  const header = parsed.name ? `${encodeHeader(parsed.name)} <${address}>` : address;
-  return { header, address };
-}
-
-function buildMessage(record: ContactRecord, fromHeader: string, toAddress: string, heloDomain: string) {
-  const subject = "درخواست جدید وبسایت ویستا";
-  const plain =
-    `درخواست جدید از وبسایت ویستا\n\n` +
-    `نام: ${record.name}\n` +
-    `تلفن: ${record.phone}\n` +
-    `ایمیل: ${record.email || "-"}\n` +
-    `پروژه: ${record.project}\n` +
-    `تاریخ ثبت: ${record.createdAt}\n\n` +
-    `شرح درخواست:\n${record.message}`;
-
-  const html = `
-    <h2>درخواست جدید از وبسایت ویستا</h2>
-    <ul>
-      <li><b>نام:</b> ${escapeHtml(record.name)}</li>
-      <li><b>تلفن:</b> ${escapeHtml(record.phone)}</li>
-      <li><b>ایمیل:</b> ${escapeHtml(record.email || "-")}</li>
-      <li><b>پروژه:</b> ${escapeHtml(record.project)}</li>
-      <li><b>تاریخ ثبت:</b> ${escapeHtml(record.createdAt)}</li>
-    </ul>
-    <p><b>شرح درخواست:</b></p>
-    <p>${escapeHtml(record.message).replace(/\n/g, "<br/>")}</p>
-  `;
-
-  const boundary = `----vista-${Date.now().toString(16)}`;
-  const messageLines = [
-    `From: ${fromHeader}`,
-    `To: ${toAddress}`,
-    `Subject: ${encodeHeader(subject)}`,
-    `Date: ${new Date().toUTCString()}`,
-    `Message-ID: <${record.id}@${heloDomain}>`,
-    `MIME-Version: 1.0`,
-    `Content-Type: multipart/alternative; boundary="${boundary}"`,
-    "",
-    `--${boundary}`,
-    "Content-Type: text/plain; charset=UTF-8",
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    plain,
-    "",
-    `--${boundary}`,
-    "Content-Type: text/html; charset=UTF-8",
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    html,
-    "",
-    `--${boundary}--`,
-    "",
+function html(payload: ContactPayload, helo: string) {
+  const rows = [
+    ["Name", esc(payload.name)],
+    ["Email", esc(payload.email)],
+    ["Phone", esc(payload.phone || "—")],
+    ["Subject", esc(payload.subject || "—")],
+    ["Created", esc(payload.createdAt || new Date().toISOString())],
+    ["ID", esc(payload.id || "—")],
+    ["IP", esc(payload.ip || "—")],
+    ["User-Agent", esc(payload.userAgent || "—")],
   ];
 
-  const raw = messageLines.join("\r\n");
-  return raw.replace(/(^|\r\n)\./g, "$1.." );
+  const tr = rows.map(([k,v]) =>
+    `<tr>
+      <td style="padding:8px 12px;font-weight:600;background:#f8fafc;border:1px solid #e5e7eb">${k}</td>
+      <td style="padding:8px 12px;border:1px solid #e5e7eb">${v}</td>
+    </tr>`).join("");
+
+  return `
+  <div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">
+    <h2 style="margin:0 0 12px">New Contact Submission</h2>
+    <table style="border-collapse:collapse;border:1px solid #e5e7eb;margin:0 0 12px">${tr}</table>
+    <div style="margin-top:8px;font-weight:600">Message:</div>
+    <pre style="white-space:pre-wrap;background:#f6f8fa;padding:12px;border:1px solid #e5e7eb;border-radius:8px;margin:6px 0 0">${esc(payload.message)}</pre>
+    <div style="color:#6b7280;font-size:12px;margin-top:12px">HELO: ${esc(helo)}</div>
+  </div>`;
 }
 
-export async function sendContactNotification(record: ContactRecord) {
-  const config = ensureConfig();
-  const sender = resolveSender(process.env.EMAIL_FROM || "", config.user);
-  const toAddress = sanitizeLine(process.env.EMAIL_TO || "devcodebase.dev@gmail.com");
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(toAddress)) {
-    throw new Error("EMAIL_TO_INVALID");
-  }
+function text(payload: ContactPayload) {
+  return [
+    `New Contact Submission`,
+    `----------------------`,
+    `Name:    ${payload.name}`,
+    `Email:   ${payload.email}`,
+    `Phone:   ${payload.phone || "-"}`,
+    `Subject: ${payload.subject || "-"}`,
+    `Created: ${payload.createdAt || new Date().toISOString()}`,
+    `ID:      ${payload.id || "-"}`,
+    `IP:      ${payload.ip || "-"}`,
+    ``,
+    `Message:`,
+    `${payload.message}`,
+  ].join("\n");
+}
 
-  const socket: net.Socket = config.secure
-    ? tls.connect({ host: config.host, port: config.port })
-    : net.createConnection({ host: config.host, port: config.port });
-
-  try {
-    const greeting = await readResponse(socket);
-    if (greeting.code >= 400) {
-      throw new Error(`SMTP_GREETING_FAILED ${greeting.message.trim()}`);
-    }
-
-    await sendCommand(socket, `EHLO ${config.heloDomain}`);
-    await sendCommand(socket, "AUTH LOGIN", [334]);
-    await sendCommand(socket, Buffer.from(config.user, "utf8").toString("base64"), [334]);
-    await sendCommand(socket, Buffer.from(config.pass, "utf8").toString("base64"), [235]);
-    await sendCommand(socket, `MAIL FROM:<${sanitizeLine(sender.address)}>`, [250, 251, 252]);
-    await sendCommand(socket, `RCPT TO:<${toAddress}>`, [250, 251, 252]);
-    await sendCommand(socket, "DATA", [354]);
-
-    const message = buildMessage(record, sender.header, toAddress, config.heloDomain);
-    socket.write(`${message}\r\n.\r\n`);
-    const dataResult = await readResponse(socket);
-    if (dataResult.code >= 400) {
-      throw new Error(`SMTP_DATA_REJECTED ${dataResult.message.trim()}`);
-    }
-
-    await sendCommand(socket, "QUIT", [221]);
-  } finally {
-    socket.end();
-  }
+export async function sendContactNotification(payload: ContactPayload) {
+  const c = cfg();
+  await transporter.verify();
+  await transporter.sendMail({
+    from: c.from,               // "Vista Smart Network <devcodebase.dev@gmail.com>"
+    to: c.to,
+    subject: `Contact: ${payload.name}${payload.subject ? " — " + payload.subject : ""}`,
+    text: text(payload),
+    html: html(payload, c.helo),
+    replyTo: `${payload.name} <${payload.email}>`,
+  });
 }
