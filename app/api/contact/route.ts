@@ -1,10 +1,12 @@
 // app/api/contact/route.ts
 import { NextResponse } from "next/server";
-import {
-  sendContactNotification,
-  verifyMailerConfig,
-  type ContactPayload,
-} from "@/lib/mailer";
+import { sendContactNotification, verifyMailerConfig, type ContactPayload } from "@/lib/mailer";
+
+// برای جلوگیری از استاتیک‌سازی این روت
+export const dynamic = 'force-dynamic';   // جلوگیری از SSG
+export const revalidate = 0;              // بدون ISR
+export const fetchCache = 'force-no-store';
+export const runtime = 'nodejs';          // برای استفاده از nodemailer، از nodejs استفاده کن
 
 // کمکی: گرفتن فیلد از آبجکت با اسامی مختلف (Case-insensitive)
 function pickField(obj: Record<string, any>, keys: string[]): string | undefined {
@@ -32,12 +34,7 @@ async function readBody(req: Request): Promise<Record<string, any>> {
   }
 }
 
-// این تنظیمات باعث می‌شود که این روت استاتیک نباشد
-export const dynamic = 'force-dynamic';   // جلوگیری از SSG
-export const revalidate = 0;              // بدون ISR
-export const fetchCache = 'force-no-store';
-export const runtime = 'nodejs';          // نه edge (برای nodemailer لازم است)
-
+// متد POST برای دریافت داده‌ها و ارسال ایمیل
 export async function POST(req: Request) {
   try {
     const raw = await readBody(req);
