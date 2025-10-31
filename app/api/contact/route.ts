@@ -32,6 +32,12 @@ async function readBody(req: Request): Promise<Record<string, any>> {
   }
 }
 
+// این تنظیمات باعث می‌شود که این روت استاتیک نباشد
+export const dynamic = 'force-dynamic';   // جلوگیری از SSG
+export const revalidate = 0;              // بدون ISR
+export const fetchCache = 'force-no-store';
+export const runtime = 'nodejs';          // نه edge (برای nodemailer لازم است)
+
 export async function POST(req: Request) {
   try {
     const raw = await readBody(req);
