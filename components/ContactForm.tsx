@@ -25,7 +25,7 @@ export default function ContactForm({ locale = "fa" }: Props) {
     };
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/v1/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
